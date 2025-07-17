@@ -1,2 +1,2 @@
-# CodinGameChallenges-
-CodinGame Challenge 
+# CodinGameChallenges
+CodinGame Challenge Solutions
