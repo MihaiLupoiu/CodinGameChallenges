@@ -313,13 +313,81 @@ const (
 	PriorityDefault   = 10  // Hunker down
 )
 
-// Strategy defines the interface for coordinating agent actions
+// Strategy interface for different AI behaviors
 type Strategy interface {
-	Name() string
 	EvaluateActions(agent *Agent, game *Game) []AgentAction
+	Name() string
 }
 
-// TakeCoverAndShootBomb strategy for Task4 - move to cover and use splash bombs on enemy groups
+// PositionStrategy - Phase 1: Get into tactical position near enemy clusters
+type PositionStrategy struct{}
+
+func (s *PositionStrategy) Name() string {
+	return "Position"
+}
+
+func (s *PositionStrategy) EvaluateActions(agent *Agent, game *Game) []AgentAction {
+	actions := []AgentAction{}
+
+	// Find tactical position near largest enemy cluster
+	targetX, targetY := game.FindTacticalPosition(agent)
+
+	if targetX != agent.X || targetY != agent.Y {
+		actions = append(actions, AgentAction{
+			Type:     ActionMove,
+			TargetX:  targetX,
+			TargetY:  targetY,
+			Priority: PriorityMovement,
+			Reason:   fmt.Sprintf("Moving to tactical position (%d,%d) near enemy cluster", targetX, targetY),
+		})
+	}
+
+	fmt.Fprintln(os.Stderr, fmt.Sprintf("Agent %d positioning: generated %d actions", agent.ID, len(actions)))
+	return actions
+}
+
+// CombatStrategy - Phase 2: Deal maximum damage from good position
+type CombatStrategy struct{}
+
+func (s *CombatStrategy) Name() string {
+	return "Combat"
+}
+
+func (s *CombatStrategy) EvaluateActions(agent *Agent, game *Game) []AgentAction {
+	actions := []AgentAction{}
+
+	// Priority 1: Use bombs if we have good cluster targets
+	if agent.SplashBombs > 0 {
+		bombX, bombY, expectedDamage := game.FindOptimalSplashBombTarget(agent)
+		if expectedDamage >= 150.0 { // Higher threshold for combat phase
+			actions = append(actions, AgentAction{
+				Type:     ActionThrow,
+				TargetX:  bombX,
+				TargetY:  bombY,
+				Priority: PriorityCombat,
+				Reason:   fmt.Sprintf("Combat bombing at (%d,%d) - damage: %.0f", bombX, bombY, expectedDamage),
+			})
+		}
+	}
+
+	// Priority 2: Shoot highest wetness enemy if no good bomb targets
+	if len(actions) == 0 && agent.Cooldown == 0 {
+		target := game.FindHighestWetnessEnemyInRange(agent)
+		if target != nil {
+			actions = append(actions, AgentAction{
+				Type:          ActionShoot,
+				TargetAgentID: target.ID,
+				Priority:      PriorityCombat,
+				Reason:        fmt.Sprintf("Combat shooting highest wetness enemy %d (wetness: %d)", target.ID, target.Wetness),
+			})
+		}
+	}
+
+	fmt.Fprintln(os.Stderr, fmt.Sprintf("Agent %d combat: generated %d actions", agent.ID, len(actions)))
+	return actions
+}
+
+// TakeCoverAndShootBomb strategy - now uses two-phase approach
 type TakeCoverAndShootBombStrategy struct{}
 
 func (s *TakeCoverAndShootBombStrategy) Name() string {
@@ -327,69 +395,16 @@ func (s *TakeCoverAndShootBombStrategy) Name() string {
 }
 
 func (s *TakeCoverAndShootBombStrategy) EvaluateActions(agent *Agent, game *Game) []AgentAction {
-	actions := []AgentAction{}
-
-	// Task4: Move to best cover position + use splash bombs on enemy groups
-
-	// Check current cover protection
-	currentCover := game.GetMaxAdjacentCover(agent.X, agent.Y)
-
-	// Priority 1: Move to best available cover position
-	coverX, coverY := game.FindBestCoverPosition(agent)
-	if coverX != agent.X || coverY != agent.Y {
-		var movePriority int
-		if currentCover == 0 {
-			// No cover - finding cover is critical (highest priority)
-			movePriority = PriorityMovement + 10 // 60
-		} else {
-			// Have some cover - normal movement priority
-			movePriority = PriorityMovement // 50
-		}
-
-		actions = append(actions, AgentAction{
-			Type:     ActionMove,
-			TargetX:  coverX,
-			TargetY:  coverY,
-			Priority: movePriority,
-			Reason:   fmt.Sprintf("Moving to cover position (%d,%d) - current cover: %d", coverX, coverY, currentCover),
-		})
-	}
-
-	// Priority 2: Throw splash bomb at optimal target location (slightly lower than move)
-	if agent.SplashBombs > 0 {
-		bombX, bombY, expectedDamage := game.FindOptimalSplashBombTarget(agent)
-		if expectedDamage > 0 {
-			actions = append(actions, AgentAction{
-				Type:     ActionThrow,
-				TargetX:  bombX,
-				TargetY:  bombY,
-				Priority: PriorityMovement - 1, // 49 - executes after move
-				Reason:   fmt.Sprintf("Throwing splash bomb at (%d,%d) - expected damage: %.0f", bombX, bombY, expectedDamage),
-			})
-		}
+	// Determine which phase we're in
+	if game.ShouldSwitchToCombat(agent) {
+		fmt.Fprintln(os.Stderr, fmt.Sprintf("Agent %d in COMBAT phase", agent.ID))
+		combatStrategy := &CombatStrategy{}
+		return combatStrategy.EvaluateActions(agent, game)
 	} else {
-		// Priority 3: Shoot closest enemy if no bombs available
-		target := game.FindLeastProtectedEnemy(agent)
-		if target != nil && agent.Cooldown == 0 {
-			actions = append(actions, AgentAction{
-				Type:          ActionShoot,
-				TargetAgentID: target.ID,
-				Priority:      PriorityMovement - 1, // 49 - executes after move
-				Reason:        fmt.Sprintf("No bombs available - shooting closest enemy %d", target.ID),
-			})
-		}
+		fmt.Fprintln(os.Stderr, fmt.Sprintf("Agent %d in POSITION phase", agent.ID))
+		positionStrategy := &PositionStrategy{}
+		return positionStrategy.EvaluateActions(agent, game)
 	}
-
-	// If no actions, add fallback
-	if len(actions) == 0 {
-		actions = append(actions, AgentAction{
-			Type:     ActionHunker,
-			Priority: PriorityDefault,
-			Reason:   "No valid cover, bombs, or shooting targets available",
-		})
-	}
-
-	return actions
 }
 
 // FindOptimalSplashBombTarget finds the best position to throw a splash bomb for maximum damage
@@ -427,6 +442,285 @@ func (g *Game) FindOptimalSplashBombTarget(agent *Agent) (int, int, float64) {
 	return bestX, bestY, maxDamage
 }
 
+// ShouldSwitchToCombat determines if agent should switch from positioning to combat phase
+func (g *Game) ShouldSwitchToCombat(agent *Agent) bool {
+	// Switch to combat if:
+	// 1. Agent has cover AND enemies in bomb/shoot range, OR
+	// 2. No better tactical position available, OR
+	// 3. Agent is under threat (enemies very close), OR
+	// 4. Agent has been positioning for too long
+
+	currentCover := g.GetMaxAdjacentCover(agent.X, agent.Y)
+	hasGoodPosition := currentCover > 0
+
+	// Count enemies within bomb range (4 tiles)
+	enemiesInBombRange := 0
+	enemiesInShootRange := 0
+	closestEnemyDistance := 999
+
+	for _, enemy := range g.Agents {
+		if enemy.Player != g.MyID && enemy.Wetness < 100 {
+			distance := abs(agent.X-enemy.X) + abs(agent.Y-enemy.Y)
+			if distance <= 4 {
+				enemiesInBombRange++
+			}
+			if distance <= agent.OptimalRange {
+				enemiesInShootRange++
+			}
+			if distance < closestEnemyDistance {
+				closestEnemyDistance = distance
+			}
+		}
+	}
+
+	// Switch to combat if in good position with targets
+	if hasGoodPosition && (enemiesInBombRange >= 2 || enemiesInShootRange >= 1) {
+		return true
+	}
+
+	// Switch to combat if under immediate threat (enemy within 3 tiles)
+	if closestEnemyDistance <= 3 {
+		return true
+	}
+
+	// Switch to combat if we have ANY targets in range (don't wait forever)
+	if enemiesInShootRange >= 1 {
+		return true
+	}
+
+	// Otherwise stay in positioning phase
+	return false
+}
+
+// FindTacticalPosition finds the best position near enemy clusters with cover
+func (g *Game) FindTacticalPosition(agent *Agent) (int, int) {
+	bestX, bestY := agent.X, agent.Y
+	bestScore := -999.0
+
+	// Find the best enemy cluster for this specific agent (for coordination)
+	clusterX, clusterY, clusterSize := g.FindBestClusterForAgent(agent)
+
+	if clusterSize == 0 {
+		// No enemies found, just find any cover
+		return g.FindBestCoverPosition(agent)
+	}
+
+	fmt.Fprintln(os.Stderr, fmt.Sprintf("Agent %d targeting cluster: (%d,%d) with %d enemies", agent.ID, clusterX, clusterY, clusterSize))
+
+	// Try multiple approaches in order of preference
+
+	// Approach 1: Look for cover positions within bomb range (4 tiles) of the cluster
+	maxSearchDistance := 5 // Increased from 3
+	for y := 0; y < g.Height; y++ {
+		for x := 0; x < g.Width; x++ {
+			// Skip impassable tiles
+			if g.Grid[y][x].Type > 0 {
+				continue
+			}
+
+			// Check if reachable
+			distanceToAgent := abs(agent.X-x) + abs(agent.Y-y)
+			if distanceToAgent > maxSearchDistance {
+				continue
+			}
+
+			// Check if within bomb range of cluster
+			distanceToCluster := abs(x-clusterX) + abs(y-clusterY)
+			if distanceToCluster > 4 {
+				continue
+			}
+
+			// Score this position
+			score := 0.0
+
+			// Bonus for cover
+			coverLevel := g.GetMaxAdjacentCover(x, y)
+			score += float64(coverLevel) * 20.0
+
+			// Bonus for being closer to cluster (better bomb angles)
+			score += (4.0 - float64(distanceToCluster)) * 10.0
+
+			// Small penalty for distance from agent
+			score -= float64(distanceToAgent) * 0.5
+
+			if score > bestScore {
+				bestX, bestY = x, y
+				bestScore = score
+			}
+		}
+	}
+
+	// Approach 2: If no ideal position found, move toward cluster (even without perfect cover)
+	if bestScore <= -999.0 {
+		fmt.Fprintln(os.Stderr, fmt.Sprintf("No ideal tactical position found, moving toward cluster"))
+
+		// Find the best position to move toward the cluster
+		for y := 0; y < g.Height; y++ {
+			for x := 0; x < g.Width; x++ {
+				// Skip impassable tiles
+				if g.Grid[y][x].Type > 0 {
+					continue
+				}
+
+				// Check if reachable in 1-2 moves
+				distanceToAgent := abs(agent.X-x) + abs(agent.Y-y)
+				if distanceToAgent > 2 {
+					continue
+				}
+
+				// Score based on getting closer to cluster
+				distanceToCluster := abs(x-clusterX) + abs(y-clusterY)
+				currentDistanceToCluster := abs(agent.X-clusterX) + abs(agent.Y-clusterY)
+
+				// Only consider positions that get us closer
+				if distanceToCluster >= currentDistanceToCluster {
+					continue
+				}
+
+				score := 0.0
+
+				// Bonus for getting closer to cluster
+				score += float64(currentDistanceToCluster-distanceToCluster) * 20.0
+
+				// Bonus for any cover
+				coverLevel := g.GetMaxAdjacentCover(x, y)
+				score += float64(coverLevel) * 10.0
+
+				// Small penalty for distance from agent
+				score -= float64(distanceToAgent) * 1.0
+
+				if score > bestScore {
+					bestX, bestY = x, y
+					bestScore = score
+				}
+			}
+		}
+	}
+
+	// Approach 3: If still no good position, find any cover
+	if bestScore <= -999.0 {
+		fmt.Fprintln(os.Stderr, fmt.Sprintf("No path to cluster found, finding any cover"))
+		return g.FindBestCoverPosition(agent)
+	}
+
+	fmt.Fprintln(os.Stderr, fmt.Sprintf("Agent %d tactical position: (%d,%d) score: %.1f", agent.ID, bestX, bestY, bestScore))
+	return bestX, bestY
+}
+
+// FindLargestEnemyCluster finds the center of the largest enemy cluster
+func (g *Game) FindLargestEnemyCluster() (int, int, int) {
+	bestX, bestY, maxEnemies := 0, 0, 0
+
+	// Scan the map in 5x5 windows to find enemy clusters
+	for centerY := 2; centerY < g.Height-2; centerY++ {
+		for centerX := 2; centerX < g.Width-2; centerX++ {
+			enemyCount := 0
+
+			// Count enemies in 5x5 area around this center
+			for dy := -2; dy <= 2; dy++ {
+				for dx := -2; dx <= 2; dx++ {
+					checkX, checkY := centerX+dx, centerY+dy
+					if !g.IsValidPosition(checkX, checkY) {
+						continue
+					}
+
+					// Check if any enemy is at this position
+					for _, enemy := range g.Agents {
+						if enemy.Player != g.MyID && enemy.Wetness < 100 &&
+							enemy.X == checkX && enemy.Y == checkY {
+							enemyCount++
+						}
+					}
+				}
+			}
+
+			if enemyCount > maxEnemies {
+				bestX, bestY = centerX, centerY
+				maxEnemies = enemyCount
+			}
+		}
+	}
+
+	return bestX, bestY, maxEnemies
+}
+
+// FindBestClusterForAgent finds the best enemy cluster for a specific agent (for coordination)
+func (g *Game) FindBestClusterForAgent(agent *Agent) (int, int, int) {
+	bestX, bestY, maxScore := 0, 0, 0
+
+	// Scan the map in 5x5 windows to find enemy clusters
+	for centerY := 2; centerY < g.Height-2; centerY++ {
+		for centerX := 2; centerX < g.Width-2; centerX++ {
+			enemyCount := 0
+
+			// Count enemies in 5x5 area around this center
+			for dy := -2; dy <= 2; dy++ {
+				for dx := -2; dx <= 2; dx++ {
+					checkX, checkY := centerX+dx, centerY+dy
+					if !g.IsValidPosition(checkX, checkY) {
+						continue
+					}
+
+					// Check if any enemy is at this position
+					for _, enemy := range g.Agents {
+						if enemy.Player != g.MyID && enemy.Wetness < 100 &&
+							enemy.X == checkX && enemy.Y == checkY {
+							enemyCount++
+						}
+					}
+				}
+			}
+
+			if enemyCount >= 2 { // Only consider clusters with 2+ enemies
+				// Score based on enemy count and distance to agent
+				distanceToAgent := abs(agent.X-centerX) + abs(agent.Y-centerY)
+				score := enemyCount*10 - distanceToAgent // Prefer closer clusters
+
+				if score > maxScore {
+					bestX, bestY = centerX, centerY
+					maxScore = score
+				}
+			}
+		}
+	}
+
+	// If no good cluster found for this agent, fall back to largest cluster
+	if maxScore == 0 {
+		return g.FindLargestEnemyCluster()
+	}
+
+	return bestX, bestY, maxScore / 10 // Convert score back to enemy count approximation
+}
+
+// FindHighestWetnessEnemyInRange finds the enemy with highest wetness within agent's range
+func (g *Game) FindHighestWetnessEnemyInRange(agent *Agent) *Agent {
+	var bestTarget *Agent
+	highestWetness := -1
+
+	for _, enemy := range g.Agents {
+		if enemy.Player != g.MyID && enemy.Wetness < 100 {
+			distance := abs(agent.X-enemy.X) + abs(agent.Y-enemy.Y)
+
+			// Only consider enemies within optimal range
+			if distance > agent.OptimalRange {
+				continue
+			}
+
+			// Prefer higher wetness (closer to elimination)
+			if enemy.Wetness > highestWetness {
+				bestTarget = enemy
+				highestWetness = enemy.Wetness
+			}
+		}
+	}
+
+	if bestTarget != nil {
+		fmt.Fprintln(os.Stderr, fmt.Sprintf("Highest wetness target in range: Enemy %d (wetness: %d)", bestTarget.ID, bestTarget.Wetness))
+	}
+
+	return bestTarget
+}
+
 // CalculateSplashDamageScore calculates the total damage score for a splash bomb at given position
 func (g *Game) CalculateSplashDamageScore(bombX, bombY int) float64 {
 	totalScore := 0.0
@@ -456,8 +750,9 @@ func (g *Game) CalculateSplashDamageScore(bombX, bombY int) float64 {
 
 					totalScore += damageScore + wetnessBonus
 
-					fmt.Fprintln(os.Stderr, fmt.Sprintf("Enemy %d at (%d,%d): wetness %d, score %.1f",
-						enemy.ID, enemy.X, enemy.Y, enemy.Wetness, damageScore+wetnessBonus))
+					// Only log if we're actually calculating a potential bomb target
+					// fmt.Fprintln(os.Stderr, fmt.Sprintf("Enemy %d at (%d,%d): wetness %d, score %.1f",
+					//	enemy.ID, enemy.X, enemy.Y, enemy.Wetness, damageScore+wetnessBonus))
 				}
 			}
 		}
@@ -651,7 +946,13 @@ func (g *Game) FindBestCoverPosition(agent *Agent) (int, int) {
 	// Get all enemy positions for threat analysis
 	enemies := g.GetEnemyPositions()
 
-	// Search for positions adjacent to cover tiles
+	// If agent is in open area with no cover, force them to move towards cover structures
+	currentCover := g.GetMaxAdjacentCover(agent.X, agent.Y)
+	forceMovement := currentCover == 0
+
+	// Search for positions adjacent to cover tiles - increased search radius
+	maxSearchDistance := 5 // Increased from 3 to ensure we can reach cover
+
 	for y := 0; y < g.Height; y++ {
 		for x := 0; x < g.Width; x++ {
 			tile := g.Grid[y][x]
@@ -661,24 +962,39 @@ func (g *Game) FindBestCoverPosition(agent *Agent) (int, int) {
 				continue
 			}
 
-			// Check if position is reachable (Manhattan distance of 1 for Task3)
+			// Check if position is reachable
 			distance := abs(agent.X-x) + abs(agent.Y-y)
-			if distance > 1 {
+			if distance > maxSearchDistance {
 				continue
 			}
 
 			// Calculate protection score considering enemy positions
 			protectionScore := g.CalculatePositionProtection(x, y, enemies)
 
-			if protectionScore > bestScore {
+			// Strong bonus for positions that are actually adjacent to cover
+			adjacentCover := g.GetMaxAdjacentCover(x, y)
+			if adjacentCover > 0 {
+				protectionScore += float64(adjacentCover) * 15.0 // Stronger bonus: 15 for low, 30 for high cover
+			}
+
+			// If we're forcing movement (agent in open), heavily penalize staying in current position
+			if forceMovement && x == agent.X && y == agent.Y {
+				protectionScore -= 50.0 // Heavy penalty for staying put when exposed
+			}
+
+			// Small penalty for distance to encourage closer positions when protection is equal
+			distancePenalty := float64(distance) * 0.5
+			finalScore := protectionScore - distancePenalty
+
+			if finalScore > bestScore {
 				bestX, bestY = x, y
-				bestScore = protectionScore
+				bestScore = finalScore
 			}
 		}
 	}
 
-	fmt.Fprintln(os.Stderr, fmt.Sprintf("Agent %d best cover: (%d,%d) with protection score %.2f",
-		agent.ID, bestX, bestY, bestScore))
+	fmt.Fprintln(os.Stderr, fmt.Sprintf("Agent %d best cover: (%d,%d) with protection score %.2f (current cover: %d)",
+		agent.ID, bestX, bestY, bestScore, currentCover))
 
 	return bestX, bestY
 }
@@ -780,34 +1096,49 @@ func (g *Game) GetMaxAdjacentCover(x, y int) int {
 	return maxCover
 }
 
-// FindLeastProtectedEnemy finds the closest enemy, preferring those without cover
+// FindLeastProtectedEnemy finds the best target balancing distance and protection
 func (g *Game) FindLeastProtectedEnemy(agent *Agent) *Agent {
 	var bestTarget *Agent
-	minDistance := 999
-	minProtection := 999.0
+	bestScore := -999.0
+	bestDistance := 999
 
-	// Find the closest enemy, using protection as tiebreaker
+	// Find the best target using a combined score of distance and protection
 	for _, enemy := range g.Agents {
 		if enemy.Player != g.MyID && enemy.Wetness < 100 {
 			distance := abs(agent.X-enemy.X) + abs(agent.Y-enemy.Y)
+
+			// Skip enemies outside optimal range
+			if distance > agent.OptimalRange {
+				continue
+			}
+
 			protection := g.CalculateCoverProtection(agent.X, agent.Y, enemy.X, enemy.Y)
 
-			fmt.Fprintln(os.Stderr, fmt.Sprintf("Enemy %d: distance %d, protection %.1f%%",
-				enemy.ID, distance, protection*100))
+			// Calculate combined score: prioritize unprotected enemies, but consider distance
+			// Higher score is better
+			distanceScore := float64(agent.OptimalRange) - float64(distance) // Closer = higher score
+			protectionScore := (1.0 - protection) * 30.0                     // Unprotected = higher score
+			combinedScore := distanceScore + protectionScore
 
-			// Primary: Pick closer enemy
-			// Secondary: If same distance, pick less protected enemy
-			if distance < minDistance || (distance == minDistance && protection < minProtection) {
+			fmt.Fprintln(os.Stderr, fmt.Sprintf("Enemy %d: distance %d, protection %.1f%%, score %.1f",
+				enemy.ID, distance, protection*100, combinedScore))
+
+			// Better tie-breaking: prefer higher score, then closer distance, then lower ID
+			if combinedScore > bestScore ||
+				(combinedScore == bestScore && distance < bestDistance) ||
+				(combinedScore == bestScore && distance == bestDistance && enemy.ID < bestTarget.ID) {
 				bestTarget = enemy
-				minDistance = distance
-				minProtection = protection
+				bestScore = combinedScore
+				bestDistance = distance
 			}
 		}
 	}
 
 	if bestTarget != nil {
+		distance := abs(agent.X-bestTarget.X) + abs(agent.Y-bestTarget.Y)
+		protection := g.CalculateCoverProtection(agent.X, agent.Y, bestTarget.X, bestTarget.Y)
 		fmt.Fprintln(os.Stderr, fmt.Sprintf("Best target: Enemy %d (distance: %d, protection: %.1f%%)",
-			bestTarget.ID, minDistance, minProtection*100))
+			bestTarget.ID, distance, protection*100))
 	}
 
 	return bestTarget
