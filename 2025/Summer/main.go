@@ -80,8 +80,8 @@ func main() {
 		}
 	}
 
-	// Set initial strategy
-	game.CurrentStrategy = &MoveAndShootStrategy{}
+	// Set initial strategy for Task3
+	game.CurrentStrategy = &TakeCoverAndShootStrategy{}
 	fmt.Fprintln(os.Stderr, "Starting with strategy:", game.CurrentStrategy.Name())
 
 	for {
@@ -137,10 +137,19 @@ func main() {
 		actions := game.CoordinateActions()
 
 		for _, agent := range game.MyAgents {
-			action := actions[agent.ID]
-			actionStr := game.FormatAction(action)
+			agentActions := actions[agent.ID]
+			actionStr := game.FormatAction(agentActions)
 
-			log := fmt.Sprintf("Agent %d: %s (Reason: %s)", agent.ID, actionStr, action.Reason)
+			// Log all actions for this agent
+			reasons := []string{}
+			for _, action := range agentActions {
+				if action.Reason != "" {
+					reasons = append(reasons, action.Reason)
+				}
+			}
+			reasonStr := strings.Join(reasons, ", ")
+
+			log := fmt.Sprintf("Agent %d: %s (Reasons: %s)", agent.ID, actionStr, reasonStr)
 			fmt.Fprintln(os.Stderr, log)
 
 			// One line per agent: <agentId>;<action1;action2;...> actions are "MOVE x y | SHOOT id | THROW x y | HUNKER_DOWN | MESSAGE text"
@@ -206,39 +215,61 @@ func NewGame() *Game {
 }
 
 // CoordinateActions coordinates the actions of all agents using the current strategy
-func (g *Game) CoordinateActions() map[int]AgentAction {
+func (g *Game) CoordinateActions() map[int][]AgentAction {
 	allActions := make(map[int][]AgentAction)
 
-	// Step 1: Each agent evaluates possible actions
+	// Step 1: Each agent evaluates all actions they want to perform
 	for _, agent := range g.MyAgents {
 		actions := g.CurrentStrategy.EvaluateActions(agent, g)
 		allActions[agent.ID] = actions
-		log := fmt.Sprintf("Agent %d generated %d possible actions", agent.ID, len(actions))
+		log := fmt.Sprintf("Agent %d generated %d actions", agent.ID, len(actions))
 		fmt.Fprintln(os.Stderr, log)
 	}
 
-	// Step 2: Select best action for each agent and resolve conflicts
+	// Step 2: Sort actions by priority and resolve conflicts for movement
 	finalActions := g.resolveActionConflicts(allActions)
 
 	return finalActions
 }
 
-// FormatAction formats an action into a string for output
-func (g *Game) FormatAction(action AgentAction) string {
-	switch action.Type {
-	case ActionMove:
-		return fmt.Sprintf("MOVE %d %d", action.TargetX, action.TargetY)
-	case ActionShoot:
-		return fmt.Sprintf("SHOOT %d", action.TargetAgentID)
-	case ActionThrow:
-		return fmt.Sprintf("THROW %d %d", action.TargetX, action.TargetY)
-	case ActionHunker:
-		return "HUNKER_DOWN"
-	case ActionMessage:
-		return fmt.Sprintf("MESSAGE %s", action.Message)
-	default:
+// FormatAction formats multiple actions into a string for output (separated by ;)
+func (g *Game) FormatAction(actions []AgentAction) string {
+	if len(actions) == 0 {
 		return "HUNKER_DOWN"
 	}
+
+	// Sort actions by priority (highest first)
+	sortedActions := make([]AgentAction, len(actions))
+	copy(sortedActions, actions)
+	for i := 0; i < len(sortedActions); i++ {
+		for j := i + 1; j < len(sortedActions); j++ {
+			if sortedActions[i].Priority < sortedActions[j].Priority {
+				sortedActions[i], sortedActions[j] = sortedActions[j], sortedActions[i]
+			}
+		}
+	}
+
+	parts := []string{}
+	for _, action := range sortedActions {
+		switch action.Type {
+		case ActionMove:
+			parts = append(parts, fmt.Sprintf("MOVE %d %d", action.TargetX, action.TargetY))
+		case ActionShoot:
+			parts = append(parts, fmt.Sprintf("SHOOT %d", action.TargetAgentID))
+		case ActionThrow:
+			parts = append(parts, fmt.Sprintf("THROW %d %d", action.TargetX, action.TargetY))
+		case ActionHunker:
+			parts = append(parts, "HUNKER_DOWN")
+		case ActionMessage:
+			parts = append(parts, fmt.Sprintf("MESSAGE %s", action.Message))
+		}
+	}
+
+	if len(parts) == 0 {
+		return "HUNKER_DOWN"
+	}
+
+	return strings.Join(parts, "; ")
 }
 
 // Action types and priorities
@@ -264,9 +295,9 @@ type AgentAction struct {
 // Decision priorities (higher number = higher priority)
 const (
 	PriorityEmergency = 100 // Avoid death
-	PriorityCombat    = 80  // Shooting
-	PriorityMovement  = 60  // Positioning
-	PriorityDefault   = 40  // Hunker down
+	PriorityCombat    = 50  // Shooting
+	PriorityMovement  = 50  // Positioning
+	PriorityDefault   = 10  // Hunker down
 )
 
 // Strategy defines the interface for coordinating agent actions
@@ -285,6 +316,9 @@ func (s *MoveAndShootStrategy) Name() string {
 func (s *MoveAndShootStrategy) EvaluateActions(agent *Agent, game *Game) []AgentAction {
 	actions := []AgentAction{}
 
+	// For leagues that support multiple actions per turn, we can return both MOVE and SHOOT
+	// Priority system will sort them correctly (higher priority executes first)
+
 	// Priority 1: Shoot the enemy with highest wetness (main objective)
 	if shootAction := s.evaluateShooting(agent, game); shootAction != nil {
 		actions = append(actions, *shootAction)
@@ -295,12 +329,14 @@ func (s *MoveAndShootStrategy) EvaluateActions(agent *Agent, game *Game) []Agent
 		actions = append(actions, *moveAction)
 	}
 
-	// Default fallback
-	actions = append(actions, AgentAction{
-		Type:     ActionHunker,
-		Priority: PriorityDefault,
-		Reason:   "In position - ready to engage or all enemies eliminated",
-	})
+	// If no actions were added, add default fallback
+	if len(actions) == 0 {
+		actions = append(actions, AgentAction{
+			Type:     ActionHunker,
+			Priority: PriorityDefault,
+			Reason:   "In position - ready to engage or all enemies eliminated",
+		})
+	}
 
 	return actions
 }
@@ -370,26 +406,278 @@ func (s *MoveAndShootStrategy) evaluateMovement(agent *Agent, game *Game) *Agent
 	return nil // Already in range or can't move closer
 }
 
-// resolveActionConflicts selects the best action for each agent and handles conflicts
-func (g *Game) resolveActionConflicts(allActions map[int][]AgentAction) map[int]AgentAction {
-	finalActions := make(map[int]AgentAction)
+// TakeCoverAndShoot strategy for Task3 - move to cover and shoot least protected enemy
+type TakeCoverAndShootStrategy struct{}
 
-	// Select highest priority action for each agent
-	for agentID, actions := range allActions {
-		if len(actions) > 0 {
-			// Sort by priority (highest first)
-			bestAction := actions[0]
-			for _, action := range actions {
-				if action.Priority > bestAction.Priority {
-					bestAction = action
-				}
+func (s *TakeCoverAndShootStrategy) Name() string {
+	return "TakeCoverAndShoot"
+}
+
+func (s *TakeCoverAndShootStrategy) EvaluateActions(agent *Agent, game *Game) []AgentAction {
+	actions := []AgentAction{}
+
+	// Task3: Move to best cover position + shoot least protected enemy
+
+	// Check current cover protection
+	currentCover := game.GetMaxAdjacentCover(agent.X, agent.Y)
+
+	// Priority 1: Move to best available cover position
+	coverX, coverY := game.FindBestCoverPosition(agent)
+	if coverX != agent.X || coverY != agent.Y {
+		var movePriority int
+		if currentCover == 0 {
+			// No cover - finding cover is critical (highest priority)
+			movePriority = PriorityMovement + 10 // 70
+		} else {
+			// Have some cover - normal movement priority
+			movePriority = PriorityMovement // 60
+		}
+
+		actions = append(actions, AgentAction{
+			Type:     ActionMove,
+			TargetX:  coverX,
+			TargetY:  coverY,
+			Priority: movePriority,
+			Reason:   fmt.Sprintf("Moving to cover position (%d,%d) - current cover: %d", coverX, coverY, currentCover),
+		})
+	}
+
+	// Priority 2: Shoot enemy with least cover protection (slightly lower than move)
+	target := game.FindLeastProtectedEnemy(agent)
+	if target != nil && agent.Cooldown == 0 {
+		actions = append(actions, AgentAction{
+			Type:          ActionShoot,
+			TargetAgentID: target.ID,
+			Priority:      PriorityMovement - 1, // 59 - executes after move
+			Reason:        fmt.Sprintf("Shooting least protected enemy %d", target.ID),
+		})
+	}
+
+	// If no actions, add fallback
+	if len(actions) == 0 {
+		actions = append(actions, AgentAction{
+			Type:     ActionHunker,
+			Priority: PriorityDefault,
+			Reason:   "No valid cover or targets available",
+		})
+	}
+
+	return actions
+}
+
+// FindBestCoverPosition finds the best cover position for an agent considering enemy positions
+func (g *Game) FindBestCoverPosition(agent *Agent) (int, int) {
+	bestX, bestY := agent.X, agent.Y
+	bestScore := -1.0
+
+	// Get all enemy positions for threat analysis
+	enemies := g.GetEnemyPositions()
+
+	// Search for positions adjacent to cover tiles
+	for y := 0; y < g.Height; y++ {
+		for x := 0; x < g.Width; x++ {
+			tile := g.Grid[y][x]
+
+			// Skip if this tile has cover (impassable)
+			if tile.Type > 0 {
+				continue
 			}
-			finalActions[agentID] = bestAction
+
+			// Check if position is reachable (Manhattan distance of 1 for Task3)
+			distance := abs(agent.X-x) + abs(agent.Y-y)
+			if distance > 1 {
+				continue
+			}
+
+			// Calculate protection score considering enemy positions
+			protectionScore := g.CalculatePositionProtection(x, y, enemies)
+
+			if protectionScore > bestScore {
+				bestX, bestY = x, y
+				bestScore = protectionScore
+			}
 		}
 	}
 
-	// Handle movement collisions
-	finalActions = g.resolveMovementCollisions(finalActions)
+	fmt.Fprintln(os.Stderr, fmt.Sprintf("Agent %d best cover: (%d,%d) with protection score %.2f",
+		agent.ID, bestX, bestY, bestScore))
+
+	return bestX, bestY
+}
+
+// GetEnemyPositions returns all enemy agent positions
+func (g *Game) GetEnemyPositions() [][]int {
+	enemies := [][]int{}
+
+	for _, enemy := range g.Agents {
+		if enemy.Player != g.MyID && enemy.Wetness < 100 {
+			enemies = append(enemies, []int{enemy.X, enemy.Y})
+		}
+	}
+
+	return enemies
+}
+
+// CalculatePositionProtection calculates how well a position is protected from enemies
+func (g *Game) CalculatePositionProtection(x, y int, enemies [][]int) float64 {
+	if len(enemies) == 0 {
+		return 0.0
+	}
+
+	totalProtection := 0.0
+
+	// Check orthogonally adjacent tiles for cover
+	directions := [][]int{{0, -1}, {0, 1}, {-1, 0}, {1, 0}} // up, down, left, right
+
+	for _, dir := range directions {
+		coverX, coverY := x+dir[0], y+dir[1]
+
+		if !g.IsValidPosition(coverX, coverY) {
+			continue
+		}
+
+		coverType := g.Grid[coverY][coverX].Type
+		if coverType == 0 {
+			continue // No cover here
+		}
+
+		// Calculate protection from this cover tile against all enemies
+		for _, enemy := range enemies {
+			enemyX, enemyY := enemy[0], enemy[1]
+
+			// Check if this cover blocks line of sight from enemy
+			if g.DoesCoverBlockShot(x, y, coverX, coverY, enemyX, enemyY) {
+				coverProtection := 0.0
+				switch coverType {
+				case 1:
+					coverProtection = 0.5 // Low cover: 50%
+				case 2:
+					coverProtection = 0.75 // High cover: 75%
+				}
+				totalProtection += coverProtection
+			}
+		}
+	}
+
+	return totalProtection
+}
+
+// DoesCoverBlockShot checks if a cover tile blocks a shot from enemy to agent position
+func (g *Game) DoesCoverBlockShot(agentX, agentY, coverX, coverY, enemyX, enemyY int) bool {
+	// Cover blocks shot if it's between the enemy and agent position
+	// Simple check: cover must be on the line between enemy and agent
+
+	// Vector from enemy to agent
+	dx := agentX - enemyX
+	dy := agentY - enemyY
+
+	// Cover blocks if it's roughly between enemy and agent
+	// and agent is on opposite side of cover from enemy
+	if abs(dx) >= abs(dy) {
+		// Horizontal shot - cover blocks if it's between X coordinates
+		return (enemyX < coverX && coverX < agentX) || (agentX < coverX && coverX < enemyX)
+	} else {
+		// Vertical shot - cover blocks if it's between Y coordinates
+		return (enemyY < coverY && coverY < agentY) || (agentY < coverY && coverY < enemyY)
+	}
+}
+
+// GetMaxAdjacentCover returns the highest cover value adjacent to a position
+func (g *Game) GetMaxAdjacentCover(x, y int) int {
+	maxCover := 0
+
+	// Check orthogonally adjacent tiles (up, down, left, right)
+	directions := [][]int{{0, -1}, {0, 1}, {-1, 0}, {1, 0}}
+
+	for _, dir := range directions {
+		adjX, adjY := x+dir[0], y+dir[1]
+		if g.IsValidPosition(adjX, adjY) {
+			coverType := g.Grid[adjY][adjX].Type
+			if coverType > maxCover {
+				maxCover = coverType
+			}
+		}
+	}
+
+	return maxCover
+}
+
+// FindLeastProtectedEnemy finds the closest enemy, preferring those without cover
+func (g *Game) FindLeastProtectedEnemy(agent *Agent) *Agent {
+	var bestTarget *Agent
+	minDistance := 999
+	minProtection := 999.0
+
+	// Find the closest enemy, using protection as tiebreaker
+	for _, enemy := range g.Agents {
+		if enemy.Player != g.MyID && enemy.Wetness < 100 {
+			distance := abs(agent.X-enemy.X) + abs(agent.Y-enemy.Y)
+			protection := g.CalculateCoverProtection(agent.X, agent.Y, enemy.X, enemy.Y)
+
+			fmt.Fprintln(os.Stderr, fmt.Sprintf("Enemy %d: distance %d, protection %.1f%%",
+				enemy.ID, distance, protection*100))
+
+			// Primary: Pick closer enemy
+			// Secondary: If same distance, pick less protected enemy
+			if distance < minDistance || (distance == minDistance && protection < minProtection) {
+				bestTarget = enemy
+				minDistance = distance
+				minProtection = protection
+			}
+		}
+	}
+
+	if bestTarget != nil {
+		fmt.Fprintln(os.Stderr, fmt.Sprintf("Best target: Enemy %d (distance: %d, protection: %.1f%%)",
+			bestTarget.ID, minDistance, minProtection*100))
+	}
+
+	return bestTarget
+}
+
+// CalculateCoverProtection calculates damage reduction from cover between shooter and target
+func (g *Game) CalculateCoverProtection(shooterX, shooterY, targetX, targetY int) float64 {
+	// For now, simplified: check if target is adjacent to cover
+	// This should be enhanced with line-of-sight and cover direction logic
+
+	maxCover := g.GetMaxAdjacentCover(targetX, targetY)
+
+	switch maxCover {
+	case 0:
+		return 0.0 // No protection
+	case 1:
+		return 0.5 // Low cover: 50% protection
+	case 2:
+		return 0.75 // High cover: 75% protection
+	default:
+		return 0.0
+	}
+}
+
+// resolveActionConflicts sorts actions by priority and handles conflicts
+func (g *Game) resolveActionConflicts(allActions map[int][]AgentAction) map[int][]AgentAction {
+	finalActions := make(map[int][]AgentAction)
+
+	// Process each agent's actions
+	for agentID, actions := range allActions {
+		if len(actions) > 0 {
+			// Sort actions by priority (highest first)
+			sortedActions := make([]AgentAction, len(actions))
+			copy(sortedActions, actions)
+			for i := 0; i < len(sortedActions); i++ {
+				for j := i + 1; j < len(sortedActions); j++ {
+					if sortedActions[i].Priority < sortedActions[j].Priority {
+						sortedActions[i], sortedActions[j] = sortedActions[j], sortedActions[i]
+					}
+				}
+			}
+			finalActions[agentID] = sortedActions
+		}
+	}
+
+	// TODO: Handle movement collisions for arrays of actions (simplified for now)
+	// For now, return sorted actions without collision resolution
+	// This can be enhanced later if needed for complex movement patterns
 
 	return finalActions
 }
