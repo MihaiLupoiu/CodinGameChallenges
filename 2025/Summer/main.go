@@ -8,6 +8,9 @@ import (
 	"strings"
 )
 
+// Debug configuration
+const DEBUG_PRINT_AGENTS = true // Set to false to disable agent location printing
+
 func main() {
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Buffer(make([]byte, 1000000), 1000000)
@@ -80,9 +83,13 @@ func main() {
 		}
 	}
 
-	// Set initial strategy for Task3
-	game.CurrentStrategy = &TakeCoverAndShootStrategy{}
+	// Print the loaded map for easy context sharing
+	game.PrintMap()
+
+	game.CurrentStrategy = &TakeCoverAndShootBombStrategy{}
 	fmt.Fprintln(os.Stderr, "Starting with strategy:", game.CurrentStrategy.Name())
+
+	firstTurn := true // Flag to print agent locations on first turn
 
 	for {
 		scanner.Scan()
@@ -127,6 +134,12 @@ func main() {
 
 		fmt.Fprintln(os.Stderr, fmt.Sprintf("Turn update: %d total agents, %d mine",
 			len(game.Agents), len(game.MyAgents)))
+
+		// Print map with agents on first turn if debug enabled
+		if firstTurn && DEBUG_PRINT_AGENTS {
+			game.PrintMapAndAgents()
+			firstTurn = false
+		}
 
 		// myAgentCount: Number of alive agents controlled by you
 		var myAgentCount int
@@ -306,117 +319,17 @@ type Strategy interface {
 	EvaluateActions(agent *Agent, game *Game) []AgentAction
 }
 
-// MoveAndShootStrategy implements a strategy that prioritizes movement to targets and shooting
-type MoveAndShootStrategy struct{}
+// TakeCoverAndShootBomb strategy for Task4 - move to cover and use splash bombs on enemy groups
+type TakeCoverAndShootBombStrategy struct{}
 
-func (s *MoveAndShootStrategy) Name() string {
-	return "TargetHighestWetness"
+func (s *TakeCoverAndShootBombStrategy) Name() string {
+	return "TakeCoverAndShootBomb"
 }
 
-func (s *MoveAndShootStrategy) EvaluateActions(agent *Agent, game *Game) []AgentAction {
+func (s *TakeCoverAndShootBombStrategy) EvaluateActions(agent *Agent, game *Game) []AgentAction {
 	actions := []AgentAction{}
 
-	// For leagues that support multiple actions per turn, we can return both MOVE and SHOOT
-	// Priority system will sort them correctly (higher priority executes first)
-
-	// Priority 1: Shoot the enemy with highest wetness (main objective)
-	if shootAction := s.evaluateShooting(agent, game); shootAction != nil {
-		actions = append(actions, *shootAction)
-	}
-
-	// Priority 2: Move to get in range of highest wetness enemy
-	if moveAction := s.evaluateMovement(agent, game); moveAction != nil {
-		actions = append(actions, *moveAction)
-	}
-
-	// If no actions were added, add default fallback
-	if len(actions) == 0 {
-		actions = append(actions, AgentAction{
-			Type:     ActionHunker,
-			Priority: PriorityDefault,
-			Reason:   "In position - ready to engage or all enemies eliminated",
-		})
-	}
-
-	return actions
-}
-
-func (s *MoveAndShootStrategy) evaluateShooting(agent *Agent, game *Game) *AgentAction {
-	if agent.Cooldown > 0 {
-		return nil // Can't shoot yet
-	}
-
-	// Find the enemy with highest wetness (main objective) - uses cached target
-	highestWetnessEnemy := game.GetCurrentTarget()
-	if highestWetnessEnemy == nil {
-		// No valid targets - all enemies eliminated or no enemies exist
-		return &AgentAction{
-			Type:     ActionMessage,
-			Message:  "Victory!",
-			Priority: PriorityDefault,
-			Reason:   "No enemies left to target",
-		}
-	}
-
-	// Check if this enemy is within shooting range
-	distance := abs(agent.X-highestWetnessEnemy.X) + abs(agent.Y-highestWetnessEnemy.Y)
-	maxRange := agent.OptimalRange * 2 // Shots fail beyond 2x optimal range
-
-	if distance <= maxRange {
-		return &AgentAction{
-			Type:          ActionShoot,
-			TargetAgentID: highestWetnessEnemy.ID,
-			Priority:      PriorityCombat,
-			Reason: fmt.Sprintf("Shooting highest wetness enemy %d (wetness: %d, range: %d)",
-				highestWetnessEnemy.ID, highestWetnessEnemy.Wetness, distance),
-		}
-	}
-
-	return nil // Out of range - movement will handle getting closer
-}
-
-func (s *MoveAndShootStrategy) evaluateMovement(agent *Agent, game *Game) *AgentAction {
-	// Move toward enemy with highest wetness to get in shooting range - uses cached target
-	target := game.GetCurrentTarget()
-	if target == nil {
-		// No enemies left - stay put and celebrate
-		return nil
-	}
-
-	// Calculate current distance to target
-	currentDistance := abs(agent.X-target.X) + abs(agent.Y-target.Y)
-	maxRange := agent.OptimalRange * 2 // Max shooting range
-
-	// Only move if we're out of shooting range
-	if currentDistance > maxRange {
-		nextX, nextY := game.CalculateMoveToward(agent, target.X, target.Y)
-		if nextX != agent.X || nextY != agent.Y {
-			newDistance := abs(nextX-target.X) + abs(nextY-target.Y)
-			return &AgentAction{
-				Type:     ActionMove,
-				TargetX:  nextX,
-				TargetY:  nextY,
-				Priority: PriorityMovement,
-				Reason: fmt.Sprintf("Moving toward highest wetness enemy %d (current range: %d, new range: %d)",
-					target.ID, currentDistance, newDistance),
-			}
-		}
-	}
-
-	return nil // Already in range or can't move closer
-}
-
-// TakeCoverAndShoot strategy for Task3 - move to cover and shoot least protected enemy
-type TakeCoverAndShootStrategy struct{}
-
-func (s *TakeCoverAndShootStrategy) Name() string {
-	return "TakeCoverAndShoot"
-}
-
-func (s *TakeCoverAndShootStrategy) EvaluateActions(agent *Agent, game *Game) []AgentAction {
-	actions := []AgentAction{}
-
-	// Task3: Move to best cover position + shoot least protected enemy
+	// Task4: Move to best cover position + use splash bombs on enemy groups
 
 	// Check current cover protection
 	currentCover := game.GetMaxAdjacentCover(agent.X, agent.Y)
@@ -427,10 +340,10 @@ func (s *TakeCoverAndShootStrategy) EvaluateActions(agent *Agent, game *Game) []
 		var movePriority int
 		if currentCover == 0 {
 			// No cover - finding cover is critical (highest priority)
-			movePriority = PriorityMovement + 10 // 70
+			movePriority = PriorityMovement + 10 // 60
 		} else {
 			// Have some cover - normal movement priority
-			movePriority = PriorityMovement // 60
+			movePriority = PriorityMovement // 50
 		}
 
 		actions = append(actions, AgentAction{
@@ -442,15 +355,29 @@ func (s *TakeCoverAndShootStrategy) EvaluateActions(agent *Agent, game *Game) []
 		})
 	}
 
-	// Priority 2: Shoot enemy with least cover protection (slightly lower than move)
-	target := game.FindLeastProtectedEnemy(agent)
-	if target != nil && agent.Cooldown == 0 {
-		actions = append(actions, AgentAction{
-			Type:          ActionShoot,
-			TargetAgentID: target.ID,
-			Priority:      PriorityMovement - 1, // 59 - executes after move
-			Reason:        fmt.Sprintf("Shooting least protected enemy %d", target.ID),
-		})
+	// Priority 2: Throw splash bomb at optimal target location (slightly lower than move)
+	if agent.SplashBombs > 0 {
+		bombX, bombY, expectedDamage := game.FindOptimalSplashBombTarget(agent)
+		if expectedDamage > 0 {
+			actions = append(actions, AgentAction{
+				Type:     ActionThrow,
+				TargetX:  bombX,
+				TargetY:  bombY,
+				Priority: PriorityMovement - 1, // 49 - executes after move
+				Reason:   fmt.Sprintf("Throwing splash bomb at (%d,%d) - expected damage: %.0f", bombX, bombY, expectedDamage),
+			})
+		}
+	} else {
+		// Priority 3: Shoot closest enemy if no bombs available
+		target := game.FindLeastProtectedEnemy(agent)
+		if target != nil && agent.Cooldown == 0 {
+			actions = append(actions, AgentAction{
+				Type:          ActionShoot,
+				TargetAgentID: target.ID,
+				Priority:      PriorityMovement - 1, // 49 - executes after move
+				Reason:        fmt.Sprintf("No bombs available - shooting closest enemy %d", target.ID),
+			})
+		}
 	}
 
 	// If no actions, add fallback
@@ -458,11 +385,262 @@ func (s *TakeCoverAndShootStrategy) EvaluateActions(agent *Agent, game *Game) []
 		actions = append(actions, AgentAction{
 			Type:     ActionHunker,
 			Priority: PriorityDefault,
-			Reason:   "No valid cover or targets available",
+			Reason:   "No valid cover, bombs, or shooting targets available",
 		})
 	}
 
 	return actions
+}
+
+// FindOptimalSplashBombTarget finds the best position to throw a splash bomb for maximum damage
+func (g *Game) FindOptimalSplashBombTarget(agent *Agent) (int, int, float64) {
+	bestX, bestY := agent.X, agent.Y
+	maxDamage := 0.0
+
+	// Check all positions within splash bomb range (4 tiles)
+	for targetY := 0; targetY < g.Height; targetY++ {
+		for targetX := 0; targetX < g.Width; targetX++ {
+			// Check if position is within throwing range
+			distance := abs(agent.X-targetX) + abs(agent.Y-targetY)
+			if distance > 4 {
+				continue
+			}
+
+			// Check for friendly fire first
+			if g.WouldHitFriendlyAgents(targetX, targetY) {
+				continue
+			}
+
+			// Calculate total damage potential at this position
+			totalDamage := g.CalculateSplashDamageScore(targetX, targetY)
+
+			if totalDamage > maxDamage {
+				bestX, bestY = targetX, targetY
+				maxDamage = totalDamage
+			}
+		}
+	}
+
+	fmt.Fprintln(os.Stderr, fmt.Sprintf("Agent %d optimal splash bomb: (%d,%d) total damage score: %.1f",
+		agent.ID, bestX, bestY, maxDamage))
+
+	return bestX, bestY, maxDamage
+}
+
+// CalculateSplashDamageScore calculates the total damage score for a splash bomb at given position
+func (g *Game) CalculateSplashDamageScore(bombX, bombY int) float64 {
+	totalScore := 0.0
+
+	// Check the bomb tile and all 8 adjacent tiles (3x3 area)
+	for dy := -1; dy <= 1; dy++ {
+		for dx := -1; dx <= 1; dx++ {
+			checkX, checkY := bombX+dx, bombY+dy
+
+			if !g.IsValidPosition(checkX, checkY) {
+				continue
+			}
+
+			// Check if any enemy agent is at this position
+			for _, enemy := range g.Agents {
+				if enemy.Player != g.MyID && enemy.Wetness < 100 && enemy.X == checkX && enemy.Y == checkY {
+					// Base damage score
+					damageScore := 30.0
+
+					// Bonus for enemies with higher wetness (closer to elimination)
+					wetnessBonus := float64(enemy.Wetness) * 0.5 // 0.5 point per wetness
+
+					// Extra bonus if this would eliminate the enemy
+					if enemy.Wetness+30 >= 100 {
+						damageScore += 50.0 // Elimination bonus
+					}
+
+					totalScore += damageScore + wetnessBonus
+
+					fmt.Fprintln(os.Stderr, fmt.Sprintf("Enemy %d at (%d,%d): wetness %d, score %.1f",
+						enemy.ID, enemy.X, enemy.Y, enemy.Wetness, damageScore+wetnessBonus))
+				}
+			}
+		}
+	}
+
+	return totalScore
+}
+
+// FindEnemyClusterCenters finds potential cluster centers and their coverage scores
+func (g *Game) FindEnemyClusterCenters() [][]int {
+	clusterCenters := [][]int{}
+
+	// Get all enemy positions
+	enemyPositions := [][]int{}
+	for _, enemy := range g.Agents {
+		if enemy.Player != g.MyID && enemy.Wetness < 100 {
+			enemyPositions = append(enemyPositions, []int{enemy.X, enemy.Y})
+		}
+	}
+
+	// For each potential center position, count nearby enemies
+	for y := 0; y < g.Height; y++ {
+		for x := 0; x < g.Width; x++ {
+			nearbyEnemies := 0
+
+			// Count enemies within 3x3 area around this position
+			for _, pos := range enemyPositions {
+				if abs(x-pos[0]) <= 1 && abs(y-pos[1]) <= 1 {
+					nearbyEnemies++
+				}
+			}
+
+			// If this position covers 2+ enemies, it's a potential cluster center
+			if nearbyEnemies >= 2 {
+				clusterCenters = append(clusterCenters, []int{x, y, nearbyEnemies})
+				fmt.Fprintln(os.Stderr, fmt.Sprintf("Cluster center candidate: (%d,%d) covers %d enemies",
+					x, y, nearbyEnemies))
+			}
+		}
+	}
+
+	return clusterCenters
+}
+
+// CountEnemyHitsAtPosition counts how many enemies would be hit by a splash bomb at given position
+func (g *Game) CountEnemyHitsAtPosition(bombX, bombY int) int {
+	hits := 0
+
+	// Check the bomb tile and all 8 adjacent tiles (3x3 area)
+	for dy := -1; dy <= 1; dy++ {
+		for dx := -1; dx <= 1; dx++ {
+			checkX, checkY := bombX+dx, bombY+dy
+
+			if !g.IsValidPosition(checkX, checkY) {
+				continue
+			}
+
+			// Check if any enemy agent is at this position
+			for _, enemy := range g.Agents {
+				if enemy.Player != g.MyID && enemy.Wetness < 100 && enemy.X == checkX && enemy.Y == checkY {
+					hits++
+					fmt.Fprintln(os.Stderr, fmt.Sprintf("Enemy %d at (%d,%d) would be hit by bomb at (%d,%d)",
+						enemy.ID, enemy.X, enemy.Y, bombX, bombY))
+				}
+			}
+		}
+	}
+
+	return hits
+}
+
+// WouldHitFriendlyAgents checks if a splash bomb would hit any of our agents
+func (g *Game) WouldHitFriendlyAgents(bombX, bombY int) bool {
+	// Check the bomb tile and all 8 adjacent tiles (3x3 area)
+	for dy := -1; dy <= 1; dy++ {
+		for dx := -1; dx <= 1; dx++ {
+			checkX, checkY := bombX+dx, bombY+dy
+
+			if !g.IsValidPosition(checkX, checkY) {
+				continue
+			}
+
+			// Check if any of our agents is at this position
+			for _, friendly := range g.MyAgents {
+				if friendly.X == checkX && friendly.Y == checkY {
+					return true // Would hit friendly agent
+				}
+			}
+		}
+	}
+
+	return false // Safe to throw
+}
+
+// PrintMap prints just the map layout for context sharing
+func (g *Game) PrintMap() {
+	fmt.Fprintln(os.Stderr, "=== MAP LAYOUT ===")
+	fmt.Fprintln(os.Stderr, fmt.Sprintf("Size: %d×%d", g.Width, g.Height))
+	fmt.Fprintln(os.Stderr, "Tile types: 0=empty, 1=low cover, 2=high cover")
+	fmt.Fprintln(os.Stderr, "")
+
+	// Print column headers
+	header := "   "
+	for x := 0; x < g.Width; x++ {
+		header += fmt.Sprintf("%2d", x)
+	}
+	fmt.Fprintln(os.Stderr, header)
+
+	// Print each row
+	for y := 0; y < g.Height; y++ {
+		row := fmt.Sprintf("%2d ", y)
+		for x := 0; x < g.Width; x++ {
+			tileType := g.Grid[y][x].Type
+			switch tileType {
+			case 0:
+				row += " ." // Empty tile
+			case 1:
+				row += " ▒" // Low cover
+			case 2:
+				row += " █" // High cover
+			default:
+				row += fmt.Sprintf(" %d", tileType)
+			}
+		}
+		fmt.Fprintln(os.Stderr, row)
+	}
+
+	fmt.Fprintln(os.Stderr, "==================")
+}
+
+// PrintMapAndAgents prints the map with agent positions for game evolution tracking
+func (g *Game) PrintMapAndAgents() {
+	fmt.Fprintln(os.Stderr, "=== MAP + AGENTS ===")
+	fmt.Fprintln(os.Stderr, fmt.Sprintf("Size: %d×%d", g.Width, g.Height))
+	fmt.Fprintln(os.Stderr, "Legend: .=empty ▒=low cover █=high cover F=friend E=enemy")
+	fmt.Fprintln(os.Stderr, "")
+
+	// Print column headers
+	header := "   "
+	for x := 0; x < g.Width; x++ {
+		header += fmt.Sprintf("%2d", x)
+	}
+	fmt.Fprintln(os.Stderr, header)
+
+	// Print each row with agents overlaid
+	for y := 0; y < g.Height; y++ {
+		row := fmt.Sprintf("%2d ", y)
+		for x := 0; x < g.Width; x++ {
+			// Check if any agent is at this position
+			agentHere := ""
+			for _, agent := range g.Agents {
+				if agent.X == x && agent.Y == y {
+					if agent.Player == g.MyID {
+						agentHere = fmt.Sprintf("F%d", agent.ID) // Friend
+					} else {
+						agentHere = fmt.Sprintf("E%d", agent.ID) // Enemy
+					}
+					break
+				}
+			}
+
+			if agentHere != "" {
+				row += fmt.Sprintf("%3s", agentHere) // Agent position
+			} else {
+				// Show tile type
+				tileType := g.Grid[y][x].Type
+				switch tileType {
+				case 0:
+					row += " . " // Empty tile
+				case 1:
+					row += " ▒ " // Low cover
+				case 2:
+					row += " █ " // High cover
+				default:
+					row += fmt.Sprintf(" %d ", tileType)
+				}
+			}
+		}
+		fmt.Fprintln(os.Stderr, row)
+	}
+
+	fmt.Fprintln(os.Stderr, "")
+	g.PrintAgentLocations()
 }
 
 // FindBestCoverPosition finds the best cover position for an agent considering enemy positions
@@ -900,4 +1078,45 @@ func (g *Game) GetAlternateMove(agent *Agent, blockedX, blockedY int) (int, int)
 // IsValidPosition checks if a position is within grid bounds
 func (g *Game) IsValidPosition(x, y int) bool {
 	return x >= 0 && x < g.Width && y >= 0 && y < g.Height
+}
+
+// PrintAgentLocations prints friend and enemy positions for debugging
+func (g *Game) PrintAgentLocations() {
+	fmt.Fprintln(os.Stderr, "")
+
+	// Print friend locations first
+	fmt.Fprintln(os.Stderr, "=== FRIEND LOCATIONS ===")
+	friendCount := 0
+	for _, agent := range g.Agents {
+		if agent.Player == g.MyID {
+			fmt.Fprintln(os.Stderr, fmt.Sprintf("Agent %d: (%d,%d) - Wetness: %d, Bombs: %d, Cooldown: %d",
+				agent.ID, agent.X, agent.Y, agent.Wetness, agent.SplashBombs, agent.Cooldown))
+			friendCount++
+		}
+	}
+	if friendCount == 0 {
+		fmt.Fprintln(os.Stderr, "No friendly agents found")
+	}
+
+	fmt.Fprintln(os.Stderr, "")
+
+	// Print enemy locations second
+	fmt.Fprintln(os.Stderr, "=== ENEMY LOCATIONS ===")
+	enemyCount := 0
+	for _, agent := range g.Agents {
+		if agent.Player != g.MyID {
+			status := "Alive"
+			if agent.Wetness >= 100 {
+				status = "Eliminated"
+			}
+			fmt.Fprintln(os.Stderr, fmt.Sprintf("Enemy %d: (%d,%d) - Wetness: %d, Status: %s",
+				agent.ID, agent.X, agent.Y, agent.Wetness, status))
+			enemyCount++
+		}
+	}
+	if enemyCount == 0 {
+		fmt.Fprintln(os.Stderr, "No enemy agents found")
+	}
+
+	fmt.Fprintln(os.Stderr, "========================")
 }
