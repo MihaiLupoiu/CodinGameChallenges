@@ -13,15 +13,16 @@ A competitive multiplayer strategy game where players control teams of agents in
 
 ### Current Implementation
 - **Language**: Go 1.24
-- **Strategy**: Enhanced Territory Strategy (see `2025/Summer/STRATEGY.md`)
-- **Focus**: Territory control with intelligent combat tactics
+- **Strategy**: Team Coordination Strategy (see `2025/Summer/STRATEGY.md`)
+- **Focus**: Role-based team coordination with tactical combat
 
 ### Key Features
-- Real-time territory evaluation system
-- Emergency response for threats and elimination opportunities
-- Multi-factor target selection (elimination potential, territory impact, cover effectiveness)
-- Strategic movement for optimal positioning
-- Smart resource management for splash bombs and shooting
+- **Role-based coordination**: Attacker, Bomber, Supporter, Defender roles
+- **Fixed collision avoidance**: No more agents converging on same positions
+- **Cover-first tactics**: Always seek cover before engaging enemies
+- **Smart bomb targeting**: Center bombing for maximum multi-enemy damage
+- **Team objectives**: Shared goals and coordinated focus fire
+- **Comprehensive testing**: Test suite covering core functions
 
 ### Files
 - `2025/Summer/main.go` - Main implementation with Enhanced Territory Strategy
@@ -36,4 +37,4 @@ go build -o challenge main.go
 ```
 
 ### Strategy Philosophy
-The Enhanced Territory Strategy balances aggressive combat with strategic positioning to maintain territorial advantage. It prioritizes elimination opportunities while ensuring optimal map control for sustained point generation.
+The Ultra-Aggressive Combat Strategy uses **cover-first, combat-before-movement tactics** with **ultra-strategic bombing**. All agents prioritize shooting from protected positions, and only bomb when hitting multiple enemies OR eliminating 70%+ wetness enemies behind cover. Movement is optimized for cover positioning and tactical advantages. The strategy completely eliminates wasteful bombing through precise targeting conditions.

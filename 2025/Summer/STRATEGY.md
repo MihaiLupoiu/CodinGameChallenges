@@ -1,68 +1,68 @@
-# Enhanced Territory Strategy
+# Ultra-Aggressive Combat Strategy
 
 ## Overview
 
-The Enhanced Territory Strategy is designed to win the water fight challenge by balancing **territory control** with **combat effectiveness**. Unlike the previous strategy that focused primarily on combat, this approach prioritizes the key win condition: controlling more territory to achieve a 600+ point advantage.
+The Ultra-Aggressive Combat Strategy is a **cover-first, combat-focused approach** designed to win through overwhelming tactical aggression. This strategy prioritizes immediate combat opportunities while ensuring agents position themselves near cover for protection. All agents focus on shooting and bombing first, with movement optimized for tactical positioning.
 
 ## Key Strategic Principles
 
-### 1. Territory-First Approach
-- **Real-time territory evaluation**: Constantly monitors which tiles are controlled by friendly vs enemy agents
-- **Strategic positioning**: Moves agents to positions that maximize territory control
-- **Territory impact bombing**: Considers how eliminating enemies affects overall map control
+### 1. Role-Based Team Coordination
+- **Attacker**: Focuses on eliminating enemies and aggressive positioning
+- **Bomber**: Specializes in splash bomb opportunities and enemy clusters
+- **Supporter**: Concentrates on territory control and team assistance
+- **Defender**: Protects wounded allies and maintains defensive positions
 
-### 2. Emergency Response System
-- **Elimination priority**: Always prioritizes actions that can eliminate enemies (splash bombs or shooting)
-- **Survival instincts**: Detects immediate threats and moves agents to safety
-- **Resource efficiency**: Uses splash bombs and shots optimally for maximum impact
+### 2. Advanced Collision Avoidance
+- **Priority-based movement**: Higher priority actions get first choice of positions
+- **Alternative positioning**: Smart fallback positions when conflicts arise
+- **Clustering prevention**: Penalties for being too close to teammates
 
-### 3. Multi-layered Decision Making
+### 3. Cover-First Tactics
+- **Always seek cover**: All roles prioritize cover positions before attacking
+- **Line of sight positioning**: Attackers find covered positions with enemy visibility
+- **Tactical advancement**: Move from cover to cover, not in open areas
 
-The strategy evaluates actions in this priority order:
+### 4. Smart Bombing Strategy
+- **Center bombing**: Target the center of enemy clusters for maximum damage
+- **Multi-hit priority**: Prefer bomb positions that hit 2+ enemies
+- **Coordination**: Bombers position to support team objectives
 
-1. **Emergency Actions** (Highest Priority)
-   - Elimination opportunities (bombs/shots that kill enemies)
-   - Escape from immediate danger
-   
-2. **Strategic Bombing** 
-   - High-value splash bomb targets
-   - Territory impact consideration
-   - Area denial tactics
-   
-3. **Strategic Shooting**
-   - Target selection based on elimination potential
-   - Territory gain from eliminating specific enemies
-   - Cover and distance effectiveness
-   
-4. **Strategic Movement**
-   - Territory control optimization
-   - Combat positioning
-   - Safety considerations
-   
-5. **Defensive Actions**
-   - Hunker down when under threat or no better options
+### 5. Emergency Response System
+- **Elimination priority**: Always prioritizes finishing off wounded enemies
+- **Threat detection**: Identifies immediate dangers and responds appropriately
+- **Team protection**: Defenders prioritize protecting wounded allies
 
 ## Key Improvements Over Previous Strategy
 
-### Better Target Selection
-- **Elimination-focused**: Prioritizes targets that can be eliminated this turn
-- **Territory-weighted**: Considers how eliminating each enemy affects map control
-- **Multi-factor scoring**: Balances damage, distance, cover, and strategic value
+### ✅ Ultra-Aggressive Combat Priority
+- **Combat before roles**: Shooting/bombing gets checked BEFORE role-specific movement
+- **Cover-first shooting**: Only shoot when protected by cover (with unprotected fallback)
+- **Universal targeting**: All agents target any enemies in range, no role restrictions
 
-### Enhanced Positioning
-- **Territory value calculation**: Evaluates how much territory each position could control
-- **Combat effectiveness**: Considers shooting/bombing opportunities from each position
-- **Safety assessment**: Accounts for enemy threats and available cover
+### ✅ Ultra-Strategic Bombing Intelligence  
+- **Cluster bombing only**: Only bomb when hitting 2+ enemies simultaneously
+- **Elimination bombing**: Bomb 70%+ wetness enemies behind cover that we can't easily reach
+- **Zero waste**: Completely eliminates wasteful bombing - every bomb has clear tactical purpose
 
-### Smart Resource Management
-- **Splash bomb optimization**: Uses bombs for maximum territory impact, not just damage
-- **Elimination priority**: Focuses resources on finishing off wounded enemies
-- **Area denial**: Uses bombs to block enemy movement when beneficial
+### ✅ Cover-First Positioning
+- **Massive cover bonus**: 200x multiplier for positions adjacent to cover
+- **Tactical positioning**: Movement prioritizes cover + shooting opportunities
+- **Range optimization**: 150pt bonus for optimal range, 75pt for extended range
 
-### Real-time Adaptation
-- **Dynamic territory monitoring**: Adjusts strategy based on current map control
-- **Threat assessment**: Responds to immediate dangers with emergency actions
-- **Opportunity recognition**: Quickly identifies and acts on elimination chances
+### ✅ Smart Bomb Targeting
+- **Strategic conditions**: Only bomb when tactically advantageous (2+ enemies OR covered enemy)
+- **Cluster detection**: Automatic detection of enemy clusters for multi-hit bombs  
+- **Cover breaking**: Bomb enemies behind cover that are hard to reach with direct fire
+
+### ✅ Simplified Role System
+- **Roles affect movement only**: Combat decisions (shoot/bomb) are universal
+- **Focused behaviors**: Each role has clear movement preferences without combat restrictions
+- **Dynamic targeting**: Best target selection regardless of agent role
+
+### ✅ Enhanced Target Selection
+- **Priority scoring**: Higher wetness enemies + closer enemies get priority
+- **Range flexibility**: Consider both optimal range (50pt bonus) and extended range
+- **Elimination focus**: High wetness enemies are heavily prioritized
 
 ## Win Conditions Strategy
 
@@ -94,8 +94,24 @@ The strategy targets all three win conditions:
 The strategy is automatically selected in `main.go`:
 
 ```go
-game.CurrentStrategy = &EnhancedTerritoryStrategy{}
+game.CurrentStrategy = NewTeamCoordinationStrategy()
 ```
+
+## Testing
+
+Run the test suite to validate key functions:
+
+```bash
+go test -v
+```
+
+Tests cover:
+- Role assignment logic
+- Collision avoidance system  
+- Territory calculation
+- Bomb targeting accuracy
+- Cover detection
+- Agent clustering prevention
 
 ## Testing Recommendations
 
