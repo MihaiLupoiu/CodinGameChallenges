@@ -1567,14 +1567,7 @@ func (g *Game) FindEliminationBombTarget(agent *Agent) (int, int, []*Agent) {
 							enemy.X == checkX && enemy.Y == checkY {
 							// Splash bombs deal 30 damage and ignore damage reduction
 							if enemy.Wetness+30 >= 100 {
-								// User wants bombs only for high-wetness enemies behind cover that we can't easily reach
-								enemyCover := g.GetMaxAdjacentCover(enemy.X, enemy.Y)
-								distanceToEnemy := abs(agent.X-enemy.X) + abs(agent.Y-enemy.Y)
-
-								// Only bomb if enemy is behind cover AND far from us
-								if enemyCover > 0 && distanceToEnemy > agent.OptimalRange+2 {
-									eliminationTargets = append(eliminationTargets, enemy)
-								}
+								eliminationTargets = append(eliminationTargets, enemy)
 							}
 						}
 					}
@@ -1707,10 +1700,49 @@ func (g *Game) CalculatePositionSafety(x, y int, agent *Agent) float64 {
 	return safety
 }
 
-// EvaluateStrategicBombing - DISABLED: Using new strategic bombing logic instead
-// This function used old aggressive bombing logic and is no longer needed
+// EvaluateStrategicBombing evaluates splash bomb opportunities considering territory
 func (g *Game) EvaluateStrategicBombing(agent *Agent, territoryScore TerritoryScore) AgentAction {
-	// Function disabled - replaced by FindStrategicBombTarget
+	bestX, bestY := agent.X, agent.Y
+	bestScore := 0.0
+
+	for targetY := 0; targetY < g.Height; targetY++ {
+		for targetX := 0; targetX < g.Width; targetX++ {
+			distance := abs(agent.X-targetX) + abs(agent.Y-targetY)
+			if distance > 4 || g.WouldHitFriendlyAgents(targetX, targetY) {
+				continue
+			}
+
+			score := 0.0
+
+			// Damage score
+			damageScore := g.CalculateSplashDamageScore(targetX, targetY)
+			score += damageScore
+
+			// Territory impact score
+			territoryImpact := g.CalculateBombTerritoryImpact(targetX, targetY)
+			score += territoryImpact * 2.0 // Weight territory impact highly
+
+			// Area denial score (blocking enemy movement)
+			denialScore := g.CalculateAreaDenialScore(targetX, targetY)
+			score += denialScore
+
+			if score > bestScore && score >= 100.0 { // Minimum threshold
+				bestX, bestY = targetX, targetY
+				bestScore = score
+			}
+		}
+	}
+
+	if bestScore >= 100.0 {
+		return AgentAction{
+			Type:     ActionThrow,
+			TargetX:  bestX,
+			TargetY:  bestY,
+			Priority: PriorityCombat,
+			Reason:   fmt.Sprintf("Strategic bombing - score: %.0f", bestScore),
+		}
+	}
+
 	return AgentAction{Type: -1}
 }
 
@@ -2217,16 +2249,16 @@ func (s *TeamCoordinationStrategy) EvaluateActions(agent *Agent, game *Game) []A
 		return actions
 	}
 
-	// Step 3: Strategic bomb check - only when tactically advantageous
+	// Step 3: Priority bomb check - much more aggressive bombing
 	if agent.SplashBombs > 0 {
-		bombX, bombY, enemiesHit, shouldBomb := game.FindStrategicBombTarget(agent)
-		if shouldBomb {
+		bombX, bombY, score := game.FindOptimalBombTarget(agent)
+		if score >= 20.0 { // Very low threshold for aggressive bombing
 			actions = append(actions, AgentAction{
 				Type:     ActionThrow,
 				TargetX:  bombX,
 				TargetY:  bombY,
 				Priority: PriorityCombat,
-				Reason:   fmt.Sprintf("Strategic bombing - %d enemies", enemiesHit),
+				Reason:   fmt.Sprintf("Aggressive bombing - score: %.0f", score),
 			})
 		}
 	}
@@ -3097,88 +3129,4 @@ func (g *Game) EvaluateShootingFromPosition(x, y int, agent *Agent) float64 {
 	}
 
 	return score
-}
-
-// FindStrategicBombTarget finds bomb targets only when tactically advantageous
-func (g *Game) FindStrategicBombTarget(agent *Agent) (int, int, int, bool) {
-	bestX, bestY := agent.X, agent.Y
-	maxEnemiesHit := 0
-	shouldBomb := false
-
-	for targetY := 0; targetY < g.Height; targetY++ {
-		for targetX := 0; targetX < g.Width; targetX++ {
-			distance := abs(agent.X-targetX) + abs(agent.Y-targetY)
-			if distance > 4 || g.WouldHitFriendlyAgents(targetX, targetY) {
-				continue
-			}
-
-			enemiesHit := 0
-			coveredEnemies := 0
-
-			// Check all tiles affected by splash (3x3 area around bomb)
-			for dy := -1; dy <= 1; dy++ {
-				for dx := -1; dx <= 1; dx++ {
-					checkX, checkY := targetX+dx, targetY+dy
-					if !g.IsValidPosition(checkX, checkY) {
-						continue
-					}
-
-					// Count enemies in splash area
-					for _, enemy := range g.Agents {
-						if enemy.Player != g.MyID && enemy.Wetness < 100 &&
-							enemy.X == checkX && enemy.Y == checkY {
-							enemiesHit++
-
-							// Check if this enemy is behind cover and far from us
-							enemyCover := g.GetMaxAdjacentCover(enemy.X, enemy.Y)
-							if enemyCover > 0 {
-								distanceToEnemy := abs(agent.X-enemy.X) + abs(agent.Y-enemy.Y)
-								if distanceToEnemy > agent.OptimalRange+2 {
-									coveredEnemies++
-								}
-							}
-						}
-					}
-				}
-			}
-
-			// STRATEGIC BOMBING CONDITIONS:
-			// 1. Hit 2+ enemies (cluster bombing - always good)
-			// 2. Hit 1 enemy behind cover that we can't reach AND has 70%+ wetness (elimination)
-			shouldBombThis := false
-			highWetnessEnemies := 0
-
-			if enemiesHit >= 2 {
-				shouldBombThis = true // Multi-hit bombing is always good
-			} else if enemiesHit == 1 && coveredEnemies > 0 {
-				// Check if the covered enemy has high wetness (70%+)
-				for _, enemy := range g.Agents {
-					if enemy.Player != g.MyID && enemy.Wetness < 100 {
-						// Check if this enemy would be hit and has high wetness
-						for dy := -1; dy <= 1; dy++ {
-							for dx := -1; dx <= 1; dx++ {
-								checkX, checkY := targetX+dx, targetY+dy
-								if enemy.X == checkX && enemy.Y == checkY && enemy.Wetness >= 70 {
-									highWetnessEnemies++
-									break
-								}
-							}
-						}
-					}
-				}
-
-				if highWetnessEnemies > 0 {
-					shouldBombThis = true // Single covered high-wetness enemy we can eliminate
-				}
-			}
-
-			if shouldBombThis && enemiesHit > maxEnemiesHit {
-				bestX, bestY = targetX, targetY
-				maxEnemiesHit = enemiesHit
-				shouldBomb = true
-			}
-		}
-	}
-
-	return bestX, bestY, maxEnemiesHit, shouldBomb
 }
