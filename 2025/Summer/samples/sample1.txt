@@ -1,0 +1,1817 @@
+Standard Error Stream:
+CAPTURED INPUT: 0
+CAPTURED INPUT: 6
+CAPTURED INPUT: 1 0 1 4 16 1
+CAPTURED INPUT: 2 0 5 6 24 0
+CAPTURED INPUT: 3 0 2 2 8 3
+CAPTURED INPUT: 4 1 1 4 16 1
+CAPTURED INPUT: 5 1 5 6 24 0
+CAPTURED INPUT: 6 1 2 2 8 3
+CAPTURED INPUT: 20 10
+CAPTURED INPUT: 0 0 0 1 0 0 2 0 0 3 0 0 4 0 0 5 0 0 6 0 0 7 0 0 8 0 0 9 0 0 10 0 0 11 0 0 12 0 0 13 0 0 14 0 0 15 0 0 16 0 0 17 0 0 18 0 0 19 0 0
+CAPTURED INPUT: 0 1 0 1 1 0 2 1 0 3 1 0 4 1 0 5 1 0 6 1 0 7 1 2 8 1 0 9 1 0 10 1 0 11 1 0 12 1 0 13 1 0 14 1 0 15 1 0 16 1 0 17 1 0 18 1 2 19 1 0
+CAPTURED INPUT: 0 2 0 1 2 0 2 2 0 3 2 0 4 2 2 5 2 0 6 2 0 7 2 0 8 2 0 9 2 0 10 2 0 11 2 0 12 2 0 13 2 0 14 2 0 15 2 0 16 2 1 17 2 0 18 2 0 19 2 0
+CAPTURED INPUT: 0 3 0 1 3 1 2 3 0 3 3 2 4 3 1 5 3 0 6 3 0 7 3 1 8 3 0 9 3 0 10 3 0 11 3 0 12 3 2 13 3 0 14 3 0 15 3 1 16 3 0 17 3 0 18 3 0 19 3 0
+CAPTURED INPUT: 0 4 0 1 4 2 2 4 1 3 4 0 4 4 1 5 4 1 6 4 0 7 4 0 8 4 0 9 4 0 10 4 0 11 4 0 12 4 0 13 4 0 14 4 0 15 4 0 16 4 0 17 4 0 18 4 0 19 4 0
+CAPTURED INPUT: 0 5 0 1 5 0 2 5 0 3 5 0 4 5 0 5 5 0 6 5 0 7 5 0 8 5 0 9 5 0 10 5 0 11 5 0 12 5 0 13 5 0 14 5 1 15 5 1 16 5 0 17 5 1 18 5 2 19 5 0
+CAPTURED INPUT: 0 6 0 1 6 0 2 6 0 3 6 0 4 6 1 5 6 0 6 6 0 7 6 2 8 6 0 9 6 0 10 6 0 11 6 0 12 6 1 13 6 0 14 6 0 15 6 1 16 6 2 17 6 0 18 6 1 19 6 0
+CAPTURED INPUT: 0 7 0 1 7 0 2 7 0 3 7 1 4 7 0 5 7 0 6 7 0 7 7 0 8 7 0 9 7 0 10 7 0 11 7 0 12 7 0 13 7 0 14 7 0 15 7 2 16 7 0 17 7 0 18 7 0 19 7 0
+CAPTURED INPUT: 0 8 0 1 8 2 2 8 0 3 8 0 4 8 0 5 8 0 6 8 0 7 8 0 8 8 0 9 8 0 10 8 0 11 8 0 12 8 2 13 8 0 14 8 0 15 8 0 16 8 0 17 8 0 18 8 0 19 8 0
+CAPTURED INPUT: 0 9 0 1 9 0 2 9 0 3 9 0 4 9 0 5 9 0 6 9 0 7 9 0 8 9 0 9 9 0 10 9 0 11 9 0 12 9 0 13 9 0 14 9 0 15 9 0 16 9 0 17 9 0 18 9 0 19 9 0
+CAPTURED: Game initialization complete
+=== MAP LAYOUT ===
+Size: 20×10
+Tile types: 0=empty, 1=low cover, 2=high cover
+    0 1 2 3 4 5 6 7 8 910111213141516171819
+ 0  . . . . . . . . . . . . . . . . . . . .
+ 1  . . . . . . . █ . . . . . . . . . . █ .
+ 2  . . . . █ . . . . . . . . . . . ▒ . . .
+ 3  . ▒ . █ ▒ . . ▒ . . . . █ . . ▒ . . . .
+ 4  . █ ▒ . ▒ ▒ . . . . . . . . . . . . . .
+ 5  . . . . . . . . . . . . . . ▒ ▒ . ▒ █ .
+ 6  . . . . ▒ . . █ . . . . ▒ . . ▒ █ . ▒ .
+ 7  . . . ▒ . . . . . . . . . . . █ . . . .
+ 8  . █ . . . . . . . . . . █ . . . . . . .
+ 9  . . . . . . . . . . . . . . . . . . . .
+==================
+Starting with strategy: TeamCoordination
+CAPTURED TURN 1 INPUT: 6
+CAPTURED TURN 1 AGENT INPUT: 1 0 2 0 1 0
+CAPTURED TURN 1 AGENT INPUT: 2 0 6 0 0 0
+CAPTURED TURN 1 AGENT INPUT: 3 0 0 0 3 0
+CAPTURED TURN 1 AGENT INPUT: 4 19 7 0 1 0
+CAPTURED TURN 1 AGENT INPUT: 5 19 3 0 0 0
+CAPTURED TURN 1 AGENT INPUT: 6 19 9 0 3 0
+Turn update: 6 total agents, 3 mine
+=== MAP + AGENTS ===
+Size: 20×10
+Legend: .=empty ▒=low cover █=high cover F=friend E=enemy
+    0 1 2 3 4 5 6 7 8 910111213141516171819
+ 0  F3 .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 
+ 1  .  .  .  .  .  .  .  █  .  .  .  .  .  .  .  .  .  .  █  . 
+ 2  F1 .  .  .  █  .  .  .  .  .  .  .  .  .  .  .  ▒  .  .  . 
+ 3  .  ▒  .  █  ▒  .  .  ▒  .  .  .  .  █  .  .  ▒  .  .  .  E5
+ 4  .  █  ▒  .  ▒  ▒  .  .  .  .  .  .  .  .  .  .  .  .  .  . 
+ 5  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ▒  ▒  .  ▒  █  . 
+ 6  F2 .  .  .  ▒  .  .  █  .  .  .  .  ▒  .  .  ▒  █  .  ▒  . 
+ 7  .  .  .  ▒  .  .  .  .  .  .  .  .  .  .  .  █  .  .  .  E4
+ 8  .  █  .  .  .  .  .  .  .  .  .  .  █  .  .  .  .  .  .  . 
+ 9  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  E6
+=== FRIEND LOCATIONS ===
+Agent 1: (0,2) - Wetness: 0, Bombs: 1, Cooldown: 0
+Agent 2: (0,6) - Wetness: 0, Bombs: 0, Cooldown: 0
+Agent 3: (0,0) - Wetness: 0, Bombs: 3, Cooldown: 0
+=== ENEMY LOCATIONS ===
+Enemy 5: (19,3) - Wetness: 0, Status: Alive
+Enemy 6: (19,9) - Wetness: 0, Status: Alive
+Enemy 4: (19,7) - Wetness: 0, Status: Alive
+========================
+CAPTURED TURN 1 MY_AGENT_COUNT: 3
+Agent 1 assigned role: Bomber
+Agent 2 assigned role: Attacker
+Agent 3 assigned role: Supporter
+Territory: F:81 E:81 C:10 Advantage:0
+Team object...
+Standard Output Stream:
+1; MOVE 2 3
+2; MOVE 1 5
+3; MOVE 0 4
+001
+100
+Standard Output Stream:
+4;MOVE 0 6; HUNKER_DOWN;
+5;MOVE 0 6; HUNKER_DOWN;
+6;MOVE 0 6; HUNKER_DOWN;
+Standard Error Stream:
+CAPTURED TURN 2 INPUT: 6
+CAPTURED TURN 2 AGENT INPUT: 1 1 2 0 1 0
+CAPTURED TURN 2 AGENT INPUT: 2 0 5 0 0 0
+CAPTURED TURN 2 AGENT INPUT: 3 0 1 0 3 0
+CAPTURED TURN 2 AGENT INPUT: 4 18 7 0 1 0
+CAPTURED TURN 2 AGENT INPUT: 5 18 3 0 0 0
+CAPTURED TURN 2 AGENT INPUT: 6 18 9 0 3 0
+Turn update: 6 total agents, 3 mine
+CAPTURED TURN 2 MY_AGENT_COUNT: 3
+Territory: F:76 E:86 C:10 Advantage:-10
+Team objectives: 1
+Agent 1 [Bomber]: 1 actions
+Agent 1 generated 1 actions
+Territory: F:76 E:86 C:10 Advantage:-10
+Team objectives: 1
+Agent 2 [Attacker]: 1 actions
+Agent 2 generated 1 actions
+Territory: F:76 E:86 C:10 Advantage:-10
+Team objectives: 1
+Agent 3 [Supporter]: 1 actions
+Agent 3 generated 1 actions
+Agent 1 moving to (5,2) [priority 50]
+Agent 2 moving to (3,4) [priority 50]
+Agent 3 moving to (4,1) [priority 50]
+Agent 1: MOVE 5 2 (Reasons: bomb positioning - score: 916.4)
+Agent 2: MOVE 3 4 (Reasons: attack positioning - score: 912.9)
+Agent 3: MOVE 4 1 (Reasons: support positioning - score: 865.2)
+Standard Output Stream:
+1; MOVE 5 2
+2; MOVE 3 4
+3; MOVE 4 1
+002
+100
+Standard Output Stream:
+4;MOVE 0 5; HUNKER_DOWN;
+5;MOVE 0 5; HUNKER_DOWN;
+6;MOVE 0 5; HUNKER_DOWN;
+Standard Error Stream:
+CAPTURED TURN 3 INPUT: 6
+CAPTURED TURN 3 AGENT INPUT: 1 2 2 0 1 0
+CAPTURED TURN 3 AGENT INPUT: 2 1 5 0 0 0
+CAPTURED TURN 3 AGENT INPUT: 3 1 1 0 3 0
+CAPTURED TURN 3 AGENT INPUT: 4 17 7 0 1 0
+CAPTURED TURN 3 AGENT INPUT: 5 18 4 0 0 0
+CAPTURED TURN 3 AGENT INPUT: 6 17 9 0 3 0
+Turn update: 6 total agents, 3 mine
+CAPTURED TURN 3 MY_AGENT_COUNT: 3
+Territory: F:80 E:82 C:10 Advantage:-2
+Team objectives: 1
+Agent 1 [Bomber]: 1 actions
+Agent 1 generated 1 actions
+Territory: F:80 E:82 C:10 Advantage:-2
+Team objectives: 1
+Agent 2 [Attacker]: 1 actions
+Agent 2 generated 1 actions
+Territory: F:80 E:82 C:10 Advantage:-2
+Team objectives: 1
+Agent 3 [Supporter]: 1 actions
+Agent 3 generated 1 actions
+Agent 1 moving to (5,2) [priority 50]
+Agent 2 moving to (3,4) [priority 50]
+Agent 3 moving to (4,1) [priority 50]
+Agent 1: MOVE 5 2 (Reasons: bomb positioning - score: 919.4)
+Agent 2: MOVE 3 4 (Reasons: attack positioning - score: 902.9)
+Agent 3: MOVE 4 1 (Reasons: support positioning - score: 858.0)
+Standard Output Stream:
+1; MOVE 5 2
+2; MOVE 3 4
+3; MOVE 4 1
+003
+100
+Standard Output Stream:
+4;MOVE 1 5; HUNKER_DOWN;
+5;MOVE 1 5; HUNKER_DOWN;
+6;MOVE 1 5; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 6 total agents, 3 mine
+Territory: F:82 E:84 C:6 Advantage:-2
+Team objectives: 1
+Agent 1 [Bomber]: 1 actions
+Agent 1 generated 1 actions
+Territory: F:82 E:84 C:6 Advantage:-2
+Team objectives: 1
+Agent 2 [Attacker]: 1 actions
+Agent 2 generated 1 actions
+Territory: F:82 E:84 C:6 Advantage:-2
+Team objectives: 1
+Agent 3 [Supporter]: 1 actions
+Agent 3 generated 1 actions
+Agent 1 moving to (5,2) [priority 50]
+Agent 2 moving to (3,4) [priority 50]
+Agent 3 moving to (4,1) [priority 50]
+Agent 1: MOVE 5 2 (Reasons: bomb positioning - score: 908.1)
+Agent 2: MOVE 3 4 (Reasons: attack positioning - score: 897.7)
+Agent 3: MOVE 4 1 (Reasons: support positioning - score: 849.8)
+Standard Output Stream:
+1; MOVE 5 2
+2; MOVE 3 4
+3; MOVE 4 1
+004
+100
+Standard Output Stream:
+4;MOVE 2 5; HUNKER_DOWN;
+5;MOVE 2 5; HUNKER_DOWN;
+6;MOVE 2 5; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 6 total agents, 3 mine
+Territory: F:78 E:84 C:10 Advantage:-6
+Team objectives: 1
+Agent 1 [Bomber]: 1 actions
+Agent 1 generated 1 actions
+Territory: F:78 E:84 C:10 Advantage:-6
+Team objectives: 1
+Agent 2 [Attacker]: 1 actions
+Agent 2 generated 1 actions
+Territory: F:78 E:84 C:10 Advantage:-6
+Team objectives: 1
+Agent 3 [Supporter]: 1 actions
+Agent 3 generated 1 actions
+Agent 1 moving to (5,2) [priority 50]
+Agent 2 moving to (6,6) [priority 50]
+Agent 3 moving to (4,1) [priority 50]
+Agent 1: MOVE 5 2 (Reasons: bomb positioning - score: 908.1)
+Agent 2: MOVE 6 6 (Reasons: attack positioning - score: 1161.4)
+Agent 3: MOVE 4 1 (Reasons: support positioning - score: 849.8)
+Standard Output Stream:
+1; MOVE 5 2
+2; MOVE 6 6
+3; MOVE 4 1
+005
+100
+Standard Output Stream:
+4;MOVE 3 5; HUNKER_DOWN;
+5;MOVE 3 5; HUNKER_DOWN;
+6;MOVE 3 5; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 6 total agents, 3 mine
+Territory: F:78 E:87 C:7 Advantage:-9
+Team objectives: 1
+Agent 1 [Bomber]: 1 actions
+Agent 1 generated 1 actions
+Territory: F:78 E:87 C:7 Advantage:-9
+Team objectives: 1
+Agent 2 [Attacker]: 1 actions
+Agent 2 generated 1 actions
+Territory: F:78 E:87 C:7 Advantage:-9
+Team objectives: 1
+Agent 3 [Supporter]: 1 actions
+Agent 3 generated 1 actions
+Agent 1 moving to (5,2) [priority 50]
+Agent 2 moving to (6,6) [priority 50]
+Agent 3 moving to (1,5) [priority 50]
+Agent 1: MOVE 5 2 (Reasons: bomb positioning - score: 881.7)
+Agent 2: MOVE 6 6 (Reasons: attack positioning - score: 1161.4)
+Agent 3: MOVE 1 5 (Reasons: support positioning - score: 842.8)
+Standard Output Stream:
+1; MOVE 5 2
+2; MOVE 6 6
+3; MOVE 1 5
+006
+100
+Standard Output Stream:
+4;MOVE 4 5; HUNKER_DOWN;
+5;MOVE 4 5; HUNKER_DOWN;
+6;MOVE 4 5; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 6 total agents, 3 mine
+Territory: F:77 E:87 C:8 Advantage:-10
+Team objectives: 1
+Agent 1 [Bomber]: 1 actions
+Agent 1 generated 1 actions
+Territory: F:77 E:87 C:8 Advantage:-10
+Team objectives: 1
+Agent 2 [Attacker]: 1 actions
+Agent 2 generated 1 actions
+Territory: F:77 E:87 C:8 Advantage:-10
+Team objectives: 1
+Agent 3 [Supporter]: 1 actions
+Agent 3 generated 1 actions
+Agent 1 moving to (5,2) [priority 50]
+Agent 3 moving to (2,3) [priority 50]
+Agent 1: MOVE 5 2 (Reasons: bomb positioning - score: 871.7)
+Agent 2: SHOOT 5 (Reasons: Cover shooting - Enemy 5)
+Agent 3: MOVE 2 3 (Reasons: support positioning - score: 828.6)
+Standard Output Stream:
+1; MOVE 5 2
+2; SHOOT 5
+3; MOVE 2 3
+007
+100
+Standard Output Stream:
+4;MOVE 5 5; HUNKER_DOWN;
+5;MOVE 14 4; SHOOT 2;
+6;MOVE 5 5; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 6 total agents, 3 mine
+Territory: F:77 E:89 C:6 Advantage:-12
+Team objectives: 2
+Agent 1 [Bomber]: 1 actions
+Agent 1 generated 1 actions
+Territory: F:77 E:89 C:6 Advantage:-12
+Team objectives: 2
+Agent 2 [Attacker]: 1 actions
+Agent 2 generated 1 actions
+Territory: F:77 E:89 C:6 Advantage:-12
+Team objectives: 2
+Agent 3 [Supporter]: 1 actions
+Agent 3 generated 1 actions
+Agent 1 moving to (5,2) [priority 50]
+Agent 2 moving to (6,6) [priority 50]
+Agent 3 moving to (2,3) [priority 50]
+Agent 1: MOVE 5 2 (Reasons: bomb positioning - score: 862.9)
+Agent 2: MOVE 6 6 (Reasons: attack positioning - score: 1129.9)
+Agent 3: MOVE 2 3 (Reasons: support positioning - score: 840.3)
+Standard Output Stream:
+1; MOVE 5 2
+2; MOVE 6 6
+3; MOVE 2 3
+008
+100
+Standard Output Stream:
+4;MOVE 5 5; HUNKER_DOWN;
+5;MOVE 13 4; HUNKER_DOWN;
+6;MOVE 5 5; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 6 total agents, 3 mine
+Territory: F:74 E:92 C:6 Advantage:-18
+Team objectives: 2
+Agent 1 [Bomber]: 1 actions
+Agent 1 generated 1 actions
+Territory: F:74 E:92 C:6 Advantage:-18
+Team objectives: 2
+Agent 2 [Attacker]: 1 actions
+Agent 2 generated 1 actions
+Territory: F:74 E:92 C:6 Advantage:-18
+Team objectives: 2
+Agent 3 [Supporter]: 1 actions
+Agent 3 generated 1 actions
+Agent 1 moving to (7,2) [priority 50]
+Agent 2 moving to (8,6) [priority 50]
+Agent 3 moving to (3,4) [priority 50]
+Agent 1: MOVE 7 2 (Reasons: bomb positioning - score: 913.1)
+Agent 2: MOVE 8 6 (Reasons: attack positioning - score: 1224.6)
+Agent 3: MOVE 3 4 (Reasons: support positioning - score: 850.0)
+Standard Output Stream:
+1; MOVE 7 2
+2; MOVE 8 6
+3; MOVE 3 4
+009
+100
+Standard Output Stream:
+4;MOVE 5 6; HUNKER_DOWN;
+5;MOVE 13 3; HUNKER_DOWN;
+6;MOVE 5 6; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 6 total agents, 3 mine
+Territory: F:76 E:91 C:5 Advantage:-15
+Team objectives: 2
+Agent 1 [Bomber]: 1 actions
+Agent 1 generated 1 actions
+Territory: F:76 E:91 C:5 Advantage:-15
+Team objectives: 2
+Agent 2 [Attacker]: 1 actions
+Agent 2 generated 1 actions
+Territory: F:76 E:91 C:5 Advantage:-15
+Team objectives: 2
+Agent 3 [Supporter]: 1 actions
+Agent 3 generated 1 actions
+Agent 1 moving to (7,2) [priority 50]
+Agent 2 moving to (8,6) [priority 50]
+Agent 3 moving to (2,3) [priority 50]
+Agent 1: MOVE 7 2 (Reasons: bomb positioning - score: 896.3)
+Agent 2: MOVE 8 6 (Reasons: attack positioning - score: 1211.7)
+Agent 3: MOVE 2 3 (Reasons: support positioning - score: 824.1)
+Standard Output Stream:
+1; MOVE 7 2
+2; MOVE 8 6
+3; MOVE 2 3
+010
+100
+Standard Output Stream:
+4;MOVE 12 7; SHOOT 2;
+5;MOVE 13 3; HUNKER_DOWN;
+6;MOVE 6 6; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 6 total agents, 3 mine
+Territory: F:76 E:96 C:0 Advantage:-20
+Team objectives: 2
+Agent 1 [Bomber]: 1 actions
+Agent 1 generated 1 actions
+Territory: F:76 E:96 C:0 Advantage:-20
+Team objectives: 2
+Agent 2 [Attacker]: 1 actions
+Agent 2 generated 1 actions
+Territory: F:76 E:96 C:0 Advantage:-20
+Team objectives: 2
+Agent 3 [Supporter]: 1 actions
+Agent 3 generated 1 actions
+Agent 1 moving to (7,2) [priority 50]
+Agent 2 moving to (8,6) [priority 50]
+Agent 3 moving to (3,4) [priority 50]
+Agent 1: MOVE 7 2 (Reasons: bomb positioning - score: 896.3)
+Agent 2: MOVE 8 6 (Reasons: attack positioning - score: 1173.7)
+Agent 3: MOVE 3 4 (Reasons: support positioning - score: 843.9)
+Standard Output Stream:
+1; MOVE 7 2
+2; MOVE 8 6
+3; MOVE 3 4
+011
+100
+Standard Output Stream:
+4;MOVE 12 6; HUNKER_DOWN;
+5;MOVE 13 3; HUNKER_DOWN;
+6;MOVE 6 7; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 6 total agents, 3 mine
+Territory: F:73 E:91 C:8 Advantage:-18
+Team objectives: 2
+Agent 1 [Bomber]: 1 actions
+Agent 1 generated 1 actions
+Territory: F:73 E:91 C:8 Advantage:-18
+Team objectives: 2
+Agent 2 [Attacker]: 1 actions
+Agent 2 generated 1 actions
+Territory: F:73 E:91 C:8 Advantage:-18
+Team objectives: 2
+Agent 3 [Supporter]: 1 actions
+Agent 3 generated 1 actions
+Agent 2 moving to (8,6) [priority 50]
+Agent 3 moving to (1,5) [priority 50]
+Agent 1: SHOOT 5 (Reasons: Direct shooting - Enemy 5)
+Agent 2: MOVE 8 6 (Reasons: attack positioning - score: 1177.9)
+Agent 3: MOVE 1 5 (Reasons: support positioning - score: 801.2)
+Standard Output Stream:
+1; SHOOT 5
+2; MOVE 8 6
+3; MOVE 1 5
+012
+100
+Standard Output Stream:
+4;MOVE 13 7; SHOOT 2;
+5;MOVE 13 3; HUNKER_DOWN;
+6;MOVE 8 9; SHOOT 2;
+Standard Error Stream:
+Turn update: 6 total agents, 3 mine
+Territory: F:71 E:87 C:14 Advantage:-16
+Team objectives: 2
+Agent 1 [Bomber]: 1 actions
+Agent 1 generated 1 actions
+Territory: F:71 E:87 C:14 Advantage:-16
+Team objectives: 2
+Agent 2 [Attacker]: 1 actions
+Agent 2 generated 1 actions
+Territory: F:71 E:87 C:14 Advantage:-16
+Team objectives: 2
+Agent 3 [Supporter]: 1 actions
+Agent 3 generated 1 actions
+Agent 1 moving to (7,5) [priority 50]
+Agent 3 moving to (3,4) [priority 50]
+Agent 1: MOVE 7 5 (Reasons: bomb positioning - score: 1201.6)
+Agent 2: SHOOT 6 (Reasons: Direct shooting - Enemy 6)
+Agent 3: MOVE 3 4 (Reasons: support positioning - score: 815.1)
+Standard Output Stream:
+1; MOVE 7 5
+2; SHOOT 6
+3; MOVE 3 4
+013
+100
+Standard Output Stream:
+4;MOVE 13 8; HUNKER_DOWN;
+5;MOVE 13 3; SHOOT 1;
+6;MOVE 9 9; THROW 8 6;
+Standard Error Stream:
+Turn update: 6 total agents, 3 mine
+Territory: F:68 E:100 C:4 Advantage:-32
+Team objectives: 2
+Agent 1 [Bomber]: 1 actions
+Agent 1 generated 1 actions
+Territory: F:68 E:100 C:4 Advantage:-32
+Team objectives: 2
+Agent 2 [Attacker]: 1 actions
+Agent 2 generated 1 actions
+Territory: F:68 E:100 C:4 Advantage:-32
+Team objectives: 2
+Agent 3 [Supporter]: 1 actions
+Agent 3 generated 1 actions
+Agent 2 moving to (6,6) [priority 50]
+Agent 3 moving to (3,4) [priority 50]
+Agent 1: SHOOT 5 (Reasons: Cover shooting - Enemy 5)
+Agent 2: MOVE 6 6 (Reasons: attack positioning - score: 1131.1)
+Agent 3: MOVE 3 4 (Reasons: support positioning - score: 843.9)
+Standard Output Stream:
+1; SHOOT 5
+2; MOVE 6 6
+3; MOVE 3 4
+014
+100
+Standard Output Stream:
+4;MOVE 13 8; SHOOT 2;
+5;MOVE 13 3; HUNKER_DOWN;
+6;MOVE 10 9; THROW 8 7;
+Standard Error Stream:
+Turn update: 5 total agents, 2 mine
+Agent 1 assigned role: Bomber
+Agent 3 assigned role: Attacker
+Territory: F:67 E:98 C:7 Advantage:-31
+Team objectives: 2
+Agent 1 [Bomber]: 1 actions
+Agent 1 generated 1 actions
+Territory: F:67 E:98 C:7 Advantage:-31
+Team objectives: 2
+Agent 3 [Attacker]: 1 actions
+Agent 3 generated 1 actions
+Agent 1 moving to (7,5) [priority 50]
+Agent 3 moving to (3,4) [priority 50]
+Agent 1: MOVE 7 5 (Reasons: bomb positioning - score: 1000.0)
+Agent 3: MOVE 3 4 (Reasons: attack positioning - score: 843.9)
+Standard Output Stream:
+1; MOVE 7 5
+3; MOVE 3 4
+015
+100
+Standard Output Stream:
+4;MOVE 13 7; HUNKER_DOWN;
+5;MOVE 13 3; HUNKER_DOWN;
+6;MOVE 6 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 5 total agents, 2 mine
+Territory: F:64 E:94 C:14 Advantage:-30
+Team objectives: 2
+Agent 1 [Bomber]: 1 actions
+Agent 1 generated 1 actions
+Territory: F:64 E:94 C:14 Advantage:-30
+Team objectives: 2
+Agent 3 [Attacker]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (3,4) [priority 50]
+Agent 1: SHOOT 6 (Reasons: Cover shooting - Enemy 6)
+Agent 3: MOVE 3 4 (Reasons: attack positioning - score: 837.0)
+Standard Output Stream:
+1; SHOOT 6
+3; MOVE 3 4
+016
+100
+Standard Output Stream:
+4;MOVE 6 4; HUNKER_DOWN;
+5;MOVE 13 2; HUNKER_DOWN;
+6;MOVE 6 4; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 5 total agents, 2 mine
+Territory: F:66 E:104 C:2 Advantage:-38
+Team objectives: 2
+Agent 1 [Bomber]: 1 actions
+Agent 1 generated 1 actions
+Territory: F:66 E:104 C:2 Advantage:-38
+Team objectives: 2
+Agent 3 [Attacker]: 1 actions
+Agent 3 generated 1 actions
+Agent 1 moving to (8,6) [priority 50]
+Agent 3 moving to (3,4) [priority 50]
+Agent 1: MOVE 8 6 (Reasons: bomb positioning - score: 1260.9)
+Agent 3: MOVE 3 4 (Reasons: attack positioning - score: 811.3)
+Standard Output Stream:
+1; MOVE 8 6
+3; MOVE 3 4
+017
+100
+Standard Output Stream:
+4;MOVE 6 4; HUNKER_DOWN;
+5;MOVE 13 2; HUNKER_DOWN;
+6;MOVE 6 4; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 5 total agents, 2 mine
+Territory: F:66 E:99 C:7 Advantage:-33
+Team objectives: 2
+Agent 1 [Bomber]: 2 actions
+Agent 1 generated 2 actions
+Territory: F:66 E:99 C:7 Advantage:-33
+Team objectives: 2
+Agent 3 [Attacker]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 1: THROW 8 6; SHOOT 6 (Reasons: Aggressive bombing - score: 95, Cover shooting - Enemy 6)
+Agent 3: MOVE 6 6 (Reasons: attack positioning - score: 1092.6)
+Standard Output Stream:
+1; THROW 8 6; SHOOT 6
+3; MOVE 6 6
+018
+100
+Standard Output Stream:
+4;MOVE 11 7; SHOOT 1;
+5;MOVE 13 1; HUNKER_DOWN;
+6;MOVE 7 4; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 5 total agents, 2 mine
+Territory: F:66 E:100 C:6 Advantage:-34
+Team objectives: 2
+Agent 1 [Bomber]: 1 actions
+Agent 1 generated 1 actions
+Territory: F:66 E:100 C:6 Advantage:-34
+Team objectives: 2
+Agent 3 [Attacker]: 1 actions
+Agent 3 generated 1 actions
+Agent 1: THROW 7 6 (Reasons: Aggressive bombing - score: 95)
+Agent 3: THROW 7 6 (Reasons: Aggressive bombing - score: 95)
+Standard Output Stream:
+1; THROW 7 6
+3; THROW 7 6
+019
+100
+Standard Output Stream:
+4;MOVE 12 7; THROW 8 4;
+5;MOVE 13 1; SHOOT 1;
+6;MOVE 7 4; HUNKER_DOWN;
+Game Summary:
+Default cannot throw splash bomb to 8 4, it is too far away from agent 4.
+Standard Error Stream:
+Turn update: 4 total agents, 2 mine
+Territory: F:79 E:87 C:6 Advantage:-8
+Team objectives: 0
+Agent 1 [Bomber]: 1 actions
+Agent 1 generated 1 actions
+Territory: F:79 E:87 C:6 Advantage:-8
+Team objectives: 0
+Agent 3 [Attacker]: 1 actions
+Agent 3 generated 1 actions
+Agent 1 moving to (6,6) [priority 50]
+Agent 3 taking alternative move to (5,6) [wanted (6,6)]
+Agent 1: MOVE 6 6 (Reasons: bomb positioning - score: 957.6)
+Agent 3: MOVE 5 6 (Reasons: Alternative move due to collision - attack positioning - score: 882.6)
+Standard Output Stream:
+1; MOVE 6 6
+3; MOVE 5 6
+020
+100
+Standard Output Stream:
+4;MOVE 7 4; HUNKER_DOWN;
+5;MOVE 13 1; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 4 total agents, 2 mine
+Territory: F:69 E:93 C:10 Advantage:-24
+Team objectives: 1
+Agent 1 [Bomber]: 1 actions
+Agent 1 generated 1 actions
+Territory: F:69 E:93 C:10 Advantage:-24
+Team objectives: 1
+Agent 3 [Attacker]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,7) [priority 50]
+Agent 1: SHOOT 4 (Reasons: Cover shooting - Enemy 4)
+Agent 3: MOVE 7 7 (Reasons: attack positioning - score: 895.4)
+Standard Output Stream:
+1; SHOOT 4
+3; MOVE 7 7
+021
+100
+Standard Output Stream:
+4;MOVE 6 4; HUNKER_DOWN;
+5;MOVE 13 2; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 4 total agents, 2 mine
+Territory: F:71 E:97 C:4 Advantage:-26
+Team objectives: 1
+Agent 1 [Bomber]: 1 actions
+Agent 1 generated 1 actions
+Territory: F:71 E:97 C:4 Advantage:-26
+Team objectives: 1
+Agent 3 [Attacker]: 1 actions
+Agent 3 generated 1 actions
+Agent 1 moving to (8,6) [priority 50]
+Agent 1: MOVE 8 6 (Reasons: bomb positioning - score: 965.3)
+Agent 3: THROW 9 6 (Reasons: Aggressive bombing - score: 45)
+Standard Output Stream:
+1; MOVE 8 6
+3; THROW 9 6
+022
+100
+Standard Output Stream:
+4;MOVE 10 7; SHOOT 3;
+5;MOVE 13 2; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 4 total agents, 2 mine
+Territory: F:71 E:90 C:11 Advantage:-19
+Team objectives: 1
+Agent 1 [Bomber]: 1 actions
+Agent 1 generated 1 actions
+Territory: F:71 E:90 C:11 Advantage:-19
+Team objectives: 1
+Agent 3 [Attacker]: 1 actions
+Agent 3 generated 1 actions
+Agent 1: SHOOT 4 (Reasons: Cover shooting - Enemy 4)
+Agent 3: THROW 9 6 (Reasons: Aggressive bombing - score: 95)
+Standard Output Stream:
+1; SHOOT 4
+3; THROW 9 6
+023
+100
+Standard Output Stream:
+4;MOVE 10 6; THROW 7 4;
+5;MOVE 13 1; HUNKER_DOWN;
+Game Summary:
+Default cannot throw splash bomb to 7 4, it is too far away from agent 4.
+Standard Error Stream:
+Turn update: 4 total agents, 2 mine
+Territory: F:84 E:87 C:1 Advantage:-3
+Team objectives: 1
+Agent 1 [Bomber]: 1 actions
+Agent 1 generated 1 actions
+Territory: F:84 E:87 C:1 Advantage:-3
+Team objectives: 1
+Agent 3 [Attacker]: 1 actions
+Agent 3 generated 1 actions
+Agent 1 moving to (7,2) [priority 50]
+Agent 3 moving to (8,6) [priority 50]
+Agent 1: MOVE 7 2 (Reasons: bomb positioning - score: 1104.3)
+Agent 3: MOVE 8 6 (Reasons: attack positioning - score: 1057.7)
+Standard Output Stream:
+1; MOVE 7 2
+3; MOVE 8 6
+024
+100
+Standard Output Stream:
+4;MOVE 10 6; SHOOT 1;
+5;MOVE 13 1; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 4 total agents, 2 mine
+Territory: F:77 E:84 C:11 Advantage:-7
+Team objectives: 1
+Agent 1 [Bomber]: 1 actions
+Agent 1 generated 1 actions
+Territory: F:77 E:84 C:11 Advantage:-7
+Team objectives: 1
+Agent 3 [Attacker]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (8,6) [priority 50]
+Agent 1: SHOOT 4 (Reasons: Cover shooting - Enemy 4)
+Agent 3: MOVE 8 6 (Reasons: attack positioning - score: 1067.7)
+Standard Output Stream:
+1; SHOOT 4
+3; MOVE 8 6
+025
+100
+Standard Output Stream:
+4;MOVE 10 5; THROW 7 4;
+5;MOVE 13 1; SHOOT 1;
+Standard Error Stream:
+Turn update: 4 total agents, 2 mine
+Territory: F:81 E:88 C:3 Advantage:-7
+Team objectives: 2
+Agent 1 [Bomber]: 1 actions
+Agent 1 generated 1 actions
+Territory: F:81 E:88 C:3 Advantage:-7
+Team objectives: 2
+Agent 3 [Attacker]: 1 actions
+Agent 3 generated 1 actions
+Agent 1 moving to (7,5) [priority 50]
+Agent 3 taking alternative move to (6,6) [wanted (7,5)]
+Agent 1: MOVE 7 5 (Reasons: bomb positioning - score: 1100.6)
+Agent 3: MOVE 6 6 (Reasons: Alternative move due to collision - attack positioning - score: 1005.6)
+Standard Output Stream:
+1; MOVE 7 5
+3; MOVE 6 6
+026
+100
+Standard Output Stream:
+4;MOVE 10 5; SHOOT 1;
+5;MOVE 13 2; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 4 total agents, 2 mine
+Territory: F:80 E:90 C:2 Advantage:-10
+Team objectives: 2
+Agent 1 generated 1 actions
+Territory: F:80 E:90 C:2 Advantage:-10
+Team objectives: 2
+Agent 3 [Attacker]: 1 actions
+Agent 3 generated 1 actions
+Agent 1 moving to (6,6) [priority 100]
+Agent 3 moving to (8,6) [priority 50]
+Agent 1: MOVE 6 6 (Reasons: Emergency escape from danger)
+Agent 3: MOVE 8 6 (Reasons: attack positioning - score: 1028.6)
+Standard Output Stream:
+1; MOVE 6 6
+3; MOVE 8 6
+027
+100
+Standard Output Stream:
+4;MOVE 10 4; HUNKER_DOWN;
+5;MOVE 13 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 4 total agents, 2 mine
+Territory: F:81 E:91 C:0 Advantage:-10
+Team objectives: 2
+Agent 1 [Bomber]: 1 actions
+Agent 1 generated 1 actions
+Territory: F:81 E:91 C:0 Advantage:-10
+Team objectives: 2
+Agent 3 [Attacker]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 1: SHOOT 4 (Reasons: Cover shooting - Enemy 4)
+Agent 3: MOVE 7 5 (Reasons: attack positioning - score: 1009.6)
+Standard Output Stream:
+1; SHOOT 4
+3; MOVE 7 5
+028
+100
+Standard Output Stream:
+4;MOVE 10 4; SHOOT 1;
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 4 total agents, 2 mine
+Territory: F:81 E:91 C:0 Advantage:-10
+Team objectives: 2
+Agent 1 [Bomber]: 1 actions
+Agent 1 generated 1 actions
+Territory: F:81 E:91 C:0 Advantage:-10
+Team objectives: 2
+Agent 3 [Attacker]: 1 actions
+Agent 3 generated 1 actions
+Agent 1 moving to (7,5) [priority 50]
+Agent 3 taking alternative move to (6,5) [wanted (7,5)]
+Agent 1: MOVE 7 5 (Reasons: bomb positioning - score: 1179.6)
+Agent 3: MOVE 6 5 (Reasons: Alternative move due to collision - attack positioning - score: 1009.6)
+Standard Output Stream:
+1; MOVE 7 5
+3; MOVE 6 5
+029
+100
+Standard Output Stream:
+4;MOVE 10 5; HUNKER_DOWN;
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 4 total agents, 2 mine
+Territory: F:77 E:87 C:8 Advantage:-10
+Team objectives: 2
+Agent 1 generated 1 actions
+Territory: F:77 E:87 C:8 Advantage:-10
+Team objectives: 2
+Agent 3 [Attacker]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (8,6) [priority 50]
+Agent 1: SHOOT 4 (Reasons: Emergency elimination shot - Enemy 4)
+Agent 3: MOVE 8 6 (Reasons: attack positioning - score: 1018.8)
+Standard Output Stream:
+1; SHOOT 4
+3; MOVE 8 6
+030
+100
+Standard Output Stream:
+4;MOVE 10 5; SHOOT 1;
+5;MOVE 13 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Agent 3 assigned role: Defender
+Territory: F:84 E:88 C:0 Advantage:-4
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+031
+100
+Standard Output Stream:
+5;MOVE 13 3; SHOOT 3;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+032
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+033
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+034
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+035
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+036
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+037
+100
+Standard Output Stream:
+5;MOVE 13 3; SHOOT 3;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+038
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+039
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+040
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+041
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+042
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+043
+100
+Standard Output Stream:
+5;MOVE 13 3; SHOOT 3;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+044
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+045
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+046
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+047
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+048
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+049
+100
+Standard Output Stream:
+5;MOVE 13 3; SHOOT 3;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+050
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+051
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+052
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+053
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+054
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+055
+100
+Standard Output Stream:
+5;MOVE 13 3; SHOOT 3;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+056
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+057
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+058
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+059
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+060
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+061
+100
+Standard Output Stream:
+5;MOVE 13 3; SHOOT 3;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+062
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+063
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+064
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+065
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+066
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+067
+100
+Standard Output Stream:
+5;MOVE 13 3; SHOOT 3;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+068
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+069
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+070
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+071
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+072
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+073
+100
+Standard Output Stream:
+5;MOVE 13 3; SHOOT 3;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+074
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+075
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+076
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+077
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+078
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+079
+100
+Standard Output Stream:
+5;MOVE 13 3; SHOOT 3;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+080
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+081
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+082
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+083
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+084
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+085
+100
+Standard Output Stream:
+5;MOVE 13 3; SHOOT 3;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+086
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+087
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+088
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+089
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+090
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+091
+100
+Standard Output Stream:
+5;MOVE 13 3; SHOOT 3;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+092
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+093
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+094
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+095
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+096
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+097
+100
+Standard Output Stream:
+5;MOVE 13 3; SHOOT 3;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+098
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:87 E:85 C:0 Advantage:2
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (6,6) [priority 50]
+Agent 3: MOVE 6 6 (Reasons: defend positioning - score: 911.9)
+Standard Output Stream:
+3; MOVE 6 6
+099
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 2 total agents, 1 mine
+Territory: F:81 E:81 C:10 Advantage:0
+Team objectives: 0
+Agent 3 [Defender]: 1 actions
+Agent 3 generated 1 actions
+Agent 3 moving to (7,5) [priority 50]
+Agent 3: MOVE 7 5 (Reasons: Cover positioning - score: 410.1)
+Standard Output Stream:
+3; MOVE 7 5
+100
+100
+Standard Output Stream:
+5;MOVE 12 3; HUNKER_DOWN;

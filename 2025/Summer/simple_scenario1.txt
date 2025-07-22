@@ -1,0 +1,24 @@
+# Simple Water Fight Scenario
+# Format: MAP_WIDTH MAP_HEIGHT
+# Then MAP_HEIGHT lines of map data (0=empty, 1=low_cover, 2=high_cover)
+# Then agent starting positions: AGENT_ID PLAYER_ID X Y SOAKING_POWER OPTIMAL_RANGE BOMBS
+
+MAP 20 10
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0
+0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0
+0 1 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 1 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 2 2 1 2 0 0 0 0 0 0 0 0 0 0 2 1 2 2 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0
+0 0 0 0 0 2 0 0 0 0 0 0 0 0 2 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+AGENTS
+1 0 0 1 4 16 1
+2 0 0 5 6 24 0
+3 0 0 2 2 8 3
+4 1 19 1 4 16 1
+5 1 19 5 6 24 0
+6 1 19 2 2 8 3 

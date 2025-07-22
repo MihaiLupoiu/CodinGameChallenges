@@ -9,7 +9,8 @@ import (
 )
 
 // Debug configuration
-const DEBUG_PRINT_AGENTS = true // Set to false to disable agent location printing
+const DEBUG_PRINT_AGENTS = true   // Set to false to disable agent location printing
+const CAPTURE_INPUT_FORMAT = true // Set to true to capture input for test scenarios
 
 func main() {
 	scanner := bufio.NewScanner(os.Stdin)
@@ -20,12 +21,20 @@ func main() {
 
 	// myId: Your player id (0 or 1)
 	scanner.Scan()
-	fmt.Sscan(scanner.Text(), &game.MyID)
+	inputLine := scanner.Text()
+	if CAPTURE_INPUT_FORMAT {
+		fmt.Fprintln(os.Stderr, "CAPTURED INPUT:", inputLine)
+	}
+	fmt.Sscan(inputLine, &game.MyID)
 
 	// agentCount: Total number of agents in the game
 	var agentCount int
 	scanner.Scan()
-	fmt.Sscan(scanner.Text(), &agentCount)
+	inputLine = scanner.Text()
+	if CAPTURE_INPUT_FORMAT {
+		fmt.Fprintln(os.Stderr, "CAPTURED INPUT:", inputLine)
+	}
+	fmt.Sscan(inputLine, &agentCount)
 
 	for i := 0; i < agentCount; i++ {
 		// agentId: Unique identifier for this agent
@@ -36,7 +45,11 @@ func main() {
 		// splashBombs: Number of splash bombs this can throw this game
 		var agentId, player, shootCooldown, optimalRange, soakingPower, splashBombs int
 		scanner.Scan()
-		fmt.Sscan(scanner.Text(), &agentId, &player, &shootCooldown, &optimalRange, &soakingPower, &splashBombs)
+		inputLine = scanner.Text()
+		if CAPTURE_INPUT_FORMAT {
+			fmt.Fprintln(os.Stderr, "CAPTURED INPUT:", inputLine)
+		}
+		fmt.Sscan(inputLine, &agentId, &player, &shootCooldown, &optimalRange, &soakingPower, &splashBombs)
 
 		// Store agent data
 		agent := &Agent{
@@ -57,7 +70,11 @@ func main() {
 	// width: Width of the game map
 	// height: Height of the game map
 	scanner.Scan()
-	fmt.Sscan(scanner.Text(), &game.Width, &game.Height)
+	inputLine = scanner.Text()
+	if CAPTURE_INPUT_FORMAT {
+		fmt.Fprintln(os.Stderr, "CAPTURED INPUT:", inputLine)
+	}
+	fmt.Sscan(inputLine, &game.Width, &game.Height)
 
 	// Initialize and read grid
 	game.Grid = make([][]Tile, game.Height)
@@ -67,7 +84,11 @@ func main() {
 
 	for i := 0; i < game.Height; i++ {
 		scanner.Scan()
-		inputs := strings.Split(scanner.Text(), " ")
+		inputLine = scanner.Text()
+		if CAPTURE_INPUT_FORMAT {
+			fmt.Fprintln(os.Stderr, "CAPTURED INPUT:", inputLine)
+		}
+		inputs := strings.Split(inputLine, " ")
 		for j := 0; j < game.Width; j++ {
 			// x: X coordinate, 0 is left edge
 			// y: Y coordinate, 0 is top edge
@@ -83,6 +104,11 @@ func main() {
 		}
 	}
 
+	// Mark end of initialization phase
+	if CAPTURE_INPUT_FORMAT {
+		fmt.Fprintln(os.Stderr, "CAPTURED: Game initialization complete")
+	}
+
 	// Print the loaded map for easy context sharing
 	game.PrintMap()
 
@@ -90,10 +116,16 @@ func main() {
 	fmt.Fprintln(os.Stderr, "Starting with strategy:", game.CurrentStrategy.Name())
 
 	firstTurn := true // Flag to print agent locations on first turn
+	turnNumber := 0
 
 	for {
+		turnNumber++
 		scanner.Scan()
-		fmt.Sscan(scanner.Text(), &agentCount)
+		inputLine = scanner.Text()
+		if CAPTURE_INPUT_FORMAT && turnNumber <= 3 { // Capture first 3 turns
+			fmt.Fprintln(os.Stderr, "CAPTURED TURN", turnNumber, "INPUT:", inputLine)
+		}
+		fmt.Sscan(inputLine, &agentCount)
 
 		// Clear current agent list - only keep agents that exist this turn
 		currentAgents := make(map[int]*Agent)
@@ -104,7 +136,11 @@ func main() {
 			// wetness: Damage (0-100) this agent has taken
 			var agentId, x, y, cooldown, splashBombs, wetness int
 			scanner.Scan()
-			fmt.Sscan(scanner.Text(), &agentId, &x, &y, &cooldown, &splashBombs, &wetness)
+			inputLine = scanner.Text()
+			if CAPTURE_INPUT_FORMAT && turnNumber <= 3 {
+				fmt.Fprintln(os.Stderr, "CAPTURED TURN", turnNumber, "AGENT INPUT:", inputLine)
+			}
+			fmt.Sscan(inputLine, &agentId, &x, &y, &cooldown, &splashBombs, &wetness)
 
 			// Get agent from previous turn (to keep static properties) or skip if not found
 			if existingAgent, exists := game.Agents[agentId]; exists {
@@ -144,7 +180,11 @@ func main() {
 		// myAgentCount: Number of alive agents controlled by you
 		var myAgentCount int
 		scanner.Scan()
-		fmt.Sscan(scanner.Text(), &myAgentCount)
+		inputLine = scanner.Text()
+		if CAPTURE_INPUT_FORMAT && turnNumber <= 3 {
+			fmt.Fprintln(os.Stderr, "CAPTURED TURN", turnNumber, "MY_AGENT_COUNT:", inputLine)
+		}
+		fmt.Sscan(inputLine, &myAgentCount)
 
 		// Coordinate all agent actions using current strategy
 		actions := game.CoordinateActions()

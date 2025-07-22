@@ -1,0 +1,192 @@
+Standard Error Stream:
+CAPTURED INPUT: 0
+CAPTURED INPUT: 6
+CAPTURED INPUT: 1 0 1 4 16 1
+CAPTURED INPUT: 2 0 5 6 24 0
+CAPTURED INPUT: 3 0 2 2 8 3
+CAPTURED INPUT: 4 1 1 4 16 1
+CAPTURED INPUT: 5 1 5 6 24 0
+CAPTURED INPUT: 6 1 2 2 8 3
+CAPTURED INPUT: 12 6
+CAPTURED INPUT: 0 0 0 1 0 0 2 0 0 3 0 0 4 0 0 5 0 0 6 0 0 7 0 0 8 0 0 9 0 0 10 0 0 11 0 0
+CAPTURED INPUT: 0 1 0 1 1 0 2 1 2 3 1 0 4 1 0 5 1 0 6 1 0 7 1 0 8 1 0 9 1 1 10 1 0 11 1 0
+CAPTURED INPUT: 0 2 0 1 2 0 2 2 0 3 2 0 4 2 0 5 2 0 6 2 0 7 2 0 8 2 2 9 2 0 10 2 0 11 2 0
+CAPTURED INPUT: 0 3 0 1 3 0 2 3 0 3 3 2 4 3 0 5 3 0 6 3 0 7 3 0 8 3 0 9 3 0 10 3 0 11 3 0
+CAPTURED INPUT: 0 4 0 1 4 0 2 4 1 3 4 0 4 4 0 5 4 0 6 4 0 7 4 0 8 4 0 9 4 2 10 4 0 11 4 0
+CAPTURED INPUT: 0 5 0 1 5 0 2 5 0 3 5 0 4 5 0 5 5 0 6 5 0 7 5 0 8 5 0 9 5 0 10 5 0 11 5 0
+CAPTURED: Game initialization complete
+=== MAP LAYOUT ===
+Size: 12×6
+Tile types: 0=empty, 1=low cover, 2=high cover
+    0 1 2 3 4 5 6 7 8 91011
+ 0  . . . . . . . . . . . .
+ 1  . . █ . . . . . . ▒ . .
+ 2  . . . . . . . . █ . . .
+ 3  . . . █ . . . . . . . .
+ 4  . . ▒ . . . . . . █ . .
+ 5  . . . . . . . . . . . .
+==================
+Starting with strategy: TeamCoordination
+CAPTURED TURN 1 INPUT: 6
+CAPTURED TURN 1 AGENT INPUT: 1 0 2 0 1 0
+CAPTURED TURN 1 AGENT INPUT: 2 0 0 0 0 0
+CAPTURED TURN 1 AGENT INPUT: 3 0 1 0 3 0
+CAPTURED TURN 1 AGENT INPUT: 4 11 3 0 1 0
+CAPTURED TURN 1 AGENT INPUT: 5 11 5 0 0 0
+CAPTURED TURN 1 AGENT INPUT: 6 11 4 0 3 0
+Turn update: 6 total agents, 3 mine
+=== MAP + AGENTS ===
+Size: 12×6
+Legend: .=empty ▒=low cover █=high cover F=friend E=enemy
+    0 1 2 3 4 5 6 7 8 91011
+ 0  F2 .  .  .  .  .  .  .  .  .  .  . 
+ 1  F3 .  █  .  .  .  .  .  .  ▒  .  . 
+ 2  F1 .  .  .  .  .  .  .  █  .  .  . 
+ 3  .  .  .  █  .  .  .  .  .  .  .  E4
+ 4  .  .  ▒  .  .  .  .  .  .  █  .  E6
+ 5  .  .  .  .  .  .  .  .  .  .  .  E5
+=== FRIEND LOCATIONS ===
+Agent 1: (0,2) - Wetness: 0, Bombs: 1, Cooldown: 0
+Agent 2: (0,0) - Wetness: 0, Bombs: 0, Cooldown: 0
+Agent 3: (0,1) - Wetness: 0, Bombs: 3, Cooldown: 0
+=== ENEMY LOCATIONS ===
+Enemy 4: (11,3) - Wetness: 0, Status: Alive
+Enemy 5: (11,5) - Wetness: 0, Status: Alive
+Enemy 6: (11,4) - Wetness: 0, Status: Alive
+========================
+CAPTURED TURN 1 MY_AGENT_COUNT: 3
+Agent 1 assigned role: Bomber
+Agent 2 assigned role: Attacker
+Agent 3 assigned role: Supporter
+Territory: F:31 E:31 C:4 Advantage:0
+Team objectives: 1
+Agent 1 [Bomber]: 1 actions
+Agent 1 generated 1 actions
+Territory: F:31 E:31 C:4 Advantage:0
+Team objectives: 1
+Agent 2 [Attacker]: 1 actions
+Agent 2 generated 1 actions
+Territory: F:31 E:31 C:4 Advantage:0
+Team objectives: 1
+Agent 3 [Supporter]: 1 actions
+Agent 3 generated 1 actions
+Agent 1 moving to (3,2) [priority 50]
+Agent 2 moving to (3,1) [priority 50]
+Agent 3 taking alternative move to (2,2) [wanted (3,2)]
+Agent 1: MOVE 3 2 (Reasons: bomb positioning - score: 791.8)
+Agent 2: MOVE 3 1 (Reasons: attack positioning - score: 994.6)
+Agent 3: MOVE 2 2 (Reasons: Alternative move due to collision - support positioning - score: 781.8)
+Standard Output Stream:
+1; MOVE 3 2
+2; MOVE 3 1
+3; MOVE 2 2
+01
+26
+Standard Output Stream:
+4;MOVE 0 2; HUNKER_DOWN;
+5;MOVE 0 2; HUNKER_DOWN;
+6;MOVE 0 2; HUNKER_DOWN;
+Standard Error Stream:
+CAPTURED TURN 2 INPUT: 6
+CAPTURED TURN 2 AGENT INPUT: 1 1 2 0 1 0
+CAPTURED TURN 2 AGENT INPUT: 2 1 0 0 0 0
+CAPTURED TURN 2 AGENT INPUT: 3 0 2 0 3 0
+CAPTURED TURN 2 AGENT INPUT: 4 10 3 0 1 0
+CAPTURED TURN 2 AGENT INPUT: 5 10 5 0 0 0
+CAPTURED TURN 2 AGENT INPUT: 6 11 3 0 3 0
+Turn update: 6 total agents, 3 mine
+CAPTURED TURN 2 MY_AGENT_COUNT: 3
+Territory: F:30 E:30 C:6 Advantage:0
+Team objectives: 1
+Agent 1 [Bomber]: 1 actions
+Agent 1 generated 1 actions
+Territory: F:30 E:30 C:6 Advantage:0
+Team objectives: 1
+Agent 2 [Attacker]: 1 actions
+Agent 2 generated 1 actions
+Territory: F:30 E:30 C:6 Advantage:0
+Team objectives: 1
+Agent 3 [Supporter]: 1 actions
+Agent 3 generated 1 actions
+Agent 1 moving to (4,3) [priority 50]
+Agent 2 moving to (3,1) [priority 50]
+Agent 3 taking alternative move to (3,2) [wanted (3,1)]
+Agent 1: MOVE 4 3 (Reasons: bomb positioning - score: 1008.9)
+Agent 2: MOVE 3 1 (Reasons: attack positioning - score: 994.6)
+Agent 3: MOVE 3 2 (Reasons: Alternative move due to collision - support positioning - score: 759.6)
+Standard Output Stream:
+1; MOVE 4 3
+2; MOVE 3 1
+3; MOVE 3 2
+02
+26
+Standard Output Stream:
+4;MOVE 1 2; HUNKER_DOWN;
+5;MOVE 1 2; HUNKER_DOWN;
+6;MOVE 1 2; HUNKER_DOWN;
+Standard Error Stream:
+CAPTURED TURN 3 INPUT: 6
+CAPTURED TURN 3 AGENT INPUT: 1 2 2 0 1 0
+CAPTURED TURN 3 AGENT INPUT: 2 2 0 0 0 0
+CAPTURED TURN 3 AGENT INPUT: 3 1 2 0 3 0
+CAPTURED TURN 3 AGENT INPUT: 4 9 3 0 1 0
+CAPTURED TURN 3 AGENT INPUT: 5 9 5 0 0 0
+CAPTURED TURN 3 AGENT INPUT: 6 10 3 0 3 0
+Turn update: 6 total agents, 3 mine
+CAPTURED TURN 3 MY_AGENT_COUNT: 3
+Territory: F:30 E:30 C:6 Advantage:0
+Team objectives: 1
+Agent 1 [Bomber]: 1 actions
+Agent 1 generated 1 actions
+Territory: F:30 E:30 C:6 Advantage:0
+Team objectives: 1
+Agent 2 [Attacker]: 1 actions
+Agent 2 generated 1 actions
+Territory: F:30 E:30 C:6 Advantage:0
+Team objectives: 1
+Agent 3 [Supporter]: 1 actions
+Agent 3 generated 1 actions
+Agent 1 moving to (4,3) [priority 50]
+Agent 3 taking alternative move to (3,2) [wanted (4,3)]
+Agent 1: MOVE 4 3 (Reasons: bomb positioning - score: 1248.9)
+Agent 2: SHOOT 4 (Reasons: Cover shooting - Enemy 4)
+Agent 3: MOVE 3 2 (Reasons: Alternative move due to collision - support positioning - score: 1013.9)
+Standard Output Stream:
+1; MOVE 4 3
+2; SHOOT 4
+3; MOVE 3 2
+03
+26
+Standard Output Stream:
+4;MOVE 2 2; HUNKER_DOWN;
+5;MOVE 9 5; SHOOT 1;
+6;MOVE 2 2; HUNKER_DOWN;
+Standard Error Stream:
+Turn update: 6 total agents, 3 mine
+Territory: F:31 E:31 C:4 Advantage:0
+Team objectives: 1
+Agent 1 [Bomber]: 2 actions
+Agent 1 generated 2 actions
+Territory: F:31 E:31 C:4 Advantage:0
+Team objectives: 1
+Agent 2 [Attacker]: 1 actions
+Agent 2 generated 1 actions
+Territory: F:31 E:31 C:4 Advantage:0
+Team objectives: 1
+Agent 3 [Supporter]: 1 actions
+Agent 3 generated 1 actions
+Agent 2 moving to (1,1) [priority 50]
+Agent 3 moving to (4,3) [priority 50]
+Agent 1: THROW 7 2; SHOOT 4 (Reasons: Aggressive bombing - score: 45, Cover shooting - Enemy 4)
+Agent 2: MOVE 1 1 (Reasons: Cover positioning - score: 519.8)
+Agent 3: MOVE 4 3 (Reasons: support positioning - score: 1075.1)
+Standard Output Stream:
+1; THROW 7 2; SHOOT 4
+2; MOVE 1 1
+3; MOVE 4 3
+04
+26
+Standard Output Stream:
+4;MOVE 8 3; SHOOT 1;
+5;MOVE 10 5; HUNKER_DOWN;
+6;MOVE 3 2; HUNKER_DOWN;

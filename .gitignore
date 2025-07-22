@@ -32,3 +32,7 @@ go.work.sum
 .vscode/
 .cursor/
 
+# Binaries
+2025/Summer/bin/*
+*current_bot
+*new_bot

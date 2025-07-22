@@ -1,0 +1,18 @@
+# Simple Scenario: Open Field Battle
+# Format: MAP_WIDTH MAP_HEIGHT
+# Then MAP_HEIGHT lines of map data (0=empty, 1=low_cover, 2=high_cover)  
+# Then AGENTS section with: AGENT_ID PLAYER_ID X Y
+
+MAP 10 6
+0 0 0 0 0 0 0 0 0 0
+0 0 1 0 0 0 0 1 0 0
+0 0 0 2 0 0 2 0 0 0
+0 0 0 2 0 0 2 0 0 0
+0 0 1 0 0 0 0 1 0 0
+0 0 0 0 0 0 0 0 0 0
+
+AGENTS
+1 0 1 1
+2 0 1 4
+3 1 8 1
+4 1 8 4 
