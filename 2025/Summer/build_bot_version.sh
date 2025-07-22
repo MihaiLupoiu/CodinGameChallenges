@@ -5,13 +5,71 @@
 # Usage: 
 #   ./build_bot_version.sh          # Build timestamped version + update new_bot
 #   ./build_bot_version.sh current  # Build current version (overwrites current_bot only)
+#   ./build_bot_version.sh old      # Build old AI system
+#   ./build_bot_version.sh new      # Build new AI system
 
 if [ ! -d "bin" ]; then
     mkdir bin
 fi
 
-# Check if "current" parameter was passed
-if [ "$1" = "current" ]; then
+# Check for special parameters
+if [ "$1" = "old" ]; then
+    # Build old AI system
+    BOT_NAME="old_ai_bot"
+    BOT_PATH="bin/${BOT_NAME}"
+    
+    echo "🤖 Building Old AI System"
+    echo "========================="
+    echo "Output: ${BOT_PATH}"
+    echo ""
+    
+    # Build the old bot
+    echo "📦 Compiling old AI system..."
+    go build -o "${BOT_PATH}" ./old/main.go
+    
+    if [ $? -eq 0 ]; then
+        echo "✅ Old AI system built successfully: ${BOT_PATH}"
+        chmod +x "${BOT_PATH}"
+        
+        echo ""
+        echo "🎯 Usage examples:"
+        echo "  # Test old vs new AI"
+        echo "  ./bin/real_water_fight_tester ./bin/old_ai_bot ./bin/new_ai_bot ./scenarios/scenario1.txt"
+        
+    else
+        echo "❌ Old AI system build failed!"
+        exit 1
+    fi
+
+elif [ "$1" = "new" ]; then
+    # Build new AI system
+    BOT_NAME="new_ai_bot"
+    BOT_PATH="bin/${BOT_NAME}"
+    
+    echo "🤖 Building New AI System"
+    echo "========================="
+    echo "Output: ${BOT_PATH}"
+    echo ""
+    
+    # Build the new bot
+    echo "📦 Compiling new AI system..."
+    go build -o "${BOT_PATH}" .
+    
+    if [ $? -eq 0 ]; then
+        echo "✅ New AI system built successfully: ${BOT_PATH}"
+        chmod +x "${BOT_PATH}"
+        
+        echo ""
+        echo "🎯 Usage examples:"
+        echo "  # Test new vs old AI"
+        echo "  ./bin/real_water_fight_tester ./bin/new_ai_bot ./bin/old_ai_bot ./scenarios/scenario1.txt"
+        
+    else
+        echo "❌ New AI system build failed!"
+        exit 1
+    fi
+
+elif [ "$1" = "current" ]; then
     # Build current version (no timestamp)
     BOT_NAME="current_bot"
     BOT_PATH="current_bot"

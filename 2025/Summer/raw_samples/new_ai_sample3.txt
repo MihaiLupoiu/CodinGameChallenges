@@ -1,0 +1,2213 @@
+Standard Error Stream:
+CAPTURED INPUT: 0
+CAPTURED INPUT: 8
+CAPTURED INPUT: 1 0 1 4 16 1
+CAPTURED INPUT: 2 0 5 6 24 0
+CAPTURED INPUT: 3 0 2 2 8 3
+CAPTURED INPUT: 4 0 2 4 16 2
+CAPTURED INPUT: 5 1 1 4 16 1
+CAPTURED INPUT: 6 1 5 6 24 0
+CAPTURED INPUT: 7 1 2 2 8 3
+CAPTURED INPUT: 8 1 2 4 16 2
+CAPTURED INPUT: 16 8
+CAPTURED INPUT: 0 0 0 1 0 0 2 0 0 3 0 0 4 0 0 5 0 0 6 0 0 7 0 0 8 0 0 9 0 0 10 0 0 11 0 0 12 0 0 13 0 0 14 0 0 15 0 0
+CAPTURED INPUT: 0 1 0 1 1 0 2 1 0 3 1 0 4 1 0 5 1 0 6 1 0 7 1 0 8 1 0 9 1 0 10 1 0 11 1 0 12 1 0 13 1 0 14 1 1 15 1 0
+CAPTURED INPUT: 0 2 0 1 2 2 2 2 0 3 2 0 4 2 0 5 2 0 6 2 1 7 2 0 8 2 0 9 2 0 10 2 1 11 2 0 12 2 1 13 2 0 14 2 0 15 2 0
+CAPTURED INPUT: 0 3 0 1 3 2 2 3 2 3 3 1 4 3 0 5 3 0 6 3 0 7 3 0 8 3 0 9 3 0 10 3 0 11 3 0 12 3 2 13 3 0 14 3 0 15 3 0
+CAPTURED INPUT: 0 4 0 1 4 0 2 4 0 3 4 2 4 4 0 5 4 0 6 4 0 7 4 0 8 4 0 9 4 0 10 4 0 11 4 0 12 4 1 13 4 2 14 4 2 15 4 0
+CAPTURED INPUT: 0 5 0 1 5 0 2 5 0 3 5 1 4 5 0 5 5 1 6 5 0 7 5 0 8 5 0 9 5 1 10 5 0 11 5 0 12 5 0 13 5 0 14 5 2 15 5 0
+CAPTURED INPUT: 0 6 0 1 6 1 2 6 0 3 6 0 4 6 0 5 6 0 6 6 0 7 6 0 8 6 0 9 6 0 10 6 0 11 6 0 12 6 0 13 6 0 14 6 0 15 6 0
+CAPTURED INPUT: 0 7 0 1 7 0 2 7 0 3 7 0 4 7 0 5 7 0 6 7 0 7 7 0 8 7 0 9 7 0 10 7 0 11 7 0 12 7 0 13 7 0 14 7 0 15 7 0
+CAPTURED: Game initialization complete
+=== MAP LAYOUT ===
+Size: 16×8
+Tile types: 0=empty, 1=low cover, 2=high cover
+    0 1 2 3 4 5 6 7 8 9101112131415
+ 0  . . . . . . . . . . . . . . . .
+ 1  . . . . . . . . . . . . . . ▒ .
+ 2  . █ . . . . ▒ . . . ▒ . ▒ . . .
+ 3  . █ █ ▒ . . . . . . . . █ . . .
+ 4  . . . █ . . . . . . . . ▒ █ █ .
+ 5  . . . ▒ . ▒ . . . ▒ . . . . █ .
+ 6  . ▒ . . . . . . . . . . . . . .
+ 7  . . . . . . . . . . . . . . . .
+==================
+🤖 Starting New AI System: TeamCoordination_Combat
+CAPTURED TURN 1 INPUT: 8
+CAPTURED TURN 1 AGENT INPUT: 1 0 0 0 1 0
+CAPTURED TURN 1 AGENT INPUT: 2 0 4 0 0 0
+CAPTURED TURN 1 AGENT INPUT: 3 0 1 0 3 0
+CAPTURED TURN 1 AGENT INPUT: 4 0 2 0 2 0
+CAPTURED TURN 1 AGENT INPUT: 5 15 7 0 1 0
+CAPTURED TURN 1 AGENT INPUT: 6 15 3 0 0 0
+CAPTURED TURN 1 AGENT INPUT: 7 15 6 0 3 0
+CAPTURED TURN 1 AGENT INPUT: 8 15 5 0 2 0
+Turn 1: 8 total agents, 4 mine
+CAPTURED TURN 1 MY_AGENT_COUNT: 4
+🧠 Team Analysis: Health=100.0, Territory=+0, Enemies=4, Turn=1, State=Combat(1)
+🌳 Agent 1 evaluating Selector(Combat) with 5 children
+  ├─ Agent 1 trying child 0: Sequence(Survival)
+🔗 Agent 1 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 1 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 1: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 1: Sequence(Survival) failed
+  ├─ Agent 1 trying child 1: Sequence(Shooting)
+🔗 Agent 1 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 1 sequence step 0: CheckCanShoot
+  ✅ Agent 1: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 1 sequence step 1: TaskShootBestTarget
+🎯 Agent 1: no targets in range 8
+🔫 Agent 1: no valid shooting targets
+  ❌ Agent 1: sequence failed at TaskShootBestTarget
+  ❌ Agent 1: Sequence(Shooting) failed
+  ├─ Agent 1 trying child 2: Sequence(Bombing)
+🔗 Agent 1 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 1 sequence step 0: CheckHasBombs
+  ✅ Agent 1: CheckHasBombs succeeded, continuing sequence
+  ├─ Agent 1 sequence step 1: TaskThrowOptimalBomb
+💣 Agent 1: best bomb target (0,0) score 0
+💣 Agent 1: bomb score 0 too low (need 50+), saving bomb
+  ❌ Agent 1: sequence failed at TaskThrowOptimalBomb
+  ❌ Agent 1: Sequence(Bombing) failed
+  ├─ Agent 1 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 1: advancing toward enemy from (0,0) to (3,2)
+  ✅ Agent 1: TaskMoveTowardsEnemies succeeded
+Agent 1 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 2 evaluating Selector(Combat) with 5 children
+  ├─ Agent 2 trying child 0: Sequence(Survival)
+🔗 Agent 2 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 2 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 2: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 2: Sequence(Survival) failed
+  ├─ Agent 2 trying child 1: Sequence(Shooting)...
+Standard Output Stream:
+1; MOVE 3 2
+2; MOVE 2 2
+3; MOVE 4 2
+4; MOVE 4 3
+01
+29
+Standard Output Stream:
+5;MOVE 0 4; HUNKER_DOWN;
+6;MOVE 0 4; HUNKER_DOWN;
+7;MOVE 0 4; HUNKER_DOWN;
+8;MOVE 0 4; HUNKER_DOWN;
+Standard Error Stream:
+CAPTURED TURN 2 INPUT: 8
+CAPTURED TURN 2 AGENT INPUT: 1 1 0 0 1 0
+CAPTURED TURN 2 AGENT INPUT: 2 0 3 0 0 0
+CAPTURED TURN 2 AGENT INPUT: 3 1 1 0 3 0
+CAPTURED TURN 2 AGENT INPUT: 4 0 1 0 2 0
+CAPTURED TURN 2 AGENT INPUT: 5 14 7 0 1 0
+CAPTURED TURN 2 AGENT INPUT: 6 14 3 0 0 0
+CAPTURED TURN 2 AGENT INPUT: 7 14 6 0 3 0
+CAPTURED TURN 2 AGENT INPUT: 8 15 6 0 2 0
+Turn 2: 8 total agents, 4 mine
+CAPTURED TURN 2 MY_AGENT_COUNT: 4
+🧠 Team Analysis: Health=100.0, Territory=-8, Enemies=4, Turn=2, State=Combat(2)
+🌳 Agent 1 evaluating Selector(Combat) with 5 children
+  ├─ Agent 1 trying child 0: Sequence(Survival)
+🔗 Agent 1 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 1 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 1: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 1: Sequence(Survival) failed
+  ├─ Agent 1 trying child 1: Sequence(Shooting)
+🔗 Agent 1 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 1 sequence step 0: CheckCanShoot
+  ✅ Agent 1: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 1 sequence step 1: TaskShootBestTarget
+🎯 Agent 1: no targets in range 8
+🔫 Agent 1: no valid shooting targets
+  ❌ Agent 1: sequence failed at TaskShootBestTarget
+  ❌ Agent 1: Sequence(Shooting) failed
+  ├─ Agent 1 trying child 2: Sequence(Bombing)
+🔗 Agent 1 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 1 sequence step 0: CheckHasBombs
+  ✅ Agent 1: CheckHasBombs succeeded, continuing sequence
+  ├─ Agent 1 sequence step 1: TaskThrowOptimalBomb
+💣 Agent 1: best bomb target (1,0) score 0
+💣 Agent 1: bomb score 0 too low (need 50+), saving bomb
+  ❌ Agent 1: sequence failed at TaskThrowOptimalBomb
+  ❌ Agent 1: Sequence(Bombing) failed
+  ├─ Agent 1 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 1: advancing toward enemy from (1,0) to (4,3)
+  ✅ Agent 1: TaskMoveTowardsEnemies succeeded
+Agent 1 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 2 evaluating Selector(Combat) with 5 children
+  ├─ Agent 2 trying child 0: Sequence(Survival)
+🔗 Agent 2 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 2 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 2: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 2: Sequence(Survival) failed
+  ├─ Agent 2 trying child 1: Sequence(Shooting)
+🔗 Agent 2 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 2 sequence step 0: CheckCanShoot
+  ✅ Agent 2: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 2 sequence step 1: TaskShootBestTarget
+🎯 Agent 2: no targets in range 12
+🔫 Agent 2: no valid shooting targets
+  ❌ Agent 2: sequence failed at TaskShootBestTarget
+  ❌ Agent 2: Sequence(Shooting) failed
+  ├─ Agent 2 trying child 2: Sequence(Bombing)
+🔗 Agent 2 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 2 sequence step 0: CheckHasBombs
+  ❌ Agent 2: sequence failed at CheckHasBombs
+  ❌ Agent 2: Sequence(Bombing) failed
+  ├─ Agent 2 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 2: advancing toward enemy from (0,3) to (3,2)
+  ✅ Agent 2: TaskMoveTowardsEnemies succeeded
+Agent 2 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 3 evaluating Selector(Combat) with 5 children
+  ├─ Agent 3 trying child 0: Sequence(Survival)
+🔗 Agent 3 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 3 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 3: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 3: Sequence(Survival) failed
+  ├─ Agent 3 trying child 1: Sequence(Shooting)
+🔗 Agent 3 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 3 sequence step 0: CheckCanShoot
+  ✅ Agent 3: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 3 sequence step 1: TaskShootBestTarget
+🎯 Agent 3: no targets in range 4
+🔫 Agent 3: no valid shooting targets
+  ❌ Agent 3: sequence failed at TaskShootBestTarget
+  ❌ Agent 3: Sequence(Shooting) failed
+  ├─ Agent 3 trying child 2: Sequence(Bombing)
+🔗 Agent 3 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 3 sequence step 0: CheckHasBombs
+  ✅ Agent 3: C...
+Standard Output Stream:
+1; MOVE 4 3
+2; MOVE 3 2
+3; MOVE 4 4
+4; MOVE 2 2
+02
+29
+Standard Output Stream:
+5;MOVE 0 3; HUNKER_DOWN;
+6;MOVE 0 3; HUNKER_DOWN;
+7;MOVE 0 3; HUNKER_DOWN;
+8;MOVE 0 3; HUNKER_DOWN;
+Standard Error Stream:
+CAPTURED TURN 3 INPUT: 8
+CAPTURED TURN 3 AGENT INPUT: 1 2 0 0 1 0
+CAPTURED TURN 3 AGENT INPUT: 2 0 2 0 0 0
+CAPTURED TURN 3 AGENT INPUT: 3 2 1 0 3 0
+CAPTURED TURN 3 AGENT INPUT: 4 1 1 0 2 0
+CAPTURED TURN 3 AGENT INPUT: 5 13 7 0 1 0
+CAPTURED TURN 3 AGENT INPUT: 6 13 3 0 0 0
+CAPTURED TURN 3 AGENT INPUT: 7 13 6 0 3 0
+CAPTURED TURN 3 AGENT INPUT: 8 14 6 0 2 0
+Turn 3: 8 total agents, 4 mine
+CAPTURED TURN 3 MY_AGENT_COUNT: 4
+🧠 Team Analysis: Health=100.0, Territory=-13, Enemies=4, Turn=3, State=Combat(3)
+🌳 Agent 1 evaluating Selector(Combat) with 5 children
+  ├─ Agent 1 trying child 0: Sequence(Survival)
+🔗 Agent 1 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 1 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 1: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 1: Sequence(Survival) failed
+  ├─ Agent 1 trying child 1: Sequence(Shooting)
+🔗 Agent 1 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 1 sequence step 0: CheckCanShoot
+  ✅ Agent 1: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 1 sequence step 1: TaskShootBestTarget
+🎯 Agent 1: no targets in range 8
+🔫 Agent 1: no valid shooting targets
+  ❌ Agent 1: sequence failed at TaskShootBestTarget
+  ❌ Agent 1: Sequence(Shooting) failed
+  ├─ Agent 1 trying child 2: Sequence(Bombing)
+🔗 Agent 1 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 1 sequence step 0: CheckHasBombs
+  ✅ Agent 1: CheckHasBombs succeeded, continuing sequence
+  ├─ Agent 1 sequence step 1: TaskThrowOptimalBomb
+💣 Agent 1: best bomb target (2,0) score 0
+💣 Agent 1: bomb score 0 too low (need 50+), saving bomb
+  ❌ Agent 1: sequence failed at TaskThrowOptimalBomb
+  ❌ Agent 1: Sequence(Bombing) failed
+  ├─ Agent 1 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 1: advancing toward enemy from (2,0) to (5,3)
+  ✅ Agent 1: TaskMoveTowardsEnemies succeeded
+Agent 1 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 2 evaluating Selector(Combat) with 5 children
+  ├─ Agent 2 trying child 0: Sequence(Survival)
+🔗 Agent 2 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 2 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 2: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 2: Sequence(Survival) failed
+  ├─ Agent 2 trying child 1: Sequence(Shooting)
+🔗 Agent 2 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 2 sequence step 0: CheckCanShoot
+  ✅ Agent 2: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 2 sequence step 1: TaskShootBestTarget
+🎯 Agent 2: no targets in range 12
+🔫 Agent 2: no valid shooting targets
+  ❌ Agent 2: sequence failed at TaskShootBestTarget
+  ❌ Agent 2: Sequence(Shooting) failed
+  ├─ Agent 2 trying child 2: Sequence(Bombing)
+🔗 Agent 2 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 2 sequence step 0: CheckHasBombs
+  ❌ Agent 2: sequence failed at CheckHasBombs
+  ❌ Agent 2: Sequence(Bombing) failed
+  ├─ Agent 2 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 2: advancing toward enemy from (0,2) to (2,4)
+  ✅ Agent 2: TaskMoveTowardsEnemies succeeded
+Agent 2 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 3 evaluating Selector(Combat) with 5 children
+  ├─ Agent 3 trying child 0: Sequence(Survival)
+🔗 Agent 3 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 3 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 3: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 3: Sequence(Survival) failed
+  ├─ Agent 3 trying child 1: Sequence(Shooting)
+🔗 Agent 3 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 3 sequence step 0: CheckCanShoot
+  ✅ Agent 3: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 3 sequence step 1: TaskShootBestTarget
+🎯 Agent 3: no targets in range 4
+🔫 Agent 3: no valid shooting targets
+  ❌ Agent 3: sequence failed at TaskShootBestTarget
+  ❌ Agent 3: Sequence(Shooting) failed
+  ├─ Agent 3 trying child 2: Sequence(Bombing)
+🔗 Agent 3 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 3 sequence step 0: CheckHasBombs
+  ✅ Agent 3: ...
+Standard Output Stream:
+1; MOVE 5 3
+2; MOVE 2 4
+3; MOVE 6 3
+4; MOVE 4 3
+03
+29
+Standard Output Stream:
+5;MOVE 2 1; HUNKER_DOWN;
+6;MOVE 2 1; HUNKER_DOWN;
+7;MOVE 2 1; HUNKER_DOWN;
+8;MOVE 2 1; HUNKER_DOWN;
+Standard Error Stream:
+Turn 4: 8 total agents, 4 mine
+🧠 Team Analysis: Health=100.0, Territory=-10, Enemies=4, Turn=4, State=Combat(4)
+🌳 Agent 1 evaluating Selector(Combat) with 5 children
+  ├─ Agent 1 trying child 0: Sequence(Survival)
+🔗 Agent 1 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 1 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 1: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 1: Sequence(Survival) failed
+  ├─ Agent 1 trying child 1: Sequence(Shooting)
+🔗 Agent 1 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 1 sequence step 0: CheckCanShoot
+  ✅ Agent 1: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 1 sequence step 1: TaskShootBestTarget
+🎯 Agent 1: no targets in range 8
+🔫 Agent 1: no valid shooting targets
+  ❌ Agent 1: sequence failed at TaskShootBestTarget
+  ❌ Agent 1: Sequence(Shooting) failed
+  ├─ Agent 1 trying child 2: Sequence(Bombing)
+🔗 Agent 1 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 1 sequence step 0: CheckHasBombs
+  ✅ Agent 1: CheckHasBombs succeeded, continuing sequence
+  ├─ Agent 1 sequence step 1: TaskThrowOptimalBomb
+💣 Agent 1: best bomb target (3,0) score 0
+💣 Agent 1: bomb score 0 too low (need 50+), saving bomb
+  ❌ Agent 1: sequence failed at TaskThrowOptimalBomb
+  ❌ Agent 1: Sequence(Bombing) failed
+  ├─ Agent 1 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 1: advancing toward enemy from (3,0) to (6,1)
+  ✅ Agent 1: TaskMoveTowardsEnemies succeeded
+Agent 1 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 2 evaluating Selector(Combat) with 5 children
+  ├─ Agent 2 trying child 0: Sequence(Survival)
+🔗 Agent 2 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 2 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 2: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 2: Sequence(Survival) failed
+  ├─ Agent 2 trying child 1: Sequence(Shooting)
+🔗 Agent 2 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 2 sequence step 0: CheckCanShoot
+  ✅ Agent 2: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 2 sequence step 1: TaskShootBestTarget
+🎯 Agent 2: no targets in range 12
+🔫 Agent 2: no valid shooting targets
+  ❌ Agent 2: sequence failed at TaskShootBestTarget
+  ❌ Agent 2: Sequence(Shooting) failed
+  ├─ Agent 2 trying child 2: Sequence(Bombing)
+🔗 Agent 2 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 2 sequence step 0: CheckHasBombs
+  ❌ Agent 2: sequence failed at CheckHasBombs
+  ❌ Agent 2: Sequence(Bombing) failed
+  ├─ Agent 2 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 2: advancing toward enemy from (0,3) to (3,2)
+  ✅ Agent 2: TaskMoveTowardsEnemies succeeded
+Agent 2 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 3 evaluating Selector(Combat) with 5 children
+  ├─ Agent 3 trying child 0: Sequence(Survival)
+🔗 Agent 3 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 3 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 3: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 3: Sequence(Survival) failed
+  ├─ Agent 3 trying child 1: Sequence(Shooting)
+🔗 Agent 3 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 3 sequence step 0: CheckCanShoot
+  ✅ Agent 3: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 3 sequence step 1: TaskShootBestTarget
+🎯 Agent 3: no targets in range 4
+🔫 Agent 3: no valid shooting targets
+  ❌ Agent 3: sequence failed at TaskShootBestTarget
+  ❌ Agent 3: Sequence(Shooting) failed
+  ├─ Agent 3 trying child 2: Sequence(Bombing)
+🔗 Agent 3 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 3 sequence step 0: CheckHasBombs
+  ✅ Agent 3: CheckHasBombs succeeded, continuing sequence
+  ├─ Agent 3 sequence step 1: TaskThrowOptimalBomb
+💣 Agent 3: best bomb target (2,2) score 0
+💣 Agent 3: bomb score 0 too low (need 50+), saving bomb
+  ❌ Agent 3: sequence failed at TaskThrowOptimalBomb
+  ❌ Agent 3: Sequence(Bombing) failed
+  ├─ Agent 3 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 3: advancing toward enemy...
+Standard Output Stream:
+1; MOVE 6 1
+2; MOVE 3 2
+3; MOVE 5 2
+4; MOVE 5 3
+04
+29
+Standard Output Stream:
+5;MOVE 2 2; HUNKER_DOWN;
+6;MOVE 13 2; SHOOT 3;
+7;MOVE 2 2; HUNKER_DOWN;
+8;MOVE 2 2; HUNKER_DOWN;
+Standard Error Stream:
+Turn 5: 8 total agents, 4 mine
+🧠 Team Analysis: Health=97.0, Territory=-6, Enemies=4, Turn=5, State=Combat(5)
+🌳 Agent 1 evaluating Selector(Combat) with 5 children
+  ├─ Agent 1 trying child 0: Sequence(Survival)
+🔗 Agent 1 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 1 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 1: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 1: Sequence(Survival) failed
+  ├─ Agent 1 trying child 1: Sequence(Shooting)
+🔗 Agent 1 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 1 sequence step 0: CheckCanShoot
+  ✅ Agent 1: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 1 sequence step 1: TaskShootBestTarget
+🎯 Agent 1: no targets in range 8
+🔫 Agent 1: no valid shooting targets
+  ❌ Agent 1: sequence failed at TaskShootBestTarget
+  ❌ Agent 1: Sequence(Shooting) failed
+  ├─ Agent 1 trying child 2: Sequence(Bombing)
+🔗 Agent 1 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 1 sequence step 0: CheckHasBombs
+  ✅ Agent 1: CheckHasBombs succeeded, continuing sequence
+  ├─ Agent 1 sequence step 1: TaskThrowOptimalBomb
+💣 Agent 1: best bomb target (4,0) score 0
+💣 Agent 1: bomb score 0 too low (need 50+), saving bomb
+  ❌ Agent 1: sequence failed at TaskThrowOptimalBomb
+  ❌ Agent 1: Sequence(Bombing) failed
+  ├─ Agent 1 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 1: advancing toward enemy from (4,0) to (7,2)
+  ✅ Agent 1: TaskMoveTowardsEnemies succeeded
+Agent 1 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 2 evaluating Selector(Combat) with 5 children
+  ├─ Agent 2 trying child 0: Sequence(Survival)
+🔗 Agent 2 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 2 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 2: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 2: Sequence(Survival) failed
+  ├─ Agent 2 trying child 1: Sequence(Shooting)
+🔗 Agent 2 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 2 sequence step 0: CheckCanShoot
+  ✅ Agent 2: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 2 sequence step 1: TaskShootBestTarget
+🎯 Agent 2: no targets in range 12
+🔫 Agent 2: no valid shooting targets
+  ❌ Agent 2: sequence failed at TaskShootBestTarget
+  ❌ Agent 2: Sequence(Shooting) failed
+  ├─ Agent 2 trying child 2: Sequence(Bombing)
+🔗 Agent 2 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 2 sequence step 0: CheckHasBombs
+  ❌ Agent 2: sequence failed at CheckHasBombs
+  ❌ Agent 2: Sequence(Bombing) failed
+  ├─ Agent 2 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 2: advancing toward enemy from (0,2) to (2,2)
+  ✅ Agent 2: TaskMoveTowardsEnemies succeeded
+Agent 2 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 3 evaluating Selector(Combat) with 5 children
+  ├─ Agent 3 trying child 0: Sequence(Survival)
+🔗 Agent 3 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 3 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 3: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 3: Sequence(Survival) failed
+  ├─ Agent 3 trying child 1: Sequence(Shooting)
+🔗 Agent 3 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 3 sequence step 0: CheckCanShoot
+  ✅ Agent 3: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 3 sequence step 1: TaskShootBestTarget
+🎯 Agent 3: no targets in range 4
+🔫 Agent 3: no valid shooting targets
+  ❌ Agent 3: sequence failed at TaskShootBestTarget
+  ❌ Agent 3: Sequence(Shooting) failed
+  ├─ Agent 3 trying child 2: Sequence(Bombing)
+🔗 Agent 3 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 3 sequence step 0: CheckHasBombs
+  ✅ Agent 3: CheckHasBombs succeeded, continuing sequence
+  ├─ Agent 3 sequence step 1: TaskThrowOptimalBomb
+💣 Agent 3: best bomb target (3,2) score 0
+💣 Agent 3: bomb score 0 too low (need 50+), saving bomb
+  ❌ Agent 3: sequence failed at TaskThrowOptimalBomb
+  ❌ Agent 3: Sequence(Bombing) failed
+  ├─ Agent 3 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 3: advancing toward enemy f...
+Standard Output Stream:
+1; MOVE 7 2
+2; MOVE 2 2
+3; MOVE 6 1
+4; MOVE 5 2
+05
+29
+Standard Output Stream:
+5;MOVE 3 2; HUNKER_DOWN;
+6;MOVE 13 3; HUNKER_DOWN;
+7;MOVE 3 2; HUNKER_DOWN;
+8;MOVE 3 2; HUNKER_DOWN;
+Standard Error Stream:
+Turn 6: 8 total agents, 4 mine
+🧠 Team Analysis: Health=97.0, Territory=+0, Enemies=4, Turn=6, State=Combat(6)
+🌳 Agent 1 evaluating Selector(Combat) with 5 children
+  ├─ Agent 1 trying child 0: Sequence(Survival)
+🔗 Agent 1 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 1 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 1: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 1: Sequence(Survival) failed
+  ├─ Agent 1 trying child 1: Sequence(Shooting)
+🔗 Agent 1 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 1 sequence step 0: CheckCanShoot
+  ✅ Agent 1: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 1 sequence step 1: TaskShootBestTarget
+🎯 Agent 1: no targets in range 8
+🔫 Agent 1: no valid shooting targets
+  ❌ Agent 1: sequence failed at TaskShootBestTarget
+  ❌ Agent 1: Sequence(Shooting) failed
+  ├─ Agent 1 trying child 2: Sequence(Bombing)
+🔗 Agent 1 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 1 sequence step 0: CheckHasBombs
+  ✅ Agent 1: CheckHasBombs succeeded, continuing sequence
+  ├─ Agent 1 sequence step 1: TaskThrowOptimalBomb
+💣 Agent 1: best bomb target (5,0) score 0
+💣 Agent 1: bomb score 0 too low (need 50+), saving bomb
+  ❌ Agent 1: sequence failed at TaskThrowOptimalBomb
+  ❌ Agent 1: Sequence(Bombing) failed
+  ├─ Agent 1 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 1: advancing toward enemy from (5,0) to (8,3)
+  ✅ Agent 1: TaskMoveTowardsEnemies succeeded
+Agent 1 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 2 evaluating Selector(Combat) with 5 children
+  ├─ Agent 2 trying child 0: Sequence(Survival)
+🔗 Agent 2 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 2 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 2: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 2: Sequence(Survival) failed
+  ├─ Agent 2 trying child 1: Sequence(Shooting)
+🔗 Agent 2 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 2 sequence step 0: CheckCanShoot
+  ✅ Agent 2: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 2 sequence step 1: TaskShootBestTarget
+🎯 Agent 2: no targets in range 12
+🔫 Agent 2: no valid shooting targets
+  ❌ Agent 2: sequence failed at TaskShootBestTarget
+  ❌ Agent 2: Sequence(Shooting) failed
+  ├─ Agent 2 trying child 2: Sequence(Bombing)
+🔗 Agent 2 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 2 sequence step 0: CheckHasBombs
+  ❌ Agent 2: sequence failed at CheckHasBombs
+  ❌ Agent 2: Sequence(Bombing) failed
+  ├─ Agent 2 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 2: advancing toward enemy from (0,1) to (2,4)
+  ✅ Agent 2: TaskMoveTowardsEnemies succeeded
+Agent 2 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 3 evaluating Selector(Combat) with 5 children
+  ├─ Agent 3 trying child 0: Sequence(Survival)
+🔗 Agent 3 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 3 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 3: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 3: Sequence(Survival) failed
+  ├─ Agent 3 trying child 1: Sequence(Shooting)
+🔗 Agent 3 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 3 sequence step 0: CheckCanShoot
+  ✅ Agent 3: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 3 sequence step 1: TaskShootBestTarget
+🎯 Agent 3: no targets in range 4
+🔫 Agent 3: no valid shooting targets
+  ❌ Agent 3: sequence failed at TaskShootBestTarget
+  ❌ Agent 3: Sequence(Shooting) failed
+  ├─ Agent 3 trying child 2: Sequence(Bombing)
+🔗 Agent 3 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 3 sequence step 0: CheckHasBombs
+  ✅ Agent 3: CheckHasBombs succeeded, continuing sequence
+  ├─ Agent 3 sequence step 1: TaskThrowOptimalBomb
+💣 Agent 3: best bomb target (4,2) score 0
+💣 Agent 3: bomb score 0 too low (need 50+), saving bomb
+  ❌ Agent 3: sequence failed at TaskThrowOptimalBomb
+  ❌ Agent 3: Sequence(Bombing) failed
+  ├─ Agent 3 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 3: advancing toward enemy f...
+Standard Output Stream:
+1; MOVE 8 3
+2; MOVE 2 4
+3; MOVE 7 3
+4; MOVE 7 4
+06
+29
+Standard Output Stream:
+5;MOVE 4 2; HUNKER_DOWN;
+6;MOVE 12 3; HUNKER_DOWN;
+7;MOVE 4 2; HUNKER_DOWN;
+8;MOVE 4 2; HUNKER_DOWN;
+Standard Error Stream:
+Turn 7: 8 total agents, 4 mine
+🧠 Team Analysis: Health=97.0, Territory=+0, Enemies=4, Turn=7, State=Combat(7)
+🌳 Agent 1 evaluating Selector(Combat) with 5 children
+  ├─ Agent 1 trying child 0: Sequence(Survival)
+🔗 Agent 1 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 1 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 1: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 1: Sequence(Survival) failed
+  ├─ Agent 1 trying child 1: Sequence(Shooting)
+🔗 Agent 1 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 1 sequence step 0: CheckCanShoot
+  ✅ Agent 1: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 1 sequence step 1: TaskShootBestTarget
+🎯 Agent 1: no targets in range 8
+🔫 Agent 1: no valid shooting targets
+  ❌ Agent 1: sequence failed at TaskShootBestTarget
+  ❌ Agent 1: Sequence(Shooting) failed
+  ├─ Agent 1 trying child 2: Sequence(Bombing)
+🔗 Agent 1 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 1 sequence step 0: CheckHasBombs
+  ✅ Agent 1: CheckHasBombs succeeded, continuing sequence
+  ├─ Agent 1 sequence step 1: TaskThrowOptimalBomb
+💣 Agent 1: best bomb target (6,0) score 0
+💣 Agent 1: bomb score 0 too low (need 50+), saving bomb
+  ❌ Agent 1: sequence failed at TaskThrowOptimalBomb
+  ❌ Agent 1: Sequence(Bombing) failed
+  ├─ Agent 1 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 1: advancing toward enemy from (6,0) to (9,3)
+  ✅ Agent 1: TaskMoveTowardsEnemies succeeded
+Agent 1 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 2 evaluating Selector(Combat) with 5 children
+  ├─ Agent 2 trying child 0: Sequence(Survival)
+🔗 Agent 2 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 2 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 2: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 2: Sequence(Survival) failed
+  ├─ Agent 2 trying child 1: Sequence(Shooting)
+🔗 Agent 2 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 2 sequence step 0: CheckCanShoot
+  ✅ Agent 2: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 2 sequence step 1: TaskShootBestTarget
+🎯 Agent 2: no targets in range 12
+🔫 Agent 2: no valid shooting targets
+  ❌ Agent 2: sequence failed at TaskShootBestTarget
+  ❌ Agent 2: Sequence(Shooting) failed
+  ├─ Agent 2 trying child 2: Sequence(Bombing)
+🔗 Agent 2 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 2 sequence step 0: CheckHasBombs
+  ❌ Agent 2: sequence failed at CheckHasBombs
+  ❌ Agent 2: Sequence(Bombing) failed
+  ├─ Agent 2 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 2: advancing toward enemy from (0,2) to (2,4)
+  ✅ Agent 2: TaskMoveTowardsEnemies succeeded
+Agent 2 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 3 evaluating Selector(Combat) with 5 children
+  ├─ Agent 3 trying child 0: Sequence(Survival)
+🔗 Agent 3 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 3 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 3: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 3: Sequence(Survival) failed
+  ├─ Agent 3 trying child 1: Sequence(Shooting)
+🔗 Agent 3 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 3 sequence step 0: CheckCanShoot
+  ✅ Agent 3: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 3 sequence step 1: TaskShootBestTarget
+🎯 Agent 3: no targets in range 4
+🔫 Agent 3: no valid shooting targets
+  ❌ Agent 3: sequence failed at TaskShootBestTarget
+  ❌ Agent 3: Sequence(Shooting) failed
+  ├─ Agent 3 trying child 2: Sequence(Bombing)
+🔗 Agent 3 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 3 sequence step 0: CheckHasBombs
+  ✅ Agent 3: CheckHasBombs succeeded, continuing sequence
+  ├─ Agent 3 sequence step 1: TaskThrowOptimalBomb
+💣 Agent 3: best bomb target (4,3) score 0
+💣 Agent 3: bomb score 0 too low (need 50+), saving bomb
+  ❌ Agent 3: sequence failed at TaskThrowOptimalBomb
+  ❌ Agent 3: Sequence(Bombing) failed
+  ├─ Agent 3 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 3: advancing toward enemy f...
+Standard Output Stream:
+1; MOVE 9 3
+2; MOVE 2 4
+3; MOVE 7 4
+4; MOVE 6 4
+07
+29
+Standard Output Stream:
+5;MOVE 4 3; HUNKER_DOWN;
+6;MOVE 12 3; HUNKER_DOWN;
+7;MOVE 4 3; HUNKER_DOWN;
+8;MOVE 4 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn 8: 8 total agents, 4 mine
+🧠 Team Analysis: Health=97.0, Territory=-3, Enemies=4, Turn=8, State=Combat(8)
+🌳 Agent 1 evaluating Selector(Combat) with 5 children
+  ├─ Agent 1 trying child 0: Sequence(Survival)
+🔗 Agent 1 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 1 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 1: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 1: Sequence(Survival) failed
+  ├─ Agent 1 trying child 1: Sequence(Shooting)
+🔗 Agent 1 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 1 sequence step 0: CheckCanShoot
+  ✅ Agent 1: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 1 sequence step 1: TaskShootBestTarget
+🎯 Agent 1 evaluating enemy 7: dist=7, wetness=0, score=102.0
+🎯 Agent 1 evaluating enemy 8: dist=8, wetness=0, score=100.0
+🎯 Agent 1 evaluating enemy 5: dist=8, wetness=0, score=100.0
+🎯 Agent 1: best target is 7 (score 102.0)
+🎯 Agent 1: shooting target 7
+  ✅ Agent 1: TaskShootBestTarget succeeded, continuing sequence
+  🎉 Agent 1: All children of Sequence(Shooting) succeeded
+  ✅ Agent 1: Sequence(Shooting) succeeded
+Agent 1 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 2 evaluating Selector(Combat) with 5 children
+  ├─ Agent 2 trying child 0: Sequence(Survival)
+🔗 Agent 2 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 2 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 2: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 2: Sequence(Survival) failed
+  ├─ Agent 2 trying child 1: Sequence(Shooting)
+🔗 Agent 2 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 2 sequence step 0: CheckCanShoot
+  ✅ Agent 2: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 2 sequence step 1: TaskShootBestTarget
+🎯 Agent 2 evaluating enemy 8: dist=12, wetness=0, score=100.0
+🎯 Agent 2 evaluating enemy 5: dist=12, wetness=0, score=100.0
+🎯 Agent 2 evaluating enemy 7: dist=11, wetness=0, score=102.0
+🎯 Agent 2: best target is 7 (score 102.0)
+🎯 Agent 2: shooting target 7
+  ✅ Agent 2: TaskShootBestTarget succeeded, continuing sequence
+  🎉 Agent 2: All children of Sequence(Shooting) succeeded
+  ✅ Agent 2: Sequence(Shooting) succeeded
+Agent 2 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 3 evaluating Selector(Combat) with 5 children
+  ├─ Agent 3 trying child 0: Sequence(Survival)
+🔗 Agent 3 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 3 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 3: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 3: Sequence(Survival) failed
+  ├─ Agent 3 trying child 1: Sequence(Shooting)
+🔗 Agent 3 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 3 sequence step 0: CheckCanShoot
+  ✅ Agent 3: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 3 sequence step 1: TaskShootBestTarget
+🎯 Agent 3: no targets in range 4
+🔫 Agent 3: no valid shooting targets
+  ❌ Agent 3: sequence failed at TaskShootBestTarget
+  ❌ Agent 3: Sequence(Shooting) failed
+  ├─ Agent 3 trying child 2: Sequence(Bombing)
+🔗 Agent 3 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 3 sequence step 0: CheckHasBombs
+  ✅ Agent 3: CheckHasBombs succeeded, continuing sequence
+  ├─ Agent 3 sequence step 1: TaskThrowOptimalBomb
+💣 Agent 3: best bomb target (7,4) score 50
+💣 Agent 3: bomb score 50 too low (need 50+), saving bomb
+  ❌ Agent 3: sequence failed at TaskThrowOptimalBomb
+  ❌ Agent 3: Sequence(Bombing) failed
+  ├─ Agent 3 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 3: in good shooting range 6 of nearest enemy (dist 6), hunkering
+  ✅ Agent 3: TaskMoveTowardsEnemies succeeded
+Agent 3 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 4 evaluating Selector(Combat) with 5 children
+  ├─ Agent 4 trying child 0: Sequence(Survival)
+🔗 Agent 4 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 4 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 4: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 4: Sequence(Survival) failed
+  ├─ Agent 4 trying child 1: Sequence(Shoo...
+Standard Output Stream:
+1; SHOOT 7
+2; SHOOT 7
+3; HUNKER_DOWN
+4; SHOOT 7
+08
+29
+Standard Output Stream:
+5;MOVE 8 7; SHOOT 3;
+6;MOVE 13 4; HUNKER_DOWN;
+7;MOVE 4 4; HUNKER_DOWN;
+8;MOVE 9 6; SHOOT 3;
+Standard Error Stream:
+Turn 9: 8 total agents, 4 mine
+🧠 Team Analysis: Health=94.0, Territory=-6, Enemies=4, Turn=9, State=Combat(9)
+🌳 Agent 1 evaluating Selector(Combat) with 5 children
+  ├─ Agent 1 trying child 0: Sequence(Survival)
+🔗 Agent 1 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 1 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 1: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 1: Sequence(Survival) failed
+  ├─ Agent 1 trying child 1: Sequence(Shooting)
+🔗 Agent 1 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 1 sequence step 0: CheckCanShoot
+  ❌ Agent 1: sequence failed at CheckCanShoot
+  ❌ Agent 1: Sequence(Shooting) failed
+  ├─ Agent 1 trying child 2: Sequence(Bombing)
+🔗 Agent 1 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 1 sequence step 0: CheckHasBombs
+  ✅ Agent 1: CheckHasBombs succeeded, continuing sequence
+  ├─ Agent 1 sequence step 1: TaskThrowOptimalBomb
+💣 Agent 1: best bomb target (6,1) score 0
+💣 Agent 1: bomb score 0 too low (need 50+), saving bomb
+  ❌ Agent 1: sequence failed at TaskThrowOptimalBomb
+  ❌ Agent 1: Sequence(Bombing) failed
+  ├─ Agent 1 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 1: in good shooting range 6 of nearest enemy (dist 6), hunkering
+  ✅ Agent 1: TaskMoveTowardsEnemies succeeded
+Agent 1 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 2 evaluating Selector(Combat) with 5 children
+  ├─ Agent 2 trying child 0: Sequence(Survival)
+🔗 Agent 2 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 2 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 2: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 2: Sequence(Survival) failed
+  ├─ Agent 2 trying child 1: Sequence(Shooting)
+🔗 Agent 2 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 2 sequence step 0: CheckCanShoot
+  ❌ Agent 2: sequence failed at CheckCanShoot
+  ❌ Agent 2: Sequence(Shooting) failed
+  ├─ Agent 2 trying child 2: Sequence(Bombing)
+🔗 Agent 2 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 2 sequence step 0: CheckHasBombs
+  ❌ Agent 2: sequence failed at CheckHasBombs
+  ❌ Agent 2: Sequence(Bombing) failed
+  ├─ Agent 2 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 2: advancing toward enemy from (0,3) to (2,4)
+  ✅ Agent 2: TaskMoveTowardsEnemies succeeded
+Agent 2 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 3 evaluating Selector(Combat) with 5 children
+  ├─ Agent 3 trying child 0: Sequence(Survival)
+🔗 Agent 3 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 3 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 3: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 3: Sequence(Survival) failed
+  ├─ Agent 3 trying child 1: Sequence(Shooting)
+🔗 Agent 3 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 3 sequence step 0: CheckCanShoot
+  ✅ Agent 3: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 3 sequence step 1: TaskShootBestTarget
+🎯 Agent 3: no targets in range 4
+🔫 Agent 3: no valid shooting targets
+  ❌ Agent 3: sequence failed at TaskShootBestTarget
+  ❌ Agent 3: Sequence(Shooting) failed
+  ├─ Agent 3 trying child 2: Sequence(Bombing)
+🔗 Agent 3 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 3 sequence step 0: CheckHasBombs
+  ✅ Agent 3: CheckHasBombs succeeded, continuing sequence
+  ├─ Agent 3 sequence step 1: TaskThrowOptimalBomb
+💣 Agent 3: best bomb target (7,4) score 50
+💣 Agent 3: bomb score 50 too low (need 50+), saving bomb
+  ❌ Agent 3: sequence failed at TaskThrowOptimalBomb
+  ❌ Agent 3: Sequence(Bombing) failed
+  ├─ Agent 3 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 3: in good shooting range 6 of nearest enemy (dist 5), hunkering
+  ✅ Agent 3: TaskMoveTowardsEnemies succeeded
+Agent 3 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 4 evaluating Selector(Combat) with 5 children
+  ├─ Agent 4 trying child 0: Sequence(Survival)
+🔗 Agent 4 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 4 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 4: seq...
+Standard Output Stream:
+1; HUNKER_DOWN
+2; MOVE 2 4
+3; HUNKER_DOWN
+4; HUNKER_DOWN
+09
+29
+Standard Output Stream:
+5;MOVE 9 7; THROW 5 4;
+6;MOVE 13 4; HUNKER_DOWN;
+7;MOVE 4 4; HUNKER_DOWN;
+8;MOVE 10 6; THROW 6 3;
+Game Summary:
+Default cannot throw splash bomb to 5 4, it is too far away from agent 5.
+Default cannot throw splash bomb to 6 3, it is too far away from agent 8.
+Standard Error Stream:
+Turn 10: 8 total agents, 4 mine
+🧠 Team Analysis: Health=94.0, Territory=-4, Enemies=4, Turn=10, State=Combat(10)
+🌳 Agent 1 evaluating Selector(Combat) with 5 children
+  ├─ Agent 1 trying child 0: Sequence(Survival)
+🔗 Agent 1 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 1 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 1: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 1: Sequence(Survival) failed
+  ├─ Agent 1 trying child 1: Sequence(Shooting)
+🔗 Agent 1 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 1 sequence step 0: CheckCanShoot
+  ✅ Agent 1: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 1 sequence step 1: TaskShootBestTarget
+🎯 Agent 1 evaluating enemy 7: dist=5, wetness=21, score=85.0
+🎯 Agent 1: best target is 7 (score 85.0)
+🎯 Agent 1: shooting target 7
+  ✅ Agent 1: TaskShootBestTarget succeeded, continuing sequence
+  🎉 Agent 1: All children of Sequence(Shooting) succeeded
+  ✅ Agent 1: Sequence(Shooting) succeeded
+Agent 1 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 2 evaluating Selector(Combat) with 5 children
+  ├─ Agent 2 trying child 0: Sequence(Survival)
+🔗 Agent 2 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 2 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 2: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 2: Sequence(Survival) failed
+  ├─ Agent 2 trying child 1: Sequence(Shooting)
+🔗 Agent 2 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 2 sequence step 0: CheckCanShoot
+  ❌ Agent 2: sequence failed at CheckCanShoot
+  ❌ Agent 2: Sequence(Shooting) failed
+  ├─ Agent 2 trying child 2: Sequence(Bombing)
+🔗 Agent 2 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 2 sequence step 0: CheckHasBombs
+  ❌ Agent 2: sequence failed at CheckHasBombs
+  ❌ Agent 2: Sequence(Bombing) failed
+  ├─ Agent 2 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 2: advancing toward enemy from (0,4) to (2,4)
+  ✅ Agent 2: TaskMoveTowardsEnemies succeeded
+Agent 2 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 3 evaluating Selector(Combat) with 5 children
+  ├─ Agent 3 trying child 0: Sequence(Survival)
+🔗 Agent 3 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 3 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 3: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 3: Sequence(Survival) failed
+  ├─ Agent 3 trying child 1: Sequence(Shooting)
+🔗 Agent 3 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 3 sequence step 0: CheckCanShoot
+  ✅ Agent 3: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 3 sequence step 1: TaskShootBestTarget
+🎯 Agent 3 evaluating enemy 7: dist=4, wetness=21, score=79.0
+🎯 Agent 3: best target is 7 (score 79.0)
+🎯 Agent 3: shooting target 7
+  ✅ Agent 3: TaskShootBestTarget succeeded, continuing sequence
+  🎉 Agent 3: All children of Sequence(Shooting) succeeded
+  ✅ Agent 3: Sequence(Shooting) succeeded
+Agent 3 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 4 evaluating Selector(Combat) with 5 children
+  ├─ Agent 4 trying child 0: Sequence(Survival)
+🔗 Agent 4 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 4 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 4: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 4: Sequence(Survival) failed
+  ├─ Agent 4 trying child 1: Sequence(Shooting)
+🔗 Agent 4 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 4 sequence step 0: CheckCanShoot
+  ❌ Agent 4: sequence failed at CheckCanShoot
+  ❌ Agent 4: Sequence(Shooting) failed
+  ├─ Agent 4 trying child 2: Sequence(Bombing)
+🔗 Agent 4 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 4 sequence step 0: CheckHasBombs
+  ✅ Agent 4: CheckHasBombs succeeded, continuing sequence
+  ├─ Agent 4 sequence step 1: TaskThrowOptimalBomb
+💣 Agent 4: best bomb target (5,2) score 0
+💣 Agent 4: bomb score 0 too low (need 50+), saving bomb
+  ❌ Agent 4: sequence failed at TaskThrowOptimalBomb
+  ❌ Agent 4: Sequence(Bombing) failed
+  ├─ Agent 4 trying chil...
+Standard Output Stream:
+1; SHOOT 7
+2; MOVE 2 4
+3; SHOOT 7
+4; HUNKER_DOWN
+10
+29
+Standard Output Stream:
+5;MOVE 10 3; HUNKER_DOWN;
+6;MOVE 13 3; SHOOT 4;
+7;MOVE 4 4; HUNKER_DOWN;
+8;MOVE 11 6; HUNKER_DOWN;
+Standard Error Stream:
+Turn 11: 8 total agents, 4 mine
+🧠 Team Analysis: Health=93.2, Territory=-6, Enemies=4, Turn=11, State=Combat(11)
+🌳 Agent 1 evaluating Selector(Combat) with 5 children
+  ├─ Agent 1 trying child 0: Sequence(Survival)
+🔗 Agent 1 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 1 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 1: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 1: Sequence(Survival) failed
+  ├─ Agent 1 trying child 1: Sequence(Shooting)
+🔗 Agent 1 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 1 sequence step 0: CheckCanShoot
+  ❌ Agent 1: sequence failed at CheckCanShoot
+  ❌ Agent 1: Sequence(Shooting) failed
+  ├─ Agent 1 trying child 2: Sequence(Bombing)
+🔗 Agent 1 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 1 sequence step 0: CheckHasBombs
+  ✅ Agent 1: CheckHasBombs succeeded, continuing sequence
+  ├─ Agent 1 sequence step 1: TaskThrowOptimalBomb
+💣 Agent 1: best bomb target (6,1) score 0
+💣 Agent 1: bomb score 0 too low (need 50+), saving bomb
+  ❌ Agent 1: sequence failed at TaskThrowOptimalBomb
+  ❌ Agent 1: Sequence(Bombing) failed
+  ├─ Agent 1 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 1: in good shooting range 6 of nearest enemy (dist 4), hunkering
+  ✅ Agent 1: TaskMoveTowardsEnemies succeeded
+Agent 1 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 2 evaluating Selector(Combat) with 5 children
+  ├─ Agent 2 trying child 0: Sequence(Survival)
+🔗 Agent 2 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 2 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 2: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 2: Sequence(Survival) failed
+  ├─ Agent 2 trying child 1: Sequence(Shooting)
+🔗 Agent 2 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 2 sequence step 0: CheckCanShoot
+  ❌ Agent 2: sequence failed at CheckCanShoot
+  ❌ Agent 2: Sequence(Shooting) failed
+  ├─ Agent 2 trying child 2: Sequence(Bombing)
+🔗 Agent 2 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 2 sequence step 0: CheckHasBombs
+  ❌ Agent 2: sequence failed at CheckHasBombs
+  ❌ Agent 2: Sequence(Bombing) failed
+  ├─ Agent 2 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 2: in good shooting range 6 of nearest enemy (dist 6), hunkering
+  ✅ Agent 2: TaskMoveTowardsEnemies succeeded
+Agent 2 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 3 evaluating Selector(Combat) with 5 children
+  ├─ Agent 3 trying child 0: Sequence(Survival)
+🔗 Agent 3 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 3 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 3: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 3: Sequence(Survival) failed
+  ├─ Agent 3 trying child 1: Sequence(Shooting)
+🔗 Agent 3 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 3 sequence step 0: CheckCanShoot
+  ❌ Agent 3: sequence failed at CheckCanShoot
+  ❌ Agent 3: Sequence(Shooting) failed
+  ├─ Agent 3 trying child 2: Sequence(Bombing)
+🔗 Agent 3 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 3 sequence step 0: CheckHasBombs
+  ✅ Agent 3: CheckHasBombs succeeded, continuing sequence
+  ├─ Agent 3 sequence step 1: TaskThrowOptimalBomb
+💣 Agent 3: best bomb target (7,4) score 50
+💣 Agent 3: bomb score 50 too low (need 50+), saving bomb
+  ❌ Agent 3: sequence failed at TaskThrowOptimalBomb
+  ❌ Agent 3: Sequence(Bombing) failed
+  ├─ Agent 3 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 3: in good shooting range 6 of nearest enemy (dist 3), hunkering
+  ✅ Agent 3: TaskMoveTowardsEnemies succeeded
+Agent 3 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 4 evaluating Selector(Combat) with 5 children
+  ├─ Agent 4 trying child 0: Sequence(Survival)
+🔗 Agent 4 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 4 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 4: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 4: Sequence(Survival) failed
+  ├─ Agent 4 trying child 1: Sequence(Shooting)
+🔗 Agent 4 evaluating Sequence(Shooting) w...
+Standard Output Stream:
+1; HUNKER_DOWN
+2; HUNKER_DOWN
+3; HUNKER_DOWN
+4; SHOOT 5
+11
+29
+Standard Output Stream:
+5;MOVE 9 6; SHOOT 3;
+6;MOVE 13 3; HUNKER_DOWN;
+7;MOVE 4 5; SHOOT 3;
+8;MOVE 10 3; HUNKER_DOWN;
+Standard Error Stream:
+Turn 12: 8 total agents, 4 mine
+🧠 Team Analysis: Health=90.2, Territory=-8, Enemies=4, Turn=12, State=Combat(12)
+🌳 Agent 1 evaluating Selector(Combat) with 5 children
+  ├─ Agent 1 trying child 0: Sequence(Survival)
+🔗 Agent 1 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 1 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 1: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 1: Sequence(Survival) failed
+  ├─ Agent 1 trying child 1: Sequence(Shooting)
+🔗 Agent 1 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 1 sequence step 0: CheckCanShoot
+  ✅ Agent 1: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 1 sequence step 1: TaskShootBestTarget
+🎯 Agent 1 evaluating enemy 5: dist=8, wetness=4, score=96.0
+🎯 Agent 1 evaluating enemy 7: dist=3, wetness=36, score=74.0
+🎯 Agent 1: best target is 5 (score 96.0)
+🎯 Agent 1: shooting target 5
+  ✅ Agent 1: TaskShootBestTarget succeeded, continuing sequence
+  🎉 Agent 1: All children of Sequence(Shooting) succeeded
+  ✅ Agent 1: Sequence(Shooting) succeeded
+Agent 1 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 2 evaluating Selector(Combat) with 5 children
+  ├─ Agent 2 trying child 0: Sequence(Survival)
+🔗 Agent 2 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 2 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 2: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 2: Sequence(Survival) failed
+  ├─ Agent 2 trying child 1: Sequence(Shooting)
+🔗 Agent 2 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 2 sequence step 0: CheckCanShoot
+  ❌ Agent 2: sequence failed at CheckCanShoot
+  ❌ Agent 2: Sequence(Shooting) failed
+  ├─ Agent 2 trying child 2: Sequence(Bombing)
+🔗 Agent 2 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 2 sequence step 0: CheckHasBombs
+  ❌ Agent 2: sequence failed at CheckHasBombs
+  ❌ Agent 2: Sequence(Bombing) failed
+  ├─ Agent 2 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 2: in good shooting range 6 of nearest enemy (dist 5), hunkering
+  ✅ Agent 2: TaskMoveTowardsEnemies succeeded
+Agent 2 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 3 evaluating Selector(Combat) with 5 children
+  ├─ Agent 3 trying child 0: Sequence(Survival)
+🔗 Agent 3 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 3 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 3: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 3: Sequence(Survival) failed
+  ├─ Agent 3 trying child 1: Sequence(Shooting)
+🔗 Agent 3 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 3 sequence step 0: CheckCanShoot
+  ❌ Agent 3: sequence failed at CheckCanShoot
+  ❌ Agent 3: Sequence(Shooting) failed
+  ├─ Agent 3 trying child 2: Sequence(Bombing)
+🔗 Agent 3 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 3 sequence step 0: CheckHasBombs
+  ✅ Agent 3: CheckHasBombs succeeded, continuing sequence
+  ├─ Agent 3 sequence step 1: TaskThrowOptimalBomb
+💣 Agent 3: best bomb target (7,4) score 50
+💣 Agent 3: bomb score 50 too low (need 50+), saving bomb
+  ❌ Agent 3: sequence failed at TaskThrowOptimalBomb
+  ❌ Agent 3: Sequence(Bombing) failed
+  ├─ Agent 3 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 3: in good shooting range 6 of nearest enemy (dist 2), hunkering
+  ✅ Agent 3: TaskMoveTowardsEnemies succeeded
+Agent 3 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 4 evaluating Selector(Combat) with 5 children
+  ├─ Agent 4 trying child 0: Sequence(Survival)
+🔗 Agent 4 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 4 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 4: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 4: Sequence(Survival) failed
+  ├─ Agent 4 trying child 1: Sequence(Shooting)
+🔗 Agent 4 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 4 sequence step 0: CheckCanShoot
+  ❌ Agent 4: sequence failed at CheckCanShoot
+  ❌ Agent 4: Sequence(Shooting) failed
+  ├─ Agent 4 trying child 2: Sequence(Bombing)
+🔗 Agent 4 evaluating Sequence(Bombing) with 2 ...
+Standard Output Stream:
+1; SHOOT 5
+2; HUNKER_DOWN
+3; HUNKER_DOWN
+4; HUNKER_DOWN
+12
+29
+Standard Output Stream:
+5;MOVE 10 6; HUNKER_DOWN;
+6;MOVE 13 3; HUNKER_DOWN;
+7;MOVE 6 5; THROW 6 1;
+8;MOVE 10 3; HUNKER_DOWN;
+Game Summary:
+Myhay agent id 1 cannot shoot id 5, they are too far away
+Standard Error Stream:
+Turn 13: 8 total agents, 4 mine
+🧠 Team Analysis: Health=75.2, Territory=-8, Enemies=4, Turn=13, State=Combat(13)
+🌳 Agent 1 evaluating Selector(Combat) with 5 children
+  ├─ Agent 1 trying child 0: Sequence(Survival)
+🔗 Agent 1 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 1 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 1: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 1: Sequence(Survival) failed
+  ├─ Agent 1 trying child 1: Sequence(Shooting)
+🔗 Agent 1 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 1 sequence step 0: CheckCanShoot
+  ✅ Agent 1: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 1 sequence step 1: TaskShootBestTarget
+🎯 Agent 1 evaluating enemy 7: dist=4, wetness=36, score=72.0
+🎯 Agent 1 evaluating enemy 8: dist=8, wetness=0, score=100.0
+🎯 Agent 1: best target is 8 (score 100.0)
+🎯 Agent 1: shooting target 8
+  ✅ Agent 1: TaskShootBestTarget succeeded, continuing sequence
+  🎉 Agent 1: All children of Sequence(Shooting) succeeded
+  ✅ Agent 1: Sequence(Shooting) succeeded
+Agent 1 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 2 evaluating Selector(Combat) with 5 children
+  ├─ Agent 2 trying child 0: Sequence(Survival)
+🔗 Agent 2 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 2 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 2: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 2: Sequence(Survival) failed
+  ├─ Agent 2 trying child 1: Sequence(Shooting)
+🔗 Agent 2 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 2 sequence step 0: CheckCanShoot
+  ❌ Agent 2: sequence failed at CheckCanShoot
+  ❌ Agent 2: Sequence(Shooting) failed
+  ├─ Agent 2 trying child 2: Sequence(Bombing)
+🔗 Agent 2 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 2 sequence step 0: CheckHasBombs
+  ❌ Agent 2: sequence failed at CheckHasBombs
+  ❌ Agent 2: Sequence(Bombing) failed
+  ├─ Agent 2 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 2: in good shooting range 6 of nearest enemy (dist 6), hunkering
+  ✅ Agent 2: TaskMoveTowardsEnemies succeeded
+Agent 2 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 3 evaluating Selector(Combat) with 5 children
+  ├─ Agent 3 trying child 0: Sequence(Survival)
+🔗 Agent 3 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 3 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 3: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 3: Sequence(Survival) failed
+  ├─ Agent 3 trying child 1: Sequence(Shooting)
+🔗 Agent 3 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 3 sequence step 0: CheckCanShoot
+  ✅ Agent 3: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 3 sequence step 1: TaskShootBestTarget
+🎯 Agent 3 evaluating enemy 7: dist=3, wetness=36, score=66.0
+🎯 Agent 3: best target is 7 (score 66.0)
+🎯 Agent 3: shooting target 7
+  ✅ Agent 3: TaskShootBestTarget succeeded, continuing sequence
+  🎉 Agent 3: All children of Sequence(Shooting) succeeded
+  ✅ Agent 3: Sequence(Shooting) succeeded
+Agent 3 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 4 evaluating Selector(Combat) with 5 children
+  ├─ Agent 4 trying child 0: Sequence(Survival)
+🔗 Agent 4 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 4 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 4: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 4: Sequence(Survival) failed
+  ├─ Agent 4 trying child 1: Sequence(Shooting)
+🔗 Agent 4 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 4 sequence step 0: CheckCanShoot
+  ❌ Agent 4: sequence failed at CheckCanShoot
+  ❌ Agent 4: Sequence(Shooting) failed
+  ├─ Agent 4 trying child 2: Sequence(Bombing)
+🔗 Agent 4 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 4 sequence step 0: CheckHasBombs
+  ✅ Agent 4: CheckHasBombs succeeded, continuing sequence
+  ├─ Agent 4 sequence step 1: TaskThrowOptimalBomb
+💣 Agent 4: best bomb target (5,2) score 0
+💣 Agent 4: bomb score 0 too low (need 50+), saving bomb
+  ❌ Agent 4: sequence failed at TaskT...
+Standard Output Stream:
+1; SHOOT 8
+2; HUNKER_DOWN
+3; SHOOT 7
+4; HUNKER_DOWN
+13
+29
+Standard Output Stream:
+5;MOVE 6 5; HUNKER_DOWN;
+6;MOVE 13 3; HUNKER_DOWN;
+7;MOVE 7 5; THROW 5 2;
+8;MOVE 11 4; SHOOT 3;
+Game Summary:
+Default cannot throw splash bomb to 5 2, it is too far away from agent 7.
+Standard Error Stream:
+Turn 14: 8 total agents, 4 mine
+🧠 Team Analysis: Health=73.2, Territory=-6, Enemies=4, Turn=14, State=Combat(14)
+🌳 Agent 1 evaluating Selector(Combat) with 5 children
+  ├─ Agent 1 trying child 0: Sequence(Survival)
+🔗 Agent 1 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 1 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 1: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 1: Sequence(Survival) failed
+  ├─ Agent 1 trying child 1: Sequence(Shooting)
+🔗 Agent 1 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 1 sequence step 0: CheckCanShoot
+  ❌ Agent 1: sequence failed at CheckCanShoot
+  ❌ Agent 1: Sequence(Shooting) failed
+  ├─ Agent 1 trying child 2: Sequence(Bombing)
+🔗 Agent 1 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 1 sequence step 0: CheckHasBombs
+  ✅ Agent 1: CheckHasBombs succeeded, continuing sequence
+  ├─ Agent 1 sequence step 1: TaskThrowOptimalBomb
+💣 Agent 1: best bomb target (6,1) score 0
+💣 Agent 1: bomb score 0 too low (need 50+), saving bomb
+  ❌ Agent 1: sequence failed at TaskThrowOptimalBomb
+  ❌ Agent 1: Sequence(Bombing) failed
+  ├─ Agent 1 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 1: in good shooting range 6 of nearest enemy (dist 5), hunkering
+  ✅ Agent 1: TaskMoveTowardsEnemies succeeded
+Agent 1 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 2 evaluating Selector(Combat) with 5 children
+  ├─ Agent 2 trying child 0: Sequence(Survival)
+🔗 Agent 2 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 2 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 2: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 2: Sequence(Survival) failed
+  ├─ Agent 2 trying child 1: Sequence(Shooting)
+🔗 Agent 2 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 2 sequence step 0: CheckCanShoot
+  ✅ Agent 2: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 2 sequence step 1: TaskShootBestTarget
+🎯 Agent 2 evaluating enemy 8: dist=10, wetness=8, score=96.0
+🎯 Agent 2 evaluating enemy 5: dist=10, wetness=4, score=100.0
+🎯 Agent 2 evaluating enemy 7: dist=7, wetness=40, score=70.0
+🎯 Agent 2: best target is 5 (score 100.0)
+🎯 Agent 2: shooting target 5
+  ✅ Agent 2: TaskShootBestTarget succeeded, continuing sequence
+  🎉 Agent 2: All children of Sequence(Shooting) succeeded
+  ✅ Agent 2: Sequence(Shooting) succeeded
+Agent 2 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 3 evaluating Selector(Combat) with 5 children
+  ├─ Agent 3 trying child 0: Sequence(Survival)
+🔗 Agent 3 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 3 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 3: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 3: Sequence(Survival) failed
+  ├─ Agent 3 trying child 1: Sequence(Shooting)
+🔗 Agent 3 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 3 sequence step 0: CheckCanShoot
+  ❌ Agent 3: sequence failed at CheckCanShoot
+  ❌ Agent 3: Sequence(Shooting) failed
+  ├─ Agent 3 trying child 2: Sequence(Bombing)
+🔗 Agent 3 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 3 sequence step 0: CheckHasBombs
+  ✅ Agent 3: CheckHasBombs succeeded, continuing sequence
+  ├─ Agent 3 sequence step 1: TaskThrowOptimalBomb
+💣 Agent 3: best bomb target (7,4) score 50
+💣 Agent 3: bomb score 50 too low (need 50+), saving bomb
+  ❌ Agent 3: sequence failed at TaskThrowOptimalBomb
+  ❌ Agent 3: Sequence(Bombing) failed
+  ├─ Agent 3 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 3: in good shooting range 6 of nearest enemy (dist 4), hunkering
+  ✅ Agent 3: TaskMoveTowardsEnemies succeeded
+Agent 3 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 4 evaluating Selector(Combat) with 5 children
+  ├─ Agent 4 trying child 0: Sequence(Survival)
+🔗 Agent 4 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 4 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 4: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 4: Sequence(Survival) failed
+  ├─ Agent 4 trying child 1: Sequence(Shooting)
+�...
+Standard Output Stream:
+1; HUNKER_DOWN
+2; SHOOT 5
+3; HUNKER_DOWN
+4; SHOOT 5
+14
+29
+Standard Output Stream:
+5;MOVE 9 6; SHOOT 3;
+6;MOVE 13 3; HUNKER_DOWN;
+7;MOVE 4 4; HUNKER_DOWN;
+8;MOVE 11 5; HUNKER_DOWN;
+Standard Error Stream:
+Turn 15: 8 total agents, 4 mine
+🧠 Team Analysis: Health=71.8, Territory=-14, Enemies=4, Turn=15, State=Combat(15)
+🌳 Agent 1 evaluating Selector(Combat) with 5 children
+  ├─ Agent 1 trying child 0: Sequence(Survival)
+🔗 Agent 1 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 1 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 1: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 1: Sequence(Survival) failed
+  ├─ Agent 1 trying child 1: Sequence(Shooting)
+🔗 Agent 1 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 1 sequence step 0: CheckCanShoot
+  ✅ Agent 1: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 1 sequence step 1: TaskShootBestTarget
+🎯 Agent 1 evaluating enemy 7: dist=4, wetness=40, score=68.0
+🎯 Agent 1 evaluating enemy 5: dist=8, wetness=14, score=86.0
+🎯 Agent 1: best target is 5 (score 86.0)
+🎯 Agent 1: shooting target 5
+  ✅ Agent 1: TaskShootBestTarget succeeded, continuing sequence
+  🎉 Agent 1: All children of Sequence(Shooting) succeeded
+  ✅ Agent 1: Sequence(Shooting) succeeded
+Agent 1 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 2 evaluating Selector(Combat) with 5 children
+  ├─ Agent 2 trying child 0: Sequence(Survival)
+🔗 Agent 2 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 2 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 2: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 2: Sequence(Survival) failed
+  ├─ Agent 2 trying child 1: Sequence(Shooting)
+🔗 Agent 2 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 2 sequence step 0: CheckCanShoot
+  ❌ Agent 2: sequence failed at CheckCanShoot
+  ❌ Agent 2: Sequence(Shooting) failed
+  ├─ Agent 2 trying child 2: Sequence(Bombing)
+🔗 Agent 2 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 2 sequence step 0: CheckHasBombs
+  ❌ Agent 2: sequence failed at CheckHasBombs
+  ❌ Agent 2: Sequence(Bombing) failed
+  ├─ Agent 2 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 2: in good shooting range 6 of nearest enemy (dist 6), hunkering
+  ✅ Agent 2: TaskMoveTowardsEnemies succeeded
+Agent 2 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 3 evaluating Selector(Combat) with 5 children
+  ├─ Agent 3 trying child 0: Sequence(Survival)
+🔗 Agent 3 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 3 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 3: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 3: Sequence(Survival) failed
+  ├─ Agent 3 trying child 1: Sequence(Shooting)
+🔗 Agent 3 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 3 sequence step 0: CheckCanShoot
+  ❌ Agent 3: sequence failed at CheckCanShoot
+  ❌ Agent 3: Sequence(Shooting) failed
+  ├─ Agent 3 trying child 2: Sequence(Bombing)
+🔗 Agent 3 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 3 sequence step 0: CheckHasBombs
+  ✅ Agent 3: CheckHasBombs succeeded, continuing sequence
+  ├─ Agent 3 sequence step 1: TaskThrowOptimalBomb
+💣 Agent 3: best bomb target (7,4) score 50
+💣 Agent 3: bomb score 50 too low (need 50+), saving bomb
+  ❌ Agent 3: sequence failed at TaskThrowOptimalBomb
+  ❌ Agent 3: Sequence(Bombing) failed
+  ├─ Agent 3 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 3: in good shooting range 6 of nearest enemy (dist 3), hunkering
+  ✅ Agent 3: TaskMoveTowardsEnemies succeeded
+Agent 3 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 4 evaluating Selector(Combat) with 5 children
+  ├─ Agent 4 trying child 0: Sequence(Survival)
+🔗 Agent 4 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 4 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 4: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 4: Sequence(Survival) failed
+  ├─ Agent 4 trying child 1: Sequence(Shooting)
+🔗 Agent 4 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 4 sequence step 0: CheckCanShoot
+  ❌ Agent 4: sequence failed at CheckCanShoot
+  ❌ Agent 4: Sequence(Shooting) failed
+  ├─ Agent 4 trying child 2: Sequence(Bombing)
+🔗 Agent 4 evaluating Sequence(Bombing) with ...
+Standard Output Stream:
+1; SHOOT 5
+2; HUNKER_DOWN
+3; HUNKER_DOWN
+4; HUNKER_DOWN
+15
+29
+Standard Output Stream:
+5;MOVE 10 6; THROW 6 3;
+6;MOVE 13 3; HUNKER_DOWN;
+7;MOVE 4 5; SHOOT 3;
+8;MOVE 11 5; HUNKER_DOWN;
+Game Summary:
+Myhay agent id 1 cannot shoot id 5, they are too far away
+Default cannot throw splash bomb to 6 3, it is too far away from agent 5.
+Standard Error Stream:
+Turn 16: 8 total agents, 4 mine
+🧠 Team Analysis: Health=70.2, Territory=-13, Enemies=4, Turn=16, State=Combat(16)
+🌳 Agent 1 evaluating Selector(Combat) with 5 children
+  ├─ Agent 1 trying child 0: Sequence(Survival)
+🔗 Agent 1 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 1 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 1: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 1: Sequence(Survival) failed
+  ├─ Agent 1 trying child 1: Sequence(Shooting)
+🔗 Agent 1 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 1 sequence step 0: CheckCanShoot
+  ✅ Agent 1: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 1 sequence step 1: TaskShootBestTarget
+🎯 Agent 1 evaluating enemy 7: dist=3, wetness=40, score=70.0
+🎯 Agent 1: best target is 7 (score 70.0)
+🎯 Agent 1: shooting target 7
+  ✅ Agent 1: TaskShootBestTarget succeeded, continuing sequence
+  🎉 Agent 1: All children of Sequence(Shooting) succeeded
+  ✅ Agent 1: Sequence(Shooting) succeeded
+Agent 1 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 2 evaluating Selector(Combat) with 5 children
+  ├─ Agent 2 trying child 0: Sequence(Survival)
+🔗 Agent 2 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 2 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 2: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 2: Sequence(Survival) failed
+  ├─ Agent 2 trying child 1: Sequence(Shooting)
+🔗 Agent 2 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 2 sequence step 0: CheckCanShoot
+  ❌ Agent 2: sequence failed at CheckCanShoot
+  ❌ Agent 2: Sequence(Shooting) failed
+  ├─ Agent 2 trying child 2: Sequence(Bombing)
+🔗 Agent 2 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 2 sequence step 0: CheckHasBombs
+  ❌ Agent 2: sequence failed at CheckHasBombs
+  ❌ Agent 2: Sequence(Bombing) failed
+  ├─ Agent 2 trying child 3: TaskMoveTowardsEnemies
+🎯 Agent 2: in good shooting range 6 of nearest enemy (dist 5), hunkering
+  ✅ Agent 2: TaskMoveTowardsEnemies succeeded
+Agent 2 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 3 evaluating Selector(Combat) with 5 children
+  ├─ Agent 3 trying child 0: Sequence(Survival)
+🔗 Agent 3 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 3 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 3: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 3: Sequence(Survival) failed
+  ├─ Agent 3 trying child 1: Sequence(Shooting)
+🔗 Agent 3 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 3 sequence step 0: CheckCanShoot
+  ✅ Agent 3: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 3 sequence step 1: TaskShootBestTarget
+🎯 Agent 3 evaluating enemy 7: dist=2, wetness=40, score=64.0
+🎯 Agent 3: best target is 7 (score 64.0)
+🎯 Agent 3: shooting target 7
+  ✅ Agent 3: TaskShootBestTarget succeeded, continuing sequence
+  🎉 Agent 3: All children of Sequence(Shooting) succeeded
+  ✅ Agent 3: Sequence(Shooting) succeeded
+Agent 3 [Combat/Idle]: BT=Success, 1 actions
+🌳 Agent 4 evaluating Selector(Combat) with 5 children
+  ├─ Agent 4 trying child 0: Sequence(Survival)
+🔗 Agent 4 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 4 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 4: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 4: Sequence(Survival) failed
+  ├─ Agent 4 trying child 1: Sequence(Shooting)
+🔗 Agent 4 evaluating Sequence(Shooting) with 2 children
+  ├─ Agent 4 sequence step 0: CheckCanShoot
+  ❌ Agent 4: sequence failed at CheckCanShoot
+  ❌ Agent 4: Sequence(Shooting) failed
+  ├─ Agent 4 trying child 2: Sequence(Bombing)
+🔗 Agent 4 evaluating Sequence(Bombing) with 2 children
+  ├─ Agent 4 sequence step 0: CheckHasBombs
+  ✅ Agent 4: CheckHasBombs succeeded, continuing sequence
+  ├─ Agent 4 sequence step 1: TaskThrowOptimalBomb
+💣 Agent 4: best bomb target (5,2) score 0
+💣 Agent 4: bomb score 0 too low (need 50+), saving bomb
+  ❌ Agent 4: sequence failed at TaskThrowOptimalBomb
+  ❌ Agent 4: Sequence(Bombing) failed
+  ├─...
+Standard Output Stream:
+1; SHOOT 7
+2; HUNKER_DOWN
+3; SHOOT 7
+4; HUNKER_DOWN
+16
+29
+Standard Output Stream:
+5;MOVE 10 3; HUNKER_DOWN;
+6;MOVE 13 3; SHOOT 1;
+7;MOVE 6 5; THROW 6 1;
+8;MOVE 11 2; HUNKER_DOWN;
+Standard Error Stream:
+Turn 17: 8 total agents, 4 mine
+🧠 Team Analysis: Health=53.8, Territory=-19, Enemies=4, Turn=17, State=Combat(17)
+🎯 State Transition: RegroupAndHeal (Reason: Low team health: 53.8 < 60)
+🔄 TEAM STATE CHANGE: Combat → RegroupAndHeal
+🌳 Agent 1 evaluating Selector(Regroup) with 3 children
+  ├─ Agent 1 trying child 0: TaskMoveToSafety
+  ✅ Agent 1: TaskMoveToSafety succeeded
+Agent 1 [RegroupAndHeal/Idle]: BT=Success, 1 actions
+🌳 Agent 2 evaluating Selector(Regroup) with 3 children
+  ├─ Agent 2 trying child 0: TaskMoveToSafety
+  ❌ Agent 2: TaskMoveToSafety failed
+  ├─ Agent 2 trying child 1: TaskMoveToCover
+🛡️  Agent 2: cover target (1,4) level=2 dist=0
+🛡️  Agent 2: already at good cover level 2, hunkering
+  ✅ Agent 2: TaskMoveToCover succeeded
+Agent 2 [RegroupAndHeal/Idle]: BT=Success, 1 actions
+🌳 Agent 3 evaluating Selector(Regroup) with 3 children
+  ├─ Agent 3 trying child 0: TaskMoveToSafety
+  ✅ Agent 3: TaskMoveToSafety succeeded
+Agent 3 [RegroupAndHeal/Idle]: BT=Success, 1 actions
+🌳 Agent 4 evaluating Selector(Regroup) with 3 children
+  ├─ Agent 4 trying child 0: TaskMoveToSafety
+  ✅ Agent 4: TaskMoveToSafety succeeded
+Agent 4 [RegroupAndHeal/Idle]: BT=Success, 1 actions
+✅ Agent 1 moving to (4,4) [priority 100]
+✅ Agent 3 moving to (1,1) [priority 100]
+✅ Agent 4 moving to (2,2) [priority 100]
+Agent 1: MOVE 4 4 (Reasons: Moving to safety (4,4))
+Agent 2: HUNKER_DOWN (Reasons: Already at cover level 2, hunkering)
+Agent 3: MOVE 1 1 (Reasons: Moving to safety (1,1))
+Agent 4: MOVE 2 2 (Reasons: Moving to safety (2,2))
+Standard Output Stream:
+1; MOVE 4 4
+2; HUNKER_DOWN
+3; MOVE 1 1
+4; MOVE 2 2
+17
+29
+Standard Output Stream:
+5;MOVE 10 5; SHOOT 3;
+6;MOVE 13 3; HUNKER_DOWN;
+7;MOVE 7 5; THROW 5 2;
+8;MOVE 11 4; SHOOT 3;
+Game Summary:
+Default cannot throw splash bomb to 5 2, it is too far away from agent 7.
+Standard Error Stream:
+Turn 18: 8 total agents, 4 mine
+🧠 Team Analysis: Health=49.8, Territory=-20, Enemies=4, Turn=18, State=RegroupAndHeal(1)
+🌳 Agent 1 evaluating Selector(Regroup) with 3 children
+  ├─ Agent 1 trying child 0: TaskMoveToSafety
+  ✅ Agent 1: TaskMoveToSafety succeeded
+Agent 1 [RegroupAndHeal/Idle]: BT=Success, 1 actions
+🌳 Agent 2 evaluating Selector(Regroup) with 3 children
+  ├─ Agent 2 trying child 0: TaskMoveToSafety
+  ❌ Agent 2: TaskMoveToSafety failed
+  ├─ Agent 2 trying child 1: TaskMoveToCover
+🛡️  Agent 2: cover target (1,4) level=2 dist=0
+🛡️  Agent 2: already at good cover level 2, hunkering
+  ✅ Agent 2: TaskMoveToCover succeeded
+Agent 2 [RegroupAndHeal/Idle]: BT=Success, 1 actions
+🌳 Agent 3 evaluating Selector(Regroup) with 3 children
+  ├─ Agent 3 trying child 0: TaskMoveToSafety
+  ✅ Agent 3: TaskMoveToSafety succeeded
+Agent 3 [RegroupAndHeal/Idle]: BT=Success, 1 actions
+🌳 Agent 4 evaluating Selector(Regroup) with 3 children
+  ├─ Agent 4 trying child 0: TaskMoveToSafety
+  ✅ Agent 4: TaskMoveToSafety succeeded
+Agent 4 [RegroupAndHeal/Idle]: BT=Success, 1 actions
+✅ Agent 1 moving to (2,2) [priority 100]
+✅ Agent 3 moving to (1,1) [priority 100]
+🔄 Agent 4 taking alternative move to (0,2) [wanted (1,1)]
+Agent 1: MOVE 2 2 (Reasons: Moving to safety (2,2))
+Agent 2: HUNKER_DOWN (Reasons: Already at cover level 2, hunkering)
+Agent 3: MOVE 1 1 (Reasons: Moving to safety (1,1))
+Agent 4: MOVE 0 2 (Reasons: Alternative move due to collision - Moving to safety (1,1))
+Standard Output Stream:
+1; MOVE 2 2
+2; HUNKER_DOWN
+3; MOVE 1 1
+4; MOVE 0 2
+18
+29
+Standard Output Stream:
+5;MOVE 10 5; HUNKER_DOWN;
+6;MOVE 13 3; HUNKER_DOWN;
+7;MOVE 6 5; HUNKER_DOWN;
+8;MOVE 11 4; HUNKER_DOWN;
+Standard Error Stream:
+Turn 19: 8 total agents, 4 mine
+🧠 Team Analysis: Health=49.8, Territory=-28, Enemies=4, Turn=19, State=RegroupAndHeal(2)
+🌳 Agent 1 evaluating Selector(Regroup) with 3 children
+  ├─ Agent 1 trying child 0: TaskMoveToSafety
+  ✅ Agent 1: TaskMoveToSafety succeeded
+Agent 1 [RegroupAndHeal/Idle]: BT=Success, 1 actions
+🌳 Agent 2 evaluating Selector(Regroup) with 3 children
+  ├─ Agent 2 trying child 0: TaskMoveToSafety
+  ❌ Agent 2: TaskMoveToSafety failed
+  ├─ Agent 2 trying child 1: TaskMoveToCover
+🛡️  Agent 2: cover target (1,4) level=2 dist=0
+🛡️  Agent 2: already at good cover level 2, hunkering
+  ✅ Agent 2: TaskMoveToCover succeeded
+Agent 2 [RegroupAndHeal/Idle]: BT=Success, 1 actions
+🌳 Agent 3 evaluating Selector(Regroup) with 3 children
+  ├─ Agent 3 trying child 0: TaskMoveToSafety
+  ✅ Agent 3: TaskMoveToSafety succeeded
+Agent 3 [RegroupAndHeal/Idle]: BT=Success, 1 actions
+🌳 Agent 4 evaluating Selector(Regroup) with 3 children
+  ├─ Agent 4 trying child 0: TaskMoveToSafety
+  ✅ Agent 4: TaskMoveToSafety succeeded
+Agent 4 [RegroupAndHeal/Idle]: BT=Success, 1 actions
+✅ Agent 1 moving to (1,1) [priority 100]
+🔄 Agent 3 taking alternative move to (2,2) [wanted (1,1)]
+🔄 Agent 4 taking alternative move to (0,2) [wanted (1,1)]
+Agent 1: MOVE 1 1 (Reasons: Moving to safety (1,1))
+Agent 2: HUNKER_DOWN (Reasons: Already at cover level 2, hunkering)
+Agent 3: MOVE 2 2 (Reasons: Alternative move due to collision - Moving to safety (1,1))
+Agent 4: MOVE 0 2 (Reasons: Alternative move due to collision - Moving to safety (1,1))
+Standard Output Stream:
+1; MOVE 1 1
+2; HUNKER_DOWN
+3; MOVE 2 2
+4; MOVE 0 2
+19
+29
+Standard Output Stream:
+5;MOVE 4 2; HUNKER_DOWN;
+6;MOVE 13 3; HUNKER_DOWN;
+7;MOVE 4 2; HUNKER_DOWN;
+8;MOVE 10 4; HUNKER_DOWN;
+Standard Error Stream:
+Turn 20: 8 total agents, 4 mine
+🧠 Team Analysis: Health=49.8, Territory=-34, Enemies=4, Turn=20, State=RegroupAndHeal(3)
+🎯 State Transition: TerritoryControl (Reason: Recovered but need territory: health=49.8, territory=-34)
+🔄 TEAM STATE CHANGE: RegroupAndHeal → TerritoryControl
+🌳 Agent 1 evaluating Selector(Territory) with 4 children
+  ├─ Agent 1 trying child 0: Sequence(Survival)
+🔗 Agent 1 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 1 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 1: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 1: Sequence(Survival) failed
+  ├─ Agent 1 trying child 1: Sequence(OpportunisticShooting)
+🔗 Agent 1 evaluating Sequence(OpportunisticShooting) with 3 children
+  ├─ Agent 1 sequence step 0: CheckCanShoot
+  ✅ Agent 1: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 1 sequence step 1: CheckEnemiesInRange(4)
+  ❌ Agent 1: sequence failed at CheckEnemiesInRange(4)
+  ❌ Agent 1: Sequence(OpportunisticShooting) failed
+  ├─ Agent 1 trying child 2: TaskMoveToTerritory
+🗺️  Agent 1 searching zone 1: x=8-16, y=0-4
+🎯 Agent 1 NEW BEST (8,0): score=242.1
+🎯 Agent 1 NEW BEST (8,1): score=277.4
+🎯 Agent 1 NEW BEST (9,1): score=283.6
+🎯 Agent 1 NEW BEST (8,2): score=308.1
+🎯 Agent 1: territory target (8,2) score=308.1 (zone 1)
+  ✅ Agent 1: TaskMoveToTerritory succeeded
+Agent 1 [TerritoryControl/Idle]: BT=Success, 1 actions
+🌳 Agent 2 evaluating Selector(Territory) with 4 children
+  ├─ Agent 2 trying child 0: Sequence(Survival)
+🔗 Agent 2 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 2 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 2: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 2: Sequence(Survival) failed
+  ├─ Agent 2 trying child 1: Sequence(OpportunisticShooting)
+🔗 Agent 2 evaluating Sequence(OpportunisticShooting) with 3 children
+  ├─ Agent 2 sequence step 0: CheckCanShoot
+  ✅ Agent 2: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 2 sequence step 1: CheckEnemiesInRange(4)
+  ❌ Agent 2: sequence failed at CheckEnemiesInRange(4)
+  ❌ Agent 2: Sequence(OpportunisticShooting) failed
+  ├─ Agent 2 trying child 2: TaskMoveToTerritory
+🗺️  Agent 2 searching zone 2: x=0-8, y=4-8
+🎯 Agent 2 NEW BEST (0,4): score=279.8
+🎯 Agent 2 NEW BEST (1,4): score=311.5
+🎯 Agent 2 NEW BEST (2,4): score=331.9
+🎯 Agent 2 NEW BEST (4,4): score=362.9
+🎯 Agent 2 NEW BEST (5,4): score=391.6
+🎯 Agent 2 NEW BEST (6,4): score=452.9
+🎯 Agent 2: territory target (6,4) score=452.9 (zone 2)
+  ✅ Agent 2: TaskMoveToTerritory succeeded
+Agent 2 [TerritoryControl/Idle]: BT=Success, 1 actions
+🌳 Agent 3 evaluating Selector(Territory) with 4 children
+  ├─ Agent 3 trying child 0: Sequence(Survival)
+🔗 Agent 3 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 3 sequence step 0: CheckWetnessHigh(70)
+  ✅ Agent 3: CheckWetnessHigh(70) succeeded, continuing sequence
+  ├─ Agent 3 sequence step 1: TaskMoveToSafety
+  ✅ Agent 3: TaskMoveToSafety succeeded, continuing sequence
+  🎉 Agent 3: All children of Sequence(Survival) succeeded
+  ✅ Agent 3: Sequence(Survival) succeeded
+Agent 3 [TerritoryControl/Idle]: BT=Success, 1 actions
+🌳 Agent 4 evaluating Selector(Territory) with 4 children
+  ├─ Agent 4 trying child 0: Sequence(Survival)
+🔗 Agent 4 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 4 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 4: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 4: Sequence(Survival) failed
+  ├─ Agent 4 trying child 1: Sequence(OpportunisticShooting)
+🔗 Agent 4 evaluating Sequence(OpportunisticShooting) with 3 children
+  ├─ Agent 4 sequence step 0: CheckCanShoot
+  ✅ Agent 4: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 4 sequence step 1: CheckEnemiesInRange(4)
+  ❌ Agent 4: sequence failed at CheckEnemiesInRange(4)
+  ❌ Agent 4: Sequence(OpportunisticShooting) failed
+  ├─ Agent 4 trying child 2: TaskMoveToTerritory
+🗺️  Agent 4 searching zone 0: x=0-8, y=0-4
+�...
+Standard Output Stream:
+1; MOVE 8 2
+2; MOVE 6 4
+3; MOVE 1 1
+4; MOVE 7 3
+20
+29
+Standard Output Stream:
+5;MOVE 6 5; HUNKER_DOWN;
+6;MOVE 13 3; HUNKER_DOWN;
+7;MOVE 7 2; HUNKER_DOWN;
+8;MOVE 3 2; HUNKER_DOWN;
+Standard Error Stream:
+Turn 21: 8 total agents, 4 mine
+🧠 Team Analysis: Health=49.8, Territory=-29, Enemies=4, Turn=21, State=TerritoryControl(1)
+🌳 Agent 1 evaluating Selector(Territory) with 4 children
+  ├─ Agent 1 trying child 0: Sequence(Survival)
+🔗 Agent 1 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 1 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 1: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 1: Sequence(Survival) failed
+  ├─ Agent 1 trying child 1: Sequence(OpportunisticShooting)
+🔗 Agent 1 evaluating Sequence(OpportunisticShooting) with 3 children
+  ├─ Agent 1 sequence step 0: CheckCanShoot
+  ✅ Agent 1: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 1 sequence step 1: CheckEnemiesInRange(4)
+  ✅ Agent 1: CheckEnemiesInRange(4) succeeded, continuing sequence
+  ├─ Agent 1 sequence step 2: TaskShootBestTarget
+🎯 Agent 1 evaluating enemy 7: dist=4, wetness=60, score=48.0
+🎯 Agent 1: best target is 7 (score 48.0)
+🎯 Agent 1: shooting target 7
+  ✅ Agent 1: TaskShootBestTarget succeeded, continuing sequence
+  🎉 Agent 1: All children of Sequence(OpportunisticShooting) succeeded
+  ✅ Agent 1: Sequence(OpportunisticShooting) succeeded
+Agent 1 [TerritoryControl/Idle]: BT=Success, 1 actions
+🌳 Agent 2 evaluating Selector(Territory) with 4 children
+  ├─ Agent 2 trying child 0: Sequence(Survival)
+🔗 Agent 2 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 2 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 2: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 2: Sequence(Survival) failed
+  ├─ Agent 2 trying child 1: Sequence(OpportunisticShooting)
+🔗 Agent 2 evaluating Sequence(OpportunisticShooting) with 3 children
+  ├─ Agent 2 sequence step 0: CheckCanShoot
+  ✅ Agent 2: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 2 sequence step 1: CheckEnemiesInRange(4)
+  ❌ Agent 2: sequence failed at CheckEnemiesInRange(4)
+  ❌ Agent 2: Sequence(OpportunisticShooting) failed
+  ├─ Agent 2 trying child 2: TaskMoveToTerritory
+🗺️  Agent 2 searching zone 2: x=0-8, y=4-8
+🎯 Agent 2 NEW BEST (0,4): score=252.7
+🎯 Agent 2 NEW BEST (1,4): score=291.9
+🎯 Agent 2 NEW BEST (2,4): score=329.7
+🎯 Agent 2 NEW BEST (4,4): score=368.1
+🎯 Agent 2 NEW BEST (5,4): score=393.1
+🎯 Agent 2 NEW BEST (6,4): score=436.4
+🎯 Agent 2: territory target (6,4) score=436.4 (zone 2)
+  ✅ Agent 2: TaskMoveToTerritory succeeded
+Agent 2 [TerritoryControl/Idle]: BT=Success, 1 actions
+🌳 Agent 3 evaluating Selector(Territory) with 4 children
+  ├─ Agent 3 trying child 0: Sequence(Survival)
+🔗 Agent 3 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 3 sequence step 0: CheckWetnessHigh(70)
+  ✅ Agent 3: CheckWetnessHigh(70) succeeded, continuing sequence
+  ├─ Agent 3 sequence step 1: TaskMoveToSafety
+  ✅ Agent 3: TaskMoveToSafety succeeded, continuing sequence
+  🎉 Agent 3: All children of Sequence(Survival) succeeded
+  ✅ Agent 3: Sequence(Survival) succeeded
+Agent 3 [TerritoryControl/Idle]: BT=Success, 1 actions
+🌳 Agent 4 evaluating Selector(Territory) with 4 children
+  ├─ Agent 4 trying child 0: Sequence(Survival)
+🔗 Agent 4 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 4 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 4: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 4: Sequence(Survival) failed
+  ├─ Agent 4 trying child 1: Sequence(OpportunisticShooting)
+🔗 Agent 4 evaluating Sequence(OpportunisticShooting) with 3 children
+  ├─ Agent 4 sequence step 0: CheckCanShoot
+  ✅ Agent 4: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 4 sequence step 1: CheckEnemiesInRange(4)
+  ❌ Agent 4: sequence failed at CheckEnemiesInRange(4)
+  ❌ Agent 4: Sequence(OpportunisticShooting) failed
+  ├─ Agent 4 trying child 2: TaskMoveToTerritory
+🗺️  Agent 4 searching zone 0: x=0-8, y=0-4
+🎯 Agent 4 NEW BEST (0,0): score=187.7
+🎯 Agent 4 NEW BEST (1,0): score=221.3
+🎯 Agent 4 NEW BEST (2,0): score=242.4
+🎯 Agent 4 NEW BEST (3,0): score=268.2
+🎯 Agent 4 NEW BEST (4...
+Standard Output Stream:
+1; SHOOT 7
+2; MOVE 6 4
+3; MOVE 1 1
+4; MOVE 7 3
+21
+29
+Standard Output Stream:
+5;MOVE 4 1; HUNKER_DOWN;
+6;MOVE 13 2; HUNKER_DOWN;
+7;MOVE 4 1; HUNKER_DOWN;
+8;MOVE 4 1; HUNKER_DOWN;
+Standard Error Stream:
+Turn 22: 8 total agents, 4 mine
+🧠 Team Analysis: Health=49.8, Territory=-28, Enemies=4, Turn=22, State=TerritoryControl(2)
+🌳 Agent 1 evaluating Selector(Territory) with 4 children
+  ├─ Agent 1 trying child 0: Sequence(Survival)
+🔗 Agent 1 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 1 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 1: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 1: Sequence(Survival) failed
+  ├─ Agent 1 trying child 1: Sequence(OpportunisticShooting)
+🔗 Agent 1 evaluating Sequence(OpportunisticShooting) with 3 children
+  ├─ Agent 1 sequence step 0: CheckCanShoot
+  ❌ Agent 1: sequence failed at CheckCanShoot
+  ❌ Agent 1: Sequence(OpportunisticShooting) failed
+  ├─ Agent 1 trying child 2: TaskMoveToTerritory
+🗺️  Agent 1 searching zone 1: x=8-16, y=0-4
+🎯 Agent 1 NEW BEST (8,0): score=211.6
+🎯 Agent 1 NEW BEST (8,1): score=268.3
+🎯 Agent 1 NEW BEST (8,2): score=281.5
+🎯 Agent 1: territory target (8,2) score=281.5 (zone 1)
+  ✅ Agent 1: TaskMoveToTerritory succeeded
+Agent 1 [TerritoryControl/Idle]: BT=Success, 1 actions
+🌳 Agent 2 evaluating Selector(Territory) with 4 children
+  ├─ Agent 2 trying child 0: Sequence(Survival)
+🔗 Agent 2 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 2 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 2: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 2: Sequence(Survival) failed
+  ├─ Agent 2 trying child 1: Sequence(OpportunisticShooting)
+🔗 Agent 2 evaluating Sequence(OpportunisticShooting) with 3 children
+  ├─ Agent 2 sequence step 0: CheckCanShoot
+  ✅ Agent 2: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 2 sequence step 1: CheckEnemiesInRange(4)
+  ❌ Agent 2: sequence failed at CheckEnemiesInRange(4)
+  ❌ Agent 2: Sequence(OpportunisticShooting) failed
+  ├─ Agent 2 trying child 2: TaskMoveToTerritory
+🗺️  Agent 2 searching zone 2: x=0-8, y=4-8
+🎯 Agent 2 NEW BEST (0,4): score=248.2
+🎯 Agent 2 NEW BEST (1,4): score=278.0
+🎯 Agent 2 NEW BEST (2,4): score=298.3
+🎯 Agent 2 NEW BEST (4,4): score=370.6
+🎯 Agent 2 NEW BEST (5,4): score=386.6
+🎯 Agent 2 NEW BEST (6,4): score=424.9
+🎯 Agent 2: territory target (6,4) score=424.9 (zone 2)
+  ✅ Agent 2: TaskMoveToTerritory succeeded
+Agent 2 [TerritoryControl/Idle]: BT=Success, 1 actions
+🌳 Agent 3 evaluating Selector(Territory) with 4 children
+  ├─ Agent 3 trying child 0: Sequence(Survival)
+🔗 Agent 3 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 3 sequence step 0: CheckWetnessHigh(70)
+  ✅ Agent 3: CheckWetnessHigh(70) succeeded, continuing sequence
+  ├─ Agent 3 sequence step 1: TaskMoveToSafety
+  ✅ Agent 3: TaskMoveToSafety succeeded, continuing sequence
+  🎉 Agent 3: All children of Sequence(Survival) succeeded
+  ✅ Agent 3: Sequence(Survival) succeeded
+Agent 3 [TerritoryControl/Idle]: BT=Success, 1 actions
+🌳 Agent 4 evaluating Selector(Territory) with 4 children
+  ├─ Agent 4 trying child 0: Sequence(Survival)
+🔗 Agent 4 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 4 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 4: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 4: Sequence(Survival) failed
+  ├─ Agent 4 trying child 1: Sequence(OpportunisticShooting)
+🔗 Agent 4 evaluating Sequence(OpportunisticShooting) with 3 children
+  ├─ Agent 4 sequence step 0: CheckCanShoot
+  ✅ Agent 4: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 4 sequence step 1: CheckEnemiesInRange(4)
+  ✅ Agent 4: CheckEnemiesInRange(4) succeeded, continuing sequence
+  ├─ Agent 4 sequence step 2: TaskShootBestTarget
+🎯 Agent 4 evaluating enemy 7: dist=4, wetness=72, score=36.0
+🎯 Agent 4: best target is 7 (score 36.0)
+🎯 Agent 4: shooting target 7
+  ✅ Agent 4: TaskShootBestTarget succeeded, continuing sequence
+  🎉 Agent 4: All children of Sequence(OpportunisticShooting) succeeded
+  ✅ Agent 4: Sequence(OpportunisticShooting) succeeded
+Agent 4 [TerritoryControl/Idle]: BT=Success, 1 actions
+✅ Agent 3 moving to (1,1) [pri...
+Standard Output Stream:
+1; MOVE 8 2
+2; MOVE 6 4
+3; MOVE 1 1
+4; SHOOT 7
+22
+29
+Standard Output Stream:
+5;MOVE 6 3; HUNKER_DOWN;
+6;MOVE 13 2; SHOOT 3;
+7;MOVE 5 0; SHOOT 1;
+8;MOVE 4 1; HUNKER_DOWN;
+Standard Error Stream:
+Turn 23: 8 total agents, 4 mine
+🧠 Team Analysis: Health=44.8, Territory=-25, Enemies=4, Turn=23, State=TerritoryControl(3)
+🎯 State Transition: RegroupAndHeal (Reason: Low team health: 44.8 < 60)
+🔄 TEAM STATE CHANGE: TerritoryControl → RegroupAndHeal
+🌳 Agent 1 evaluating Selector(Regroup) with 3 children
+  ├─ Agent 1 trying child 0: TaskMoveToSafety
+  ✅ Agent 1: TaskMoveToSafety succeeded
+Agent 1 [RegroupAndHeal/Idle]: BT=Success, 1 actions
+🌳 Agent 2 evaluating Selector(Regroup) with 3 children
+  ├─ Agent 2 trying child 0: TaskMoveToSafety
+  ✅ Agent 2: TaskMoveToSafety succeeded
+Agent 2 [RegroupAndHeal/Idle]: BT=Success, 1 actions
+🌳 Agent 3 evaluating Selector(Regroup) with 3 children
+  ├─ Agent 3 trying child 0: TaskMoveToSafety
+  ✅ Agent 3: TaskMoveToSafety succeeded
+Agent 3 [RegroupAndHeal/Idle]: BT=Success, 1 actions
+🌳 Agent 4 evaluating Selector(Regroup) with 3 children
+  ├─ Agent 4 trying child 0: TaskMoveToSafety
+  ✅ Agent 4: TaskMoveToSafety succeeded
+Agent 4 [RegroupAndHeal/Idle]: BT=Success, 1 actions
+✅ Agent 1 moving to (2,4) [priority 100]
+✅ Agent 2 moving to (0,3) [priority 100]
+✅ Agent 3 moving to (1,1) [priority 100]
+🔄 Agent 4 taking alternative move to (2,1) [wanted (1,1)]
+Agent 1: MOVE 2 4 (Reasons: Moving to safety (2,4))
+Agent 2: MOVE 0 3 (Reasons: Moving to safety (0,3))
+Agent 3: MOVE 1 1 (Reasons: Moving to safety (1,1))
+Agent 4: MOVE 2 1 (Reasons: Alternative move due to collision - Moving to safety (1,1))
+Standard Output Stream:
+1; MOVE 2 4
+2; MOVE 0 3
+3; MOVE 1 1
+4; MOVE 2 1
+23
+29
+Standard Output Stream:
+5;MOVE 6 3; HUNKER_DOWN;
+6;MOVE 13 3; HUNKER_DOWN;
+7;MOVE 6 2; THROW 2 2;
+8;MOVE 5 1; HUNKER_DOWN;
+Standard Error Stream:
+Turn 24: 7 total agents, 3 mine
+🧠 Team Analysis: Health=44.3, Territory=-32, Enemies=4, Turn=24, State=RegroupAndHeal(1)
+🌳 Agent 1 evaluating Selector(Regroup) with 3 children
+  ├─ Agent 1 trying child 0: TaskMoveToSafety
+  ✅ Agent 1: TaskMoveToSafety succeeded
+Agent 1 [RegroupAndHeal/Idle]: BT=Success, 1 actions
+🌳 Agent 2 evaluating Selector(Regroup) with 3 children
+  ├─ Agent 2 trying child 0: TaskMoveToSafety
+  ✅ Agent 2: TaskMoveToSafety succeeded
+Agent 2 [RegroupAndHeal/Idle]: BT=Success, 1 actions
+🌳 Agent 4 evaluating Selector(Regroup) with 3 children
+  ├─ Agent 4 trying child 0: TaskMoveToSafety
+  ✅ Agent 4: TaskMoveToSafety succeeded
+Agent 4 [RegroupAndHeal/Idle]: BT=Success, 1 actions
+✅ Agent 1 moving to (1,1) [priority 100]
+✅ Agent 2 moving to (0,2) [priority 100]
+🔄 Agent 4 taking alternative move to (2,2) [wanted (1,1)]
+Agent 1: MOVE 1 1 (Reasons: Moving to safety (1,1))
+Agent 2: MOVE 0 2 (Reasons: Moving to safety (0,2))
+Agent 4: MOVE 2 2 (Reasons: Alternative move due to collision - Moving to safety (1,1))
+Standard Output Stream:
+1; MOVE 1 1
+2; MOVE 0 2
+4; MOVE 2 2
+24
+29
+Standard Output Stream:
+5;MOVE 4 1; HUNKER_DOWN;
+6;MOVE 13 3; HUNKER_DOWN;
+7;MOVE 6 2; HUNKER_DOWN;
+8;MOVE 4 1; HUNKER_DOWN;
+Standard Error Stream:
+Turn 25: 7 total agents, 3 mine
+🧠 Team Analysis: Health=44.3, Territory=-44, Enemies=4, Turn=25, State=RegroupAndHeal(2)
+🌳 Agent 1 evaluating Selector(Regroup) with 3 children
+  ├─ Agent 1 trying child 0: TaskMoveToSafety
+  ✅ Agent 1: TaskMoveToSafety succeeded
+Agent 1 [RegroupAndHeal/Idle]: BT=Success, 1 actions
+🌳 Agent 2 evaluating Selector(Regroup) with 3 children
+  ├─ Agent 2 trying child 0: TaskMoveToSafety
+  ✅ Agent 2: TaskMoveToSafety succeeded
+Agent 2 [RegroupAndHeal/Idle]: BT=Success, 1 actions
+🌳 Agent 4 evaluating Selector(Regroup) with 3 children
+  ├─ Agent 4 trying child 0: TaskMoveToSafety
+  ✅ Agent 4: TaskMoveToSafety succeeded
+Agent 4 [RegroupAndHeal/Idle]: BT=Success, 1 actions
+✅ Agent 1 moving to (1,1) [priority 100]
+✅ Agent 2 moving to (0,2) [priority 100]
+🔄 Agent 4 taking alternative move to (2,1) [wanted (1,1)]
+Agent 1: MOVE 1 1 (Reasons: Moving to safety (1,1))
+Agent 2: MOVE 0 2 (Reasons: Moving to safety (0,2))
+Agent 4: MOVE 2 1 (Reasons: Alternative move due to collision - Moving to safety (1,1))
+Standard Output Stream:
+1; MOVE 1 1
+2; MOVE 0 2
+4; MOVE 2 1
+25
+29
+Standard Output Stream:
+5;MOVE 3 1; HUNKER_DOWN;
+6;MOVE 12 3; HUNKER_DOWN;
+7;MOVE 5 2; SHOOT 1;
+8;MOVE 3 1; HUNKER_DOWN;
+Standard Error Stream:
+Turn 26: 7 total agents, 3 mine
+🧠 Team Analysis: Health=43.0, Territory=-43, Enemies=4, Turn=26, State=RegroupAndHeal(3)
+🎯 State Transition: TerritoryControl (Reason: Recovered but need territory: health=43.0, territory=-43)
+🔄 TEAM STATE CHANGE: RegroupAndHeal → TerritoryControl
+🌳 Agent 1 evaluating Selector(Territory) with 4 children
+  ├─ Agent 1 trying child 0: Sequence(Survival)
+🔗 Agent 1 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 1 sequence step 0: CheckWetnessHigh(70)
+  ✅ Agent 1: CheckWetnessHigh(70) succeeded, continuing sequence
+  ├─ Agent 1 sequence step 1: TaskMoveToSafety
+  ✅ Agent 1: TaskMoveToSafety succeeded, continuing sequence
+  🎉 Agent 1: All children of Sequence(Survival) succeeded
+  ✅ Agent 1: Sequence(Survival) succeeded
+Agent 1 [TerritoryControl/Idle]: BT=Success, 1 actions
+🌳 Agent 2 evaluating Selector(Territory) with 4 children
+  ├─ Agent 2 trying child 0: Sequence(Survival)
+🔗 Agent 2 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 2 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 2: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 2: Sequence(Survival) failed
+  ├─ Agent 2 trying child 1: Sequence(OpportunisticShooting)
+🔗 Agent 2 evaluating Sequence(OpportunisticShooting) with 3 children
+  ├─ Agent 2 sequence step 0: CheckCanShoot
+  ✅ Agent 2: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 2 sequence step 1: CheckEnemiesInRange(4)
+  ❌ Agent 2: sequence failed at CheckEnemiesInRange(4)
+  ❌ Agent 2: Sequence(OpportunisticShooting) failed
+  ├─ Agent 2 trying child 2: TaskMoveToTerritory
+🗺️  Agent 2 searching zone 2: x=0-8, y=4-8
+🎯 Agent 2 NEW BEST (0,4): score=229.4
+🎯 Agent 2 NEW BEST (1,4): score=267.0
+🎯 Agent 2 NEW BEST (2,4): score=309.9
+🎯 Agent 2 NEW BEST (4,4): score=360.5
+🎯 Agent 2 NEW BEST (5,4): score=363.0
+🎯 Agent 2 NEW BEST (6,4): score=409.6
+🎯 Agent 2: territory target (6,4) score=409.6 (zone 2)
+  ✅ Agent 2: TaskMoveToTerritory succeeded
+Agent 2 [TerritoryControl/Idle]: BT=Success, 1 actions
+🌳 Agent 4 evaluating Selector(Territory) with 4 children
+  ├─ Agent 4 trying child 0: Sequence(Survival)
+🔗 Agent 4 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 4 sequence step 0: CheckWetnessHigh(70)
+  ✅ Agent 4: CheckWetnessHigh(70) succeeded, continuing sequence
+  ├─ Agent 4 sequence step 1: TaskMoveToSafety
+  ✅ Agent 4: TaskMoveToSafety succeeded, continuing sequence
+  🎉 Agent 4: All children of Sequence(Survival) succeeded
+  ✅ Agent 4: Sequence(Survival) succeeded
+Agent 4 [TerritoryControl/Idle]: BT=Success, 1 actions
+✅ Agent 1 moving to (1,1) [priority 100]
+🔄 Agent 4 taking alternative move to (2,1) [wanted (1,1)]
+✅ Agent 2 moving to (6,4) [priority 30]
+Agent 1: MOVE 1 1 (Reasons: Moving to safety (1,1))
+Agent 2: MOVE 6 4 (Reasons: Territory control to (6,4))
+Agent 4: MOVE 2 1 (Reasons: Alternative move due to collision - Moving to safety (1,1))
+Standard Output Stream:
+1; MOVE 1 1
+2; MOVE 6 4
+4; MOVE 2 1
+26
+29
+Standard Output Stream:
+5;MOVE 3 1; HUNKER_DOWN;
+6;MOVE 13 3; HUNKER_DOWN;
+7;MOVE 6 2; HUNKER_DOWN;
+8;MOVE 3 1; HUNKER_DOWN;
+Standard Error Stream:
+Turn 27: 7 total agents, 3 mine
+🧠 Team Analysis: Health=43.0, Territory=-38, Enemies=4, Turn=27, State=TerritoryControl(1)
+🌳 Agent 1 evaluating Selector(Territory) with 4 children
+  ├─ Agent 1 trying child 0: Sequence(Survival)
+🔗 Agent 1 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 1 sequence step 0: CheckWetnessHigh(70)
+  ✅ Agent 1: CheckWetnessHigh(70) succeeded, continuing sequence
+  ├─ Agent 1 sequence step 1: TaskMoveToSafety
+  ✅ Agent 1: TaskMoveToSafety succeeded, continuing sequence
+  🎉 Agent 1: All children of Sequence(Survival) succeeded
+  ✅ Agent 1: Sequence(Survival) succeeded
+Agent 1 [TerritoryControl/Idle]: BT=Success, 1 actions
+🌳 Agent 2 evaluating Selector(Territory) with 4 children
+  ├─ Agent 2 trying child 0: Sequence(Survival)
+🔗 Agent 2 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 2 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 2: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 2: Sequence(Survival) failed
+  ├─ Agent 2 trying child 1: Sequence(OpportunisticShooting)
+🔗 Agent 2 evaluating Sequence(OpportunisticShooting) with 3 children
+  ├─ Agent 2 sequence step 0: CheckCanShoot
+  ✅ Agent 2: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 2 sequence step 1: CheckEnemiesInRange(4)
+  ❌ Agent 2: sequence failed at CheckEnemiesInRange(4)
+  ❌ Agent 2: Sequence(OpportunisticShooting) failed
+  ├─ Agent 2 trying child 2: TaskMoveToTerritory
+🗺️  Agent 2 searching zone 2: x=0-8, y=4-8
+🎯 Agent 2 NEW BEST (0,4): score=228.4
+🎯 Agent 2 NEW BEST (1,4): score=266.0
+🎯 Agent 2 NEW BEST (2,4): score=310.9
+🎯 Agent 2 NEW BEST (4,4): score=361.5
+🎯 Agent 2 NEW BEST (5,4): score=364.0
+🎯 Agent 2 NEW BEST (6,4): score=410.6
+🎯 Agent 2: territory target (6,4) score=410.6 (zone 2)
+  ✅ Agent 2: TaskMoveToTerritory succeeded
+Agent 2 [TerritoryControl/Idle]: BT=Success, 1 actions
+🌳 Agent 4 evaluating Selector(Territory) with 4 children
+  ├─ Agent 4 trying child 0: Sequence(Survival)
+🔗 Agent 4 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 4 sequence step 0: CheckWetnessHigh(70)
+  ✅ Agent 4: CheckWetnessHigh(70) succeeded, continuing sequence
+  ├─ Agent 4 sequence step 1: TaskMoveToSafety
+  ✅ Agent 4: TaskMoveToSafety succeeded, continuing sequence
+  🎉 Agent 4: All children of Sequence(Survival) succeeded
+  ✅ Agent 4: Sequence(Survival) succeeded
+Agent 4 [TerritoryControl/Idle]: BT=Success, 1 actions
+✅ Agent 1 moving to (1,1) [priority 100]
+🔄 Agent 4 taking alternative move to (2,1) [wanted (1,1)]
+✅ Agent 2 moving to (6,4) [priority 30]
+Agent 1: MOVE 1 1 (Reasons: Moving to safety (1,1))
+Agent 2: MOVE 6 4 (Reasons: Territory control to (6,4))
+Agent 4: MOVE 2 1 (Reasons: Alternative move due to collision - Moving to safety (1,1))
+Standard Output Stream:
+1; MOVE 1 1
+2; MOVE 6 4
+4; MOVE 2 1
+27
+29
+Standard Output Stream:
+5;MOVE 2 4; HUNKER_DOWN;
+6;MOVE 13 2; HUNKER_DOWN;
+7;MOVE 6 2; HUNKER_DOWN;
+8;MOVE 2 4; HUNKER_DOWN;
+Standard Error Stream:
+Turn 28: 7 total agents, 3 mine
+🧠 Team Analysis: Health=43.0, Territory=-40, Enemies=4, Turn=28, State=TerritoryControl(2)
+🌳 Agent 1 evaluating Selector(Territory) with 4 children
+  ├─ Agent 1 trying child 0: Sequence(Survival)
+🔗 Agent 1 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 1 sequence step 0: CheckWetnessHigh(70)
+  ✅ Agent 1: CheckWetnessHigh(70) succeeded, continuing sequence
+  ├─ Agent 1 sequence step 1: TaskMoveToSafety
+  ✅ Agent 1: TaskMoveToSafety succeeded, continuing sequence
+  🎉 Agent 1: All children of Sequence(Survival) succeeded
+  ✅ Agent 1: Sequence(Survival) succeeded
+Agent 1 [TerritoryControl/Idle]: BT=Success, 1 actions
+🌳 Agent 2 evaluating Selector(Territory) with 4 children
+  ├─ Agent 2 trying child 0: Sequence(Survival)
+🔗 Agent 2 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 2 sequence step 0: CheckWetnessHigh(70)
+  ❌ Agent 2: sequence failed at CheckWetnessHigh(70)
+  ❌ Agent 2: Sequence(Survival) failed
+  ├─ Agent 2 trying child 1: Sequence(OpportunisticShooting)
+🔗 Agent 2 evaluating Sequence(OpportunisticShooting) with 3 children
+  ├─ Agent 2 sequence step 0: CheckCanShoot
+  ✅ Agent 2: CheckCanShoot succeeded, continuing sequence
+  ├─ Agent 2 sequence step 1: CheckEnemiesInRange(4)
+  ❌ Agent 2: sequence failed at CheckEnemiesInRange(4)
+  ❌ Agent 2: Sequence(OpportunisticShooting) failed
+  ├─ Agent 2 trying child 2: TaskMoveToTerritory
+🗺️  Agent 2 searching zone 2: x=0-8, y=4-8
+🎯 Agent 2 NEW BEST (0,4): score=215.3
+🎯 Agent 2 NEW BEST (1,4): score=265.0
+🎯 Agent 2 NEW BEST (2,4): score=289.8
+🎯 Agent 2 NEW BEST (4,4): score=340.9
+🎯 Agent 2 NEW BEST (5,4): score=355.6
+🎯 Agent 2 NEW BEST (6,4): score=356.7
+🎯 Agent 2 NEW BEST (6,5): score=357.1
+🎯 Agent 2: territory target (6,5) score=357.1 (zone 2)
+  ✅ Agent 2: TaskMoveToTerritory succeeded
+Agent 2 [TerritoryControl/Idle]: BT=Success, 1 actions
+🌳 Agent 4 evaluating Selector(Territory) with 4 children
+  ├─ Agent 4 trying child 0: Sequence(Survival)
+🔗 Agent 4 evaluating Sequence(Survival) with 2 children
+  ├─ Agent 4 sequence step 0: CheckWetnessHigh(70)
+  ✅ Agent 4: CheckWetnessHigh(70) succeeded, continuing sequence
+  ├─ Agent 4 sequence step 1: TaskMoveToSafety
+  ✅ Agent 4: TaskMoveToSafety succeeded, continuing sequence
+  🎉 Agent 4: All children of Sequence(Survival) succeeded
+  ✅ Agent 4: Sequence(Survival) succeeded
+Agent 4 [TerritoryControl/Idle]: BT=Success, 1 actions
+✅ Agent 1 moving to (1,1) [priority 100]
+🔄 Agent 4 taking alternative move to (2,1) [wanted (1,1)]
+✅ Agent 2 moving to (6,5) [priority 30]
+Agent 1: MOVE 1 1 (Reasons: Moving to safety (1,1))
+Agent 2: MOVE 6 5 (Reasons: Territory control to (6,5))
+Agent 4: MOVE 2 1 (Reasons: Alternative move due to collision - Moving to safety (1,1))
+Standard Output Stream:
+1; MOVE 1 1
+2; MOVE 6 5
+4; MOVE 2 1
+28
+29
+Standard Output Stream:
+5;MOVE 3 1; HUNKER_DOWN;
+6;MOVE 13 2; SHOOT 4;
+7;MOVE 4 0; SHOOT 1;
+8;MOVE 3 1; HUNKER_DOWN;
+Standard Error Stream:
+Turn 29: 6 total agents, 2 mine
+🧠 Team Analysis: Health=57.0, Territory=-42, Enemies=4, Turn=29, State=TerritoryControl(3)
+🎯 State Transition: RegroupAndHeal (Reason: Low team health: 57.0 < 60)
+🔄 TEAM STATE CHANGE: TerritoryControl → RegroupAndHeal
+🌳 Agent 1 evaluating Selector(Regroup) with 3 children
+  ├─ Agent 1 trying child 0: TaskMoveToSafety
+  ✅ Agent 1: TaskMoveToSafety succeeded
+Agent 1 [RegroupAndHeal/Idle]: BT=Success, 1 actions
+🌳 Agent 2 evaluating Selector(Regroup) with 3 children
+  ├─ Agent 2 trying child 0: TaskMoveToSafety
+  ✅ Agent 2: TaskMoveToSafety succeeded
+Agent 2 [RegroupAndHeal/Idle]: BT=Success, 1 actions
+✅ Agent 1 moving to (0,3) [priority 100]
+🔄 Agent 2 taking alternative move to (0,2) [wanted (0,3)]
+Agent 1: MOVE 0 3 (Reasons: Moving to safety (0,3))
+Agent 2: MOVE 0 2 (Reasons: Alternative move due to collision - Moving to safety (0,3))
+Standard Output Stream:
+1; MOVE 0 3
+2; MOVE 0 2
+29
+29
+Standard Output Stream:
+5;MOVE 3 1; HUNKER_DOWN;
+6;MOVE 12 2; HUNKER_DOWN;
+7;MOVE 5 2; HUNKER_DOWN;
+8;MOVE 3 1; HUNKER_DOWN;

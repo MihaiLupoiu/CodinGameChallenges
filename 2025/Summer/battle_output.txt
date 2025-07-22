@@ -1,0 +1,225 @@
+💧 REAL WATER FIGHT SIMULATION 💧
+==================================
+🤖 Bot 1: ./bin/new_ai_bot
+🤖 Bot 2: ./bin/old_ai_bot
+🗺️  Scenario: ./scenarios/scenario1.txt
+📖 Using REAL game mechanics from task5-final.md
+
+📋 Battle Info:
+   🗺️  Map: 10x6
+   👥 Agents: 4 total
+   🔵 Player 0: 2 agents
+   🔴 Player 1: 2 agents
+🗺️  Turn 0 Battle Map:
+      0 1 2 3 4 5 6 7 8 9
+  0   . . . . . . . . . .
+  1   . 1 ▒ . . . . ▒ 2 .
+  2   . . . █ . . █ . . .
+  3   . . . █ . . █ . . .
+  4   . 1 ▒ . . . . ▒ 2 .
+  5   . . . . . . . . . .
+   Legend: 1=P0 2=P1 🟡=wounded(≥50 wetness) 💀=critical(≥75) 🔄=cooldown 🚫=no bombs
+   Terrain: .=empty  ▒=low cover(50% protection)  █=high cover(75% protection)
+
+🚀 Starting REAL water fight battle...
+💥 Real shooting • 🧨 Splash bombs • 🛡️ Cover system • 🏆 Territory control
+
+🤖 Bot1 thinking... ✅ Done
+🤖 Bot2 thinking... ✅ Done
+   🔵 Bot1 Commands: 1; THROW 5 1
+   🔴 Bot2 Commands: 3; SHOOT 1
+   🔍 Bot1 Debug: Agent 2: THROW 4 3 (Reasons: Bombing (4,3) score 4)
+   🔍 Bot2 Debug: Agent 4: SHOOT 2 (Reasons: Cover shooting - Enemy 2)
+⚔️  Turn 1
+========
+   🧨 Agent 1 threw bomb at (5,1): 0 agents hit
+   📐 Range penalty applied: 7 > 4 (50% damage)
+   💥 Agent 3 shot Agent 1: 4 damage (50% protection) (wetness: 4/100)
+   📊 Territory: P0=30 tiles, P1=30 tiles | Scores: P0=0, P1=0
+🗺️  Turn 1 Battle Map:
+      0 1 2 3 4 5 6 7 8 9
+  0   . . . . . . . . . .
+  1   . 1 ▒ . . . . ▒ 2 .
+  2   . . . █ . . █ . . .
+  3   . . . █ . . █ . . .
+  4   . 1 ▒ . . . . ▒ 2 .
+  5   . . . . . . . . . .
+   Legend: 1=P0 2=P1 🟡=wounded(≥50 wetness) 💀=critical(≥75) 🔄=cooldown 🚫=no bombs
+   Terrain: .=empty  ▒=low cover(50% protection)  █=high cover(75% protection)
+
+
+🤖 Bot1 thinking... ✅ Done
+🤖 Bot2 thinking... ✅ Done
+   🔵 Bot1 Commands: 2; THROW 4 3
+   🔴 Bot2 Commands: 4; SHOOT 2
+⚔️  Turn 2
+========
+   🧨 Agent 2 threw bomb at (4,3): 0 agents hit
+   📐 Range penalty applied: 7 > 4 (50% damage)
+   💥 Agent 4 shot Agent 2: 4 damage (50% protection) (wetness: 4/100)
+   📊 Territory: P0=30 tiles, P1=30 tiles | Scores: P0=0, P1=0
+🗺️  Turn 2 Battle Map:
+      0 1 2 3 4 5 6 7 8 9
+  0   . . . . . . . . . .
+  1   . 1 ▒ . . . . ▒ 2 .
+  2   . . . █ . . █ . . .
+  3   . . . █ . . █ . . .
+  4   . 1 ▒ . . . . ▒ 2 .
+  5   . . . . . . . . . .
+   Legend: 1=P0 2=P1 🟡=wounded(≥50 wetness) 💀=critical(≥75) 🔄=cooldown 🚫=no bombs
+   Terrain: .=empty  ▒=low cover(50% protection)  █=high cover(75% protection)
+
+
+🤖 Bot1 thinking... ✅ Done
+🤖 Bot2 thinking... ✅ Done
+   🔵 Bot1 Commands: 1; THROW 5 1
+   🔴 Bot2 Commands: 3; SHOOT 1
+⚔️  Turn 3
+========
+   🧨 Agent 1 threw bomb at (5,1): 0 agents hit
+   📐 Range penalty applied: 7 > 4 (50% damage)
+   💥 Agent 3 shot Agent 1: 4 damage (50% protection) (wetness: 8/100)
+   📊 Territory: P0=30 tiles, P1=30 tiles | Scores: P0=0, P1=0
+🗺️  Turn 3 Battle Map:
+      0 1 2 3 4 5 6 7 8 9
+  0   . . . . . . . . . .
+  1   .🚫1 ▒ . . . . ▒ 2 .
+  2   . . . █ . . █ . . .
+  3   . . . █ . . █ . . .
+  4   . 1 ▒ . . . . ▒ 2 .
+  5   . . . . . . . . . .
+   Legend: 1=P0 2=P1 🟡=wounded(≥50 wetness) 💀=critical(≥75) 🔄=cooldown 🚫=no bombs
+   Terrain: .=empty  ▒=low cover(50% protection)  █=high cover(75% protection)
+
+
+🤖 Bot1 thinking... ✅ Done
+🤖 Bot2 thinking... ✅ Done
+   🔵 Bot1 Commands: 2; THROW 4 3
+   🔴 Bot2 Commands: 4; SHOOT 2
+⚔️  Turn 4
+========
+   🧨 Agent 2 threw bomb at (4,3): 0 agents hit
+   📐 Range penalty applied: 7 > 4 (50% damage)
+   💥 Agent 4 shot Agent 2: 4 damage (50% protection) (wetness: 8/100)
+   📊 Territory: P0=30 tiles, P1=30 tiles | Scores: P0=0, P1=0
+🗺️  Turn 4 Battle Map:
+      0 1 2 3 4 5 6 7 8 9
+  0   . . . . . . . . . .
+  1   .🚫1 ▒ . . . . ▒ 2 .
+  2   . . . █ . . █ . . .
+  3   . . . █ . . █ . . .
+  4   .🚫1 ▒ . . . . ▒ 2 .
+  5   . . . . . . . . . .
+   Legend: 1=P0 2=P1 🟡=wounded(≥50 wetness) 💀=critical(≥75) 🔄=cooldown 🚫=no bombs
+   Terrain: .=empty  ▒=low cover(50% protection)  █=high cover(75% protection)
+
+
+🤖 Bot1 thinking... ✅ Done
+🤖 Bot2 thinking... ✅ Done
+   🔵 Bot1 Commands: 1; THROW 5 1
+   🔴 Bot2 Commands: 3; SHOOT 1
+⚔️  Turn 5
+========
+   📐 Range penalty applied: 7 > 4 (50% damage)
+   💥 Agent 3 shot Agent 1: 4 damage (50% protection) (wetness: 12/100)
+   📊 Territory: P0=30 tiles, P1=30 tiles | Scores: P0=0, P1=0
+🗺️  Turn 5 Battle Map:
+      0 1 2 3 4 5 6 7 8 9
+  0   . . . . . . . . . .
+  1   .🚫1 ▒ . . . . ▒ 2 .
+  2   . . . █ . . █ . . .
+  3   . . . █ . . █ . . .
+  4   .🚫1 ▒ . . . . ▒ 2 .
+  5   . . . . . . . . . .
+   Legend: 1=P0 2=P1 🟡=wounded(≥50 wetness) 💀=critical(≥75) 🔄=cooldown 🚫=no bombs
+   Terrain: .=empty  ▒=low cover(50% protection)  █=high cover(75% protection)
+
+
+🤖 Bot1 thinking... ✅ Done
+🤖 Bot2 thinking... ✅ Done
+   🔵 Bot1 Commands: 2; THROW 4 3
+   🔴 Bot2 Commands: 4; SHOOT 2
+⚔️  Turn 6
+========
+   📐 Range penalty applied: 7 > 4 (50% damage)
+   💥 Agent 4 shot Agent 2: 4 damage (50% protection) (wetness: 12/100)
+   📊 Territory: P0=30 tiles, P1=30 tiles | Scores: P0=0, P1=0
+🗺️  Turn 6 Battle Map:
+      0 1 2 3 4 5 6 7 8 9
+  0   . . . . . . . . . .
+  1   .🚫1 ▒ . . . . ▒ 2 .
+  2   . . . █ . . █ . . .
+  3   . . . █ . . █ . . .
+  4   .🚫1 ▒ . . . . ▒ 2 .
+  5   . . . . . . . . . .
+   Legend: 1=P0 2=P1 🟡=wounded(≥50 wetness) 💀=critical(≥75) 🔄=cooldown 🚫=no bombs
+   Terrain: .=empty  ▒=low cover(50% protection)  █=high cover(75% protection)
+
+
+🤖 Bot1 thinking... ✅ Done
+🤖 Bot2 thinking... ✅ Done
+   🔵 Bot1 Commands: 1; SHOOT 3
+   🔴 Bot2 Commands: 3; SHOOT 1
+⚔️  Turn 7
+========
+   📐 Range penalty applied: 7 > 4 (50% damage)
+   💥 Agent 1 shot Agent 3: 4 damage (50% protection) (wetness: 4/100)
+   📐 Range penalty applied: 7 > 4 (50% damage)
+   💥 Agent 3 shot Agent 1: 4 damage (50% protection) (wetness: 16/100)
+   📊 Territory: P0=30 tiles, P1=30 tiles | Scores: P0=0, P1=0
+🗺️  Turn 7 Battle Map:
+      0 1 2 3 4 5 6 7 8 9
+  0   . . . . . . . . . .
+  1   .🚫1 ▒ . . . . ▒ 2 .
+  2   . . . █ . . █ . . .
+  3   . . . █ . . █ . . .
+  4   .🚫1 ▒ . . . . ▒ 2 .
+  5   . . . . . . . . . .
+   Legend: 1=P0 2=P1 🟡=wounded(≥50 wetness) 💀=critical(≥75) 🔄=cooldown 🚫=no bombs
+   Terrain: .=empty  ▒=low cover(50% protection)  █=high cover(75% protection)
+
+
+🤖 Bot1 thinking... ✅ Done
+🤖 Bot2 thinking... ✅ Done
+   🔵 Bot1 Commands: 2; THROW 4 3
+   🔴 Bot2 Commands: 4; SHOOT 2
+⚔️  Turn 8
+========
+   📐 Range penalty applied: 7 > 4 (50% damage)
+   💥 Agent 4 shot Agent 2: 4 damage (50% protection) (wetness: 16/100)
+   📊 Territory: P0=30 tiles, P1=30 tiles | Scores: P0=0, P1=0
+🗺️  Turn 8 Battle Map:
+      0 1 2 3 4 5 6 7 8 9
+  0   . . . . . . . . . .
+  1   .🚫1 ▒ . . . . ▒ 2 .
+  2   . . . █ . . █ . . .
+  3   . . . █ . . █ . . .
+  4   .🚫1 ▒ . . . . ▒ 2 .
+  5   . . . . . . . . . .
+   Legend: 1=P0 2=P1 🟡=wounded(≥50 wetness) 💀=critical(≥75) 🔄=cooldown 🚫=no bombs
+   Terrain: .=empty  ▒=low cover(50% protection)  █=high cover(75% protection)
+
+
+🤖 Bot1 thinking... ✅ Done
+🤖 Bot2 thinking... ✅ Done
+   🔵 Bot1 Commands: 1; SHOOT 3
+   🔴 Bot2 Commands: 3; SHOOT 1
+⚔️  Turn 9
+========
+   📐 Range penalty applied: 7 > 4 (50% damage)
+   💥 Agent 1 shot Agent 3: 4 damage (50% protection) (wetness: 8/100)
+   📐 Range penalty applied: 7 > 4 (50% damage)
+   💥 Agent 3 shot Agent 1: 4 damage (50% protection) (wetness: 20/100)
+   📊 Territory: P0=30 tiles, P1=30 tiles | Scores: P0=0, P1=0
+🗺️  Turn 9 Battle Map:
+      0 1 2 3 4 5 6 7 8 9
+  0   . . . . . . . . . .
+  1   .🚫1 ▒ . . . . ▒ 2 .
+  2   . . . █ . . █ . . .
+  3   . . . █ . . █ . . .
+  4   .🚫1 ▒ . . . . ▒ 2 .
+  5   . . . . . . . . . .
+   Legend: 1=P0 2=P1 🟡=wounded(≥50 wetness) 💀=critical(≥75) 🔄=cooldown 🚫=no bombs
+   Terrain: .=empty  ▒=low cover(50% protection)  █=high cover(75% protection)
+
+
